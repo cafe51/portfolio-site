@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import ProfileImageCard from '../subComponents/ProfileImageCard';
 import ProfileTitleCard from '../subComponents/ProfileTitleCard';
 import ProfileDescriptionCard from '../subComponents/ProfileDescriptionCard';
+import ScrollDownButton from '../subComponents/ScrollDownButton';
 
 const About: NextPage = () => {
     return (
@@ -30,7 +31,7 @@ const About: NextPage = () => {
                     />
                 </div>
             </div>
-
+            <ScrollDownButton href="#skills" />
         </section>
     );
 };

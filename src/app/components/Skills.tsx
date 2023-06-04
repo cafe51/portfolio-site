@@ -5,6 +5,7 @@ import { useState } from 'react';
 import skills from '../data/skills';
 import SkillCard from '../subComponents/SkillCard';
 import ExpandButton from '../subComponents/ExpandButton';
+import ScrollDownButton from '../subComponents/ScrollDownButton';
 
 const Skills: NextPage = () => {
     const [expanded, setExpanded] = useState(false);
@@ -39,6 +40,7 @@ const Skills: NextPage = () => {
                     />
                 ) }
             </div>
+            <ScrollDownButton href="#projects" />
         </section>
     );
 };
