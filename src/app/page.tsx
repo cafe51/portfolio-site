@@ -1,14 +1,15 @@
 import Header from './components/Header';
+import Footer from './components/Footer';
 import { NextPage } from 'next';
-import React from 'react';
 
 const Home: NextPage = () => {
     return (
         <div>
             <Header />
-            <main>
-                Olá, mundo
+            <main className="py-24">
+                <p>Olá, mundo </p>
             </main>
+            <Footer />
         </div>
     );
 };
