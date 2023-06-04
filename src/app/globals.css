@@ -13,3 +13,24 @@ h2 {
   font-weight: 500;
   /* margin-bottom: 1.5rem; */
 }
+
+/* .nav-gradient {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+@media (max-width: 760px) {
+  .nav-gradient {
+    background: linear-gradient(to bottom, #1a202cef, rgba(31, 30, 43, 0.548));
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

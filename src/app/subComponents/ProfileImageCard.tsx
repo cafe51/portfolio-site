@@ -15,7 +15,7 @@ const ProfileImageCard = ({ tailwindClassInDiv, tailwindClassInImgTag, isMobile 
                 src={ imgSrc }
                 alt="Sua imagem"
                 width={ 300 }
-                height={ 600 }
+                height={ 0 }
             />
         </div>
     );
