@@ -6,6 +6,8 @@ const ProfileImageCard = () => {
             <Image
                 src="/images/profile.jpg"
                 alt="Sua imagem"
+                width={ 300 }
+                height={ 600 }
             />
         </div>
     );

@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
+import About from './components/About';
 import { NextPage } from 'next';
 
 const Home: NextPage = () => {
@@ -7,7 +8,7 @@ const Home: NextPage = () => {
         <div>
             <Header />
             <main className="py-24">
-                <p>Olá, mundo </p>
+                <About />
             </main>
             <Footer />
         </div>
