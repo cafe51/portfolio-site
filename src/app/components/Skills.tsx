@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import skills from '../data/skills';
-import Image from 'next/image';
+import SkillCard from '../subComponents/SkillCard';
 
 const Skills: NextPage = () => {
     return (
@@ -8,16 +8,7 @@ const Skills: NextPage = () => {
             <div>
                 <h2>Habilidades</h2>
                 { skills.map((skill) => (
-                    <div key={ skill.id }>
-                        <Image
-                            src={ skill.skillsImage }
-                            alt={ skill.skillsImageAlt }
-                            width={ 80 }
-                            height={ 80 }
-                            className="hover:animate-spin"
-                        />
-                        <h3>{ skill.skillsName }</h3>
-                    </div>
+                    <SkillCard skillData={ skill } key={ skill.id } />
                 )) }
             </div>
         </section>
@@ -25,5 +16,6 @@ const Skills: NextPage = () => {
 };
 
 export default Skills;
+
 
 
