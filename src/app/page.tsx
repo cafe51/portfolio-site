@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
 import { NextPage } from 'next';
+import Skills from './components/Skills';
 
 const Home: NextPage = () => {
     return (
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
             <Header />
             <main className="py-16">
                 <About />
+                <Skills />
             </main>
             <Footer />
         </div>
