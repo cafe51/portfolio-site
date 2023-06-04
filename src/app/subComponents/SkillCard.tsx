@@ -7,7 +7,6 @@ type SkillCardProps = {
         skillsImageAlt: string,
         skillsName: string,
     },
-    key: number
 }
 
 const SkillCard = ({ skillData }: SkillCardProps) => {
