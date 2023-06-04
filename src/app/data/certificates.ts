@@ -1,0 +1,58 @@
+const certificates = [
+  {
+    id: 1,
+    title: 'Certificate of Completion',
+    description: 'This is a certificate of completion for the course',
+    image: '/images/certificate1.png',
+    alImage: 'certificate',
+    date: 'September 2021',
+    link: 'www.github.com',
+  },
+  {
+    id: 2,
+    title: 'Certificate of Completion',
+    description: 'This is a certificate of completion for the course',
+    image: '/images/certificate1.png',
+    alImage: 'certificate',
+    date: 'September 2021',
+    link: 'www.github.com',
+  },
+  {
+    id: 3,
+    title: 'Certificate of Completion',
+    description: 'This is a certificate of completion for the course',
+    image: '/images/certificate1.png',
+    alImage: 'certificate',
+    date: 'September 2021',
+    link: 'www.github.com',
+  },
+  {
+    id: 4,
+    title: 'Certificate of Completion',
+    description: 'This is a certificate of completion for the course',
+    image: '/images/certificate1.png',
+    alImage: 'certificate',
+    date: 'September 2021',
+    link: 'www.github.com',
+  },
+  {
+    id: 5,
+    title: 'Certificate of Completion',
+    description: 'This is a certificate of completion for the course',
+    image: '/images/certificate1.png',
+    alImage: 'certificate',
+    date: 'September 2021',
+    link: 'www.github.com',
+  },
+  {
+    id: 6,
+    title: 'Certificate of Completion',
+    description: 'This is a certificate of completion for the course',
+    image: '/images/certificate1.png',
+    alImage: 'certificate',
+    date: 'September 2021',
+    link: 'www.github.com',
+  },
+]
+
+export default certificates
