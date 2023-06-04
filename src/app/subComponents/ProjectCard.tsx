@@ -14,7 +14,6 @@ type ProjectCardProps = {
         github: string,
         link: string,
     },
-    key: number
 }
 
 const ProjectCard = ({ projectData }: ProjectCardProps) => {
