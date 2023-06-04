@@ -1,3 +1,53 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+      "browser": true,
+      "es2021": true
+  },
+  "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "next"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+  },
+  "plugins": [
+      "@typescript-eslint",
+      "react"
+  ],
+  "rules": {
+      "space-before-function-paren": ["error", "never"],
+      "space-in-parens": ["error", "never"],
+      "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+      "comma-dangle": ["error", "always-multiline"],
+      "no-console": "warn",
+      "curly": "error",
+      "object-curly-spacing": ["error", "always"],
+      "react/jsx-curly-spacing": ["error", {"when": "always", "attributes": true, "children": true}],
+      "prefer-const": "error",
+      "no-eval": "error",
+      "indent": [
+          "error",
+          4
+      ],
+      "linebreak-style": [
+          "error",
+          "unix"
+      ],
+      "quotes": [
+          "error",
+          "single"
+      ],
+      "semi": [
+          "error",
+          "always"
+      ],
+      "@typescript-eslint/no-unused-vars": ["error"],
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "jsx-a11y/anchor-is-valid": "off"
+  }
 }
