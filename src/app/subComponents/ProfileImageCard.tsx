@@ -1,10 +1,18 @@
 import Image from 'next/image';
 
-const ProfileImageCard = () => {
+type ProfileProps = {
+    tailwindClassInDiv: string,
+    tailwindClassInImgTag: string,
+    isMobile: boolean
+}
+
+const ProfileImageCard = ({ tailwindClassInDiv, tailwindClassInImgTag, isMobile }: ProfileProps) => {
+    const imgSrc = isMobile ? '/images/profile_mobile1.png' : '/images/profile.jpg';
     return (
-        <div>
+        <div className={ tailwindClassInDiv }>
             <Image
-                src="/images/profile.jpg"
+                className={ `${ tailwindClassInImgTag } rounded-lg shadow ` }
+                src={ imgSrc }
                 alt="Sua imagem"
                 width={ 300 }
                 height={ 600 }
@@ -12,5 +20,5 @@ const ProfileImageCard = () => {
         </div>
     );
 }; 
-
+            
 export default ProfileImageCard;

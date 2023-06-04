@@ -5,12 +5,16 @@ import ProfileDescriptionCard from '../subComponents/ProfileDescriptionCard';
 
 const About: NextPage = () => {
     return (
-        <section id="about">
-            <div>
+        <section id="about" className="bg-gray-200 md:p-8 lg:p-8 relative shadow-xl rounded-md">
+            <div className="bg-white mx-auto sm:p-4 rounded-xl">
                 { /* Seção visível apenas em telas pequenas */ }
-                <div className="flex flex-col md:hidden">
+                <div className="md:hidden">
                     <ProfileTitleCard />
-                    <ProfileImageCard/>
+                    <ProfileImageCard
+                        isMobile = { true }
+                        tailwindClassInDiv={ 'relative z-0 w-4/5 md:w-1/3 mx-auto md:mx-0 mb-6 md:mb-0 md:mr-8 overflow-hidden max-h-64 flex flex-col items-center' }
+                        tailwindClassInImgTag = { '' }
+                    />
                     <ProfileDescriptionCard />
                 </div>
                 { /* Seção visível apenas em telas grandes */ }
@@ -19,9 +23,14 @@ const About: NextPage = () => {
                         <ProfileTitleCard />
                         <ProfileDescriptionCard />
                     </div>
-                    <ProfileImageCard/>
+                    <ProfileImageCard
+                        isMobile = { false }
+                        tailwindClassInDiv={ 'flex items-center' }
+                        tailwindClassInImgTag = { 'max-h-96' }
+                    />
                 </div>
             </div>
+
         </section>
     );
 };
