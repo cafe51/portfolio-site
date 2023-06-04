@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     return (
         <div>
             <Header />
-            <main className="py-24">
+            <main className="py-16">
                 <About />
             </main>
             <Footer />
