@@ -10,12 +10,12 @@ export const certificates = [
     },
     {
         id: 2,
-        title: 'Certificate of Completion',
-        description: 'This is a certificate of completion for the course',
-        image: '/images/certificates/certificate1.png',
+        title: 'Figma: Contruindo o Layout do seu site mobile',
+        description: 'Figma: Contruindo o Layout do seu site mobile',
+        image: '/images/certificates/figma.png',
         imageAlt: 'certificate',
         date: 'September 2021',
-        link: 'www.github.com',
+        link: 'https://cursos.alura.com.br/user/cafecafe51/course/figma-construindo-layout-primeiro-site-mobile/formalCertificate',
     },
     {
         id: 3,
