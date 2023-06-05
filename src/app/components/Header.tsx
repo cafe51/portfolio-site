@@ -29,7 +29,7 @@ const Header = () => {
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         } }
                     >
-                        Japhé
+                        JAPHÉ
                     </a>;
                 </div>
                 <button

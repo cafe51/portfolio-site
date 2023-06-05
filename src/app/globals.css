@@ -13,7 +13,12 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: bolder;
+  font-family: Merriweather, Proxima Nova, sans-serif;
+}
+
+a {
+  font-family: Merriweather, Proxima Nova, sans-serif;
 }
 
 .asset-enter {
