@@ -14,12 +14,13 @@ type CertificatesCardProps = {
 const CertificatesCard = ({ assetData }: CertificatesCardProps) => {
     return (
 
-        <div className="bg-gray-100 rounded shadow flex flex-col justify-between items-center">
+        <div className="bg-gray-100 rounded shadow flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110 relative z-10">
             <Image
                 src={ assetData.image }
                 alt={ assetData.imageAlt }
                 width={ 400 }
                 height={ 200 }
+                className='transition-transform duration-500 ease-in-out transform hover:scale-110'
             />
             <h3 className="text-xl font-semibold mt-4">{ assetData.title }</h3>
             <p className="text-gray-600 mt-2">{ assetData.description }</p>

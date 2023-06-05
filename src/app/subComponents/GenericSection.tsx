@@ -42,7 +42,7 @@ const GenericSection = <T, >({
                 }>
                     { assetData.map((asset: any, index: number) => (
                         <div 
-                            className={ `transition-opacity duration-500 ${expanded || index < initialNumberOfAssets ? 'opacity-100' : 'opacity-0'}` }
+                            className={ `transition-opacity duration-500 ${expanded || index < initialNumberOfAssets ? 'opacity-100' : 'opacity-0'}` } 
                             key={ asset.id }
                         >
                             <AssetCard assetData={ asset } />
