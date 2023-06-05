@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 type SkillCardProps = {
-    skillData: {
+    assetData: {
         id: number,
         skillsImage: string,
         skillsImageAlt: string,
@@ -9,17 +9,17 @@ type SkillCardProps = {
     },
 }
 
-const SkillCard = ({ skillData }: SkillCardProps) => {
+const SkillCard = ({ assetData }: SkillCardProps) => {
     return (
         <div className="flex flex-col justify-between items-center">
             <Image
-                src={ skillData.skillsImage }
-                alt={ skillData.skillsImageAlt }
+                src={ assetData.skillsImage }
+                alt={ assetData.skillsImageAlt }
                 width={ 80 }
                 height={ 80 }
                 className="hover:animate-spin"
             />
-            <h3 className="text-xl font-semibold text-center">{ skillData.skillsName }</h3>
+            <h3 className="text-xl font-semibold text-center">{ assetData.skillsName }</h3>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import GithubIcon from '../../../public/github-142-svgrepo-com.svg';
 import OpenExternal from '../../../public/open-external-svgrepo-com.svg';
 
 type ProjectCardProps = {
-    projectData : {
+    assetData : {
         id: number,
         title: string,
         image: string,
@@ -16,27 +16,27 @@ type ProjectCardProps = {
     },
 }
 
-const ProjectCard = ({ projectData }: ProjectCardProps) => {
+const ProjectCard = ({ assetData }: ProjectCardProps) => {
     return (
         <div>
             <Image
-                src={ projectData.image }
-                alt={ projectData.imageAlt }
+                src={ assetData.image }
+                alt={ assetData.imageAlt }
                 width={ 400 }
                 height={ 200 }
                 className="rounded"
             />
-            <h3>{ projectData.title }</h3>
-            <p>{ projectData.description }</p>
+            <h3>{ assetData.title }</h3>
+            <p>{ assetData.description }</p>
             <div>
-                { projectData.skills.map((skill, index) => (
+                { assetData.skills.map((skill, index) => (
                     <span key={ index }>
                         { skill }
                     </span>
                 )) }
             </div>
             <div>
-                <Link href={ projectData.github }>
+                <Link href={ assetData.github }>
                     <Image
                         src={ GithubIcon }
                         alt="GitHub"
@@ -44,7 +44,7 @@ const ProjectCard = ({ projectData }: ProjectCardProps) => {
                         height={ 20 }
                     />
                 </Link>
-                <Link href={ projectData.link }>
+                <Link href={ assetData.link }>
                     <Image
                         src={ OpenExternal }
                         alt="GitHub"
