@@ -18,10 +18,10 @@ const Header = () => {
     const opacity = isScrolled ? 'bg-opacity-80' : '';
     
     return (
-        <header className={ `bg-gray-800 fixed w-full transition-all duration-500 z-50 px-8 md:px-16 py-3 md:py-0 md:pr-64 lg:pr-16 ${opacity}` }>
+        <header id='#japhe' className={ `bg-gray-800 fixed w-full transition-all duration-500 z-50 px-8 md:px-16 py-3 md:py-0 md:pr-64 lg:pr-16 ${opacity}` }>
             <div className="flex justify-between items-center ">
                 <div>
-                    <p className="text-2xl font-bold text-white">Japhé</p>
+                    <a href="#about" className="text-2xl font-bold text-white">Japhé</a>;
                 </div>
                 <button
                     className="md:hidden block text-white"

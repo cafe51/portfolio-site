@@ -17,7 +17,7 @@ const SkillCard = ({ assetData }: SkillCardProps) => {
                 alt={ assetData.skillsImageAlt }
                 width={ 80 }
                 height={ 80 }
-                className="hover:animate-spin"
+                className="hover:animate-spin bg-white"
             />
             <h3 className="text-xl font-semibold text-center">{ assetData.skillsName }</h3>
         </div>

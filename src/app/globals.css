@@ -16,6 +16,28 @@ h2 {
   font-weight: 500;
 }
 
+.asset-enter {
+  opacity: 0;
+  max-height: 0;
+}
+
+.asset-enter-active {
+  opacity: 1;
+  max-height: 500px;
+  transition: opacity 500ms, max-height 500ms;
+}
+
+.asset-exit {
+  opacity: 1;
+  max-height: 500px;
+}
+
+.asset-exit-active {
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 500ms, max-height 500ms;
+}
+
 
 @media (max-width: 760px) {
   .nav-gradient {

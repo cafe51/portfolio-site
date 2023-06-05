@@ -1,4 +1,4 @@
-const skills = [
+export const skills = [
     {
         id: 1,
         skillsName: 'javascript',
@@ -157,4 +157,9 @@ const skills = [
     },
 ];
 
-export default skills;
+export type SkillData = {
+    id: number,
+    skillsName: string,
+    skillsImage: string,
+    skillsImageAlt: string,
+  }

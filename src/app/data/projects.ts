@@ -1,4 +1,4 @@
-const projects = [
+export const projects = [
     {
         id: 1,
         title: 'Api para blog',
@@ -56,4 +56,14 @@ const projects = [
     },
 ];
 
-export default projects;
+export type ProjectData = {
+    id: number,
+    title: string,
+    image: string,
+    imageAlt: string,
+    description: string,
+    skills: string[],
+    github: string,
+    link: string,
+}
+

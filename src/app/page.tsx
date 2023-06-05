@@ -3,73 +3,63 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
-import skills from './data/skills';
-import projects from './data/projects';
+import { skills, SkillData } from './data/skills';
+import { projects, ProjectData } from './data/projects';
+import { certificates, CertificateData } from './data/certificates';
 import { NextPage } from 'next';
 import SkillCard from './subComponents/SkillCard';
-import AssetList from './components/AssetList';
 import ProjectCard from './subComponents/ProjectCard';
+import CertificatesCard from './subComponents/CertificatesCard';
+import Section from './components/Section';
 
-type SkillData = {
-    id: number,
-    skillsName: string,
-    skillsImage: string,
-    skillsImageAlt: string,
-  }
-
-type ProjectData = {
-    id: number,
-    title: string,
-    image: string,
-    imageAlt: string,
-    description: string,
-    skills: string[],
-    github: string,
-    link: string,
-}
 
 const Home: NextPage = () => {
-    const [expanded, setExpanded] = useState(false);
+    const [expandedSkills, setExpandedSkills] = useState(false);
+    const [expandedProjects, setExpandedProjects] = useState(false);
+    const [expandedCertificates, setExpandedCertificates] = useState(false);
 
-    const showMore = () => {
-        setExpanded(true);
-    };
-
-    const showLess = () => {
-        setExpanded(false);
-    };
     return (
         <div>
             <Header />
             <main className="py-16">
                 <About />
-                <AssetList<SkillData>
+                <Section<SkillData>
                     assetName='Habilidades'
                     tagName='skills'
                     assetData={ skills }
                     initialNumberOfAssets={ 4 }
                     AssetCard={ SkillCard }
-                    expanded={ expanded }
-                    showLess={ showLess }
-                    showMore={ showMore }
-                    nextSection = { 'projects' }
+                    expanded={ expandedSkills }
+                    setExpanded={ setExpandedSkills }
+                    nextSection = 'projects'
+                    maxHeight={ 'max-h-40' }
                 />
-                <AssetList<ProjectData>
+                <Section<ProjectData>
                     assetName='Projetos'
                     tagName='projects'
                     assetData={ projects }
-                    initialNumberOfAssets={ 4 }
+                    initialNumberOfAssets={ 3 }
                     AssetCard={ ProjectCard }
-                    expanded={ expanded }
-                    showLess={ showLess }
-                    showMore={ showMore }
-                    nextSection = { 'certificates' }
+                    expanded={ expandedProjects }
+                    setExpanded={ setExpandedProjects }
+                    nextSection = 'certificates'
+                    maxHeight={ 'max-h-[500px]' }
+                />
+                <Section<CertificateData>
+                    assetName='Certificados'
+                    tagName='certificates'
+                    assetData={ certificates }
+                    initialNumberOfAssets={ 3 }
+                    AssetCard={ CertificatesCard }
+                    expanded={ expandedCertificates }
+                    setExpanded={ setExpandedCertificates }
+                    nextSection = 'japhe'
+                    maxHeight={ 'max-h-96' }
                 />
             </main>
             <Footer />
         </div>
     );
 };
-
 
 export default Home;
