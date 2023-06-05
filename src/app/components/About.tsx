@@ -6,7 +6,7 @@ import ScrollDownButton from '../subComponents/ScrollDownButton';
 
 const About: NextPage = () => {
     return (
-        <section id="about" className="bg-gray-200 md:p-8 lg:p-8 relative shadow-xl rounded-md">
+        <section id="about" className="bg-gray-200 p-4 md:p-8 lg:p-8 relative shadow-xl rounded-md">
             <div className="bg-white mx-auto sm:p-4 rounded-xl">
                 { /* Seção visível apenas em telas pequenas */ }
                 <div className="md:hidden">
