@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { FiDownload, FiExternalLink } from 'react-icons/fi';
 
 type CertificatesCardProps = {
     assetData : {
@@ -8,13 +9,14 @@ type CertificatesCardProps = {
         imageAlt: string,
         description: string,
         link: string,
+        pdfFile: string,
     },
 }
 
 const CertificatesCard = ({ assetData }: CertificatesCardProps) => {
     return (
 
-        <div className="bg-gray-100 p-4 rounded shadow flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110 relative z-10">
+        <div className="bg-gray-100 p-6 rounded shadow flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110 relative z-10">
             <Image
                 src={ assetData.image }
                 alt={ assetData.imageAlt }
@@ -24,9 +26,14 @@ const CertificatesCard = ({ assetData }: CertificatesCardProps) => {
             />
             <h3 className="text-xl font-semibold mt-4">{ assetData.title }</h3>
             <p className="text-gray-600 mt-2">{ assetData.description }</p>
-            <Link href={ assetData.link } className="text-blue-500 hover:text-blue-700 mt-2 inline-block focus:outline-none focus:ring-2 focus:ring-blue-500">
-                  AAAAAAA
-            </Link>
+            <div className="flex p-4">
+                <a href={ assetData.pdfFile } download className="mr-4">
+                    <FiDownload color="black" size={ 24 }/>
+                </a>
+                <Link href={ assetData.link }>
+                    <FiExternalLink color="black" size={ 24 }/>
+                </Link>
+            </div>
         </div>
 
     );

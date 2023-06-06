@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import GithubIcon from '../../../public/github-142-svgrepo-com.svg';
-import OpenExternal from '../../../public/open-external-svgrepo-com.svg';
+import { FiExternalLink } from 'react-icons/fi';
+import { FaGithub } from 'react-icons/fa';
 
 type ProjectCardProps = {
     assetData : {
@@ -18,7 +18,7 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ assetData }: ProjectCardProps) => {
     return (
-        <div className="bg-gray-100 rounded shadow flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110">
+        <div className="bg-gray-100 p-4 rounded shadow flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image
                 src={ assetData.image }
                 alt={ assetData.imageAlt }
@@ -35,22 +35,12 @@ const ProjectCard = ({ assetData }: ProjectCardProps) => {
                     </span>
                 )) }
             </div>
-            <div className="flex">
+            <div className="flex p-4">
                 <Link href={ assetData.github } className="mr-4">
-                    <Image
-                        src={ GithubIcon }
-                        alt="GitHub"
-                        width={ 20 }
-                        height={ 20 }
-                    />
+                    <FaGithub color="black" size={ 24 }/>
                 </Link>
                 <Link href={ assetData.link }>
-                    <Image
-                        src={ OpenExternal }
-                        alt="GitHub"
-                        width={ 20 }
-                        height={ 20 }
-                    />
+                    <FiExternalLink color="black" size={ 24 }/>
                 </Link>
             </div>
         </div>

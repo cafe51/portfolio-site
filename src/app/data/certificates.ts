@@ -7,6 +7,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'www.github.com',
+        pdfFile: '/images/certificates/',
     },
     {
         id: 2,
@@ -16,6 +17,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/figma-construindo-layout-primeiro-site-mobile/formalCertificate',
+        pdfFile: '/images/certificates/figma.pdf',
     },
     {
         id: 3,
@@ -25,6 +27,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/design-thinking-viabilizando-solucoes/formalCertificate',
+        pdfFile: '/images/certificates/design_thinking.pdf',
     },
     {
         id: 4,
@@ -34,6 +37,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/python-3-avancando-na-linguagem/formalCertificate',
+        pdfFile: '/images/certificates/python_avancando_na_linguagem.pdf',
     },
     {
         id: 5,
@@ -43,6 +47,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/python-introducao-a-linguagem/formalCertificate',
+        pdfFile: '/images/certificates/python_comecando_a_linguagem.pdf',
     },
     {
         id: 6,
@@ -52,6 +57,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/python-3-intro-orientacao-objetos/formalCertificate',
+        pdfFile: '/images/certificates/python_entendendo_a_orientacao_a_objetos.pdf',
     },
     {
         id: 7,
@@ -61,15 +67,17 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/tailwind-css-estilizando-pagina-classes-utilitarias/formalCertificate',
+        pdfFile: '/images/certificates/tailwind_css_estilizando_a_sua_pagina_com_classes_utilitarias.pdf',
     },
     {
         id: 8,
-        title: 'UI Desing: Contruindo produto final',
+        title: 'UI Design: Construindo produto final',
         description: 'This is a certificate of completion for the course',
         image: '/images/certificates/ui-design-construindo-produto-final.png',
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/ui-design-construindo-produto-final/formalCertificate',
+        pdfFile: '/images/certificates/ui-design-construindo-produto-final.pdf',
     },
     {
         id: 9,
@@ -79,6 +87,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/ui-design-criando-design-prototipo/formalCertificate',
+        pdfFile: '/images/certificates/ui-design-criando-design-prototipo.pdf',
     },
     {
         id: 10,
@@ -88,6 +97,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/ui-design-mergulhando-interfaces-digitais/formalCertificate',
+        pdfFile: '/images/certificates/ui-design-mergulhando-interfaces-digitais.pdf',
     },
     {
         id: 11,
@@ -97,6 +107,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://cursos.alura.com.br/user/cafecafe51/course/fundamentos-ux-entendendo-experiencia-usuario/formalCertificate',
+        pdfFile: '/images/certificates/fundamentos-ux-entendendo-experiencia-usuario.pdf',
     },
     {
         id: 12,
@@ -106,6 +117,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://www.credential.net/322013ef-ba6f-41a4-911d-d1b149024dba#gs.zmz44p',
+        pdfFile: '/images/certificates/fundamentos_do_desenvolvimento_web.pdf',
     },
     {
         id: 13,
@@ -115,6 +127,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://www.credential.net/b7625823-5598-41ab-8ec8-b295086404ef',
+        pdfFile: '/images/certificates/desenvolvimento_front_end.pdf',
     },
     {
         id: 14,
@@ -124,6 +137,7 @@ export const certificates = [
         imageAlt: 'certificate',
         date: 'September 2021',
         link: 'https://www.credential.net/7d0b151e-e14b-4091-8473-8963b408659d#gs.zmzqiz',
+        pdfFile: '/images/certificates/desenvolvimento_back_end.pdf',
     },
 ];
 
@@ -135,5 +149,7 @@ export type CertificateData = {
     imageAlt: string,
     date: string,
     link: string,
+    pdfFile: string,
+
 }
 
