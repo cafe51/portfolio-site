@@ -43,7 +43,7 @@ const Home: NextPage = () => {
                     expanded={ expandedProjects }
                     setExpanded={ setExpandedProjects }
                     nextSection = 'certificates'
-                    maxHeight={ 'max-h-[500px]' }
+                    maxHeight={ 'max-h-[600px]' }
                 />
                 <Section<CertificateData>
                     assetName='Certificados'
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
                     expanded={ expandedCertificates }
                     setExpanded={ setExpandedCertificates }
                     nextSection = 'japhe'
-                    maxHeight={ 'max-h-96' }
+                    maxHeight={ 'max-h-[540px]' }
                 />
             </main>
             <Footer />
