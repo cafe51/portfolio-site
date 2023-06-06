@@ -5,6 +5,9 @@ const nextConfig = {
     experimental: {
         appDir: true,
     },
+    images: {
+        domains: ['api.accredible.com'],
+    },
 };
 
 module.exports = nextConfig;

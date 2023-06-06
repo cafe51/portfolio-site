@@ -29,8 +29,6 @@ const GenericSection = <T, >({
     const styleForSmallCards = 'grid grid-cols-2 sm:grid-cols-4 gap-6';
     const styleForBigCards = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8';
 
-    console.log(assetData.length);
-
     const cardStyle =  initialNumberOfAssets === 4 ? styleForSmallCards : styleForBigCards;
 
     return (
