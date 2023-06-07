@@ -12,7 +12,7 @@ export const projects = [
     },
     {
         id: 2,
-        title: 'Loja de carros',
+        title: 'Car de Shop',
         image: '/images/projects/project_2.png',
         imageAlt: '/images/projects/project_2.png',
         description:
@@ -34,7 +34,7 @@ export const projects = [
     },
     {
         id: 4,
-        title: 'Cadastro de times de futebol',
+        title: 'Trybe Tunes',
         image: '/images/projects/project_3.png',
         imageAlt: '/images/projects/project_3.png',
         description:
@@ -45,14 +45,13 @@ export const projects = [
     },
     {
         id: 5,
-        title: 'Cadastro de times de futebol',
-        image: '/images/projects/project_3.png',
-        imageAlt: '/images/projects/project_3.png',
-        description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        skills: ['React', 'Express', 'MongoDB'],
-        github: '/',
-        link: 'google.com',
+        title: 'Site Portfolio',
+        image: '/images/projects/site-portfolio.png',
+        imageAlt: '/images/projects/site-portfolio.png',
+        description: 'Site feito para divulgação de portfolio de projetos e habilidades de programação',
+        skills: ['React', 'Next.js', 'Typescript', 'Tailwind'],
+        github: 'https://github.com/cafe51/portfolio-site.git',
+        link: '/',
     },
 ];
 

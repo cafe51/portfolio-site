@@ -17,7 +17,7 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ assetData }: ProjectCardProps) => {
     return (
-        <div className="bg-gray-100 p-4 rounded shadow flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110">
+        <div className="bg-gray-100 h-[500px] p-6 rounded shadow flex flex-col place-content-around items-center transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image
                 src={ assetData.image }
                 alt={ assetData.imageAlt }
