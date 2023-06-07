@@ -35,14 +35,9 @@ const GenericSection = <T, >({
         <section id={ tagName } className="bg-gray-200 p-4 md:p-8 lg:p-8 relative shadow-xl rounded-md">
             <div className="bg-white mx-auto p-8 rounded-xl">
                 <h2 className="mb-6">{ assetName }</h2>
-                <div className={
-                    `${expanded ? 'max-h-[8000px]' : maxHeight} ${cardStyle} overflow-hidden transition-all duration-500 p-8`
-                }>
-                    { assetData.map((asset: any, index: number) => (
-                        <div 
-                            className={ `transition-opacity duration-500 ${expanded || index < initialNumberOfAssets ? 'opacity-100' : 'opacity-0'}` } 
-                            key={ asset.id }
-                        >
+                <div className={ `${expanded ? 'max-h-[8000px]' : maxHeight} ${cardStyle} overflow-hidden transition-all duration-500 p-8` }>
+                    { assetData.map((asset: any) => (
+                        <div key={ asset.id }>
                             <AssetCard assetData={ asset } />
                         </div>
                     )) }
