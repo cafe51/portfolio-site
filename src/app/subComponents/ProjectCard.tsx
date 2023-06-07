@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { FiExternalLink } from 'react-icons/fi';
 import { FaGithub } from 'react-icons/fa';
 
@@ -36,12 +35,12 @@ const ProjectCard = ({ assetData }: ProjectCardProps) => {
                 )) }
             </div>
             <div className="flex p-4">
-                <Link href={ assetData.github } className="mr-4">
+                <a href={ assetData.github } className="mr-4" target="_blank" rel="noopener noreferrer">
                     <FaGithub color="black" size={ 24 }/>
-                </Link>
-                <Link href={ assetData.link }>
+                </a>
+                <a href={ assetData.link } target="_blank" rel="noopener noreferrer">
                     <FiExternalLink color="black" size={ 24 }/>
-                </Link>
+                </a>
             </div>
         </div>
                         

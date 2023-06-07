@@ -1,14 +1,14 @@
 export const projects = [
     {
         id: 1,
-        title: 'Api para blog',
+        title: 'Api para Blog',
         image: '/images/projects/project_1.png',
         imageAlt: '/images/projects/project_1.png',
         description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        skills: ['Express', 'MySql', 'Sequelize'],
-        github: '/',
-        link: 'google.com',
+      'Este projeto é um sistema de back-end completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens',
+        skills: ['Node.js', 'Typescript', 'Express', 'MySql', 'Sequelize', 'Chai'],
+        github: 'https://github.com/cafe51/blog-api.git',
+        link: '/',
     },
     {
         id: 2,
@@ -24,8 +24,8 @@ export const projects = [
     {
         id: 3,
         title: 'Cadastro de times de futebol',
-        image: '/images/projects/project_3.png',
-        imageAlt: '/images/projects/project_3.png',
+        image: '/images/projects/project_1.png',
+        imageAlt: '/images/projects/project_1.png',
         description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
         skills: ['React', 'Express', 'MongoDB'],

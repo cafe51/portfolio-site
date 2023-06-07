@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { FiDownload, FiExternalLink } from 'react-icons/fi';
 
 type CertificatesCardProps = {
@@ -30,9 +29,9 @@ const CertificatesCard = ({ assetData }: CertificatesCardProps) => {
                 <a href={ assetData.pdfFile } download className="mr-4">
                     <FiDownload color="black" size={ 24 }/>
                 </a>
-                <Link href={ assetData.link }>
+                <a href={ assetData.link } target="_blank" rel="noopener noreferrer">
                     <FiExternalLink color="black" size={ 24 }/>
-                </Link>
+                </a>
             </div>
         </div>
 
