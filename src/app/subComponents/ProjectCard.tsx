@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { FiExternalLink } from 'react-icons/fi';
 import { FaGithub } from 'react-icons/fa';
+import Link from 'next/link';
 
 type ProjectCardProps = {
     assetData : {
@@ -35,12 +36,12 @@ const ProjectCard = ({ assetData }: ProjectCardProps) => {
                 )) }
             </div>
             <div className="flex p-4">
-                <a href={ assetData.github } className="mr-4" target="_blank" rel="noopener noreferrer">
+                <Link href={ assetData.github } className="mr-4" target="_blank" rel="noopener noreferrer">
                     <FaGithub color="black" size={ 24 }/>
-                </a>
-                <a href={ assetData.link } target="_blank" rel="noopener noreferrer">
+                </Link>
+                <Link href={ assetData.link } target="_blank" rel="noopener noreferrer">
                     <FiExternalLink color="black" size={ 24 }/>
-                </a>
+                </Link>
             </div>
         </div>
                         
