@@ -8,14 +8,11 @@ const Footer = () => {
           Desenvolvido por Japhé Nogueira
                 </p>
                 <div>
-                    <Link href="https://github.com/" className="text-white hover:text-gray-300 mx-2" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://github.com/cafe51/" className="text-white hover:text-gray-300 mx-2" target="_blank" rel="noopener noreferrer">
             GitHub
                     </Link>
-                    <Link href="https://www.linkedin.com/" className="text-white hover:text-gray-300 mx-2" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://www.linkedin.com/in/japh%C3%A9-nogueira-67aa7b1a8/" className="text-white hover:text-gray-300 mx-2" target="_blank" rel="noopener noreferrer">
             LinkedIn
-                    </Link>
-                    <Link href="https://twitter.com/" className="text-white hover:text-gray-300 mx-2" target="_blank" rel="noopener noreferrer">
-            Twitter
                     </Link>
                 </div>
             </div>
