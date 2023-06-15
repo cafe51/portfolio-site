@@ -3,11 +3,12 @@ import Image from 'next/image';
 type ProfileProps = {
     tailwindClassInDiv: string,
     tailwindClassInImgTag: string,
+    imageSize: number;
     isMobile: boolean
 }
 
-const ProfileImageCard = ({ tailwindClassInDiv, tailwindClassInImgTag, isMobile }: ProfileProps) => {
-    const imgSrc = isMobile ? '/images/profile_mobile6.png' : '/images/ProfileImageSite2.png';
+const ProfileImageCard = ({ tailwindClassInDiv, tailwindClassInImgTag, isMobile, imageSize }: ProfileProps) => {
+    const imgSrc = isMobile ? '/images/profile_mobile7.png' : '/images/ProfileImageSite2.png';
     return (
         <div className={ `${tailwindClassInDiv}` }>
             <Image
@@ -18,7 +19,7 @@ const ProfileImageCard = ({ tailwindClassInDiv, tailwindClassInImgTag, isMobile 
                 ` }
                 src={ imgSrc }
                 alt="Sua imagem"
-                width='250'
+                width={ imageSize }
                 // fill={ true }
                 height={ 0 }
             />
