@@ -34,7 +34,7 @@ const GenericSection = <T, >({
     const cardStyle =  initialNumberOfAssets === 4 ? styleForSmallCards : styleForBigCards;
 
     return (
-        <section id={ tagName } className="bg-gray-200 p-4 md:p-8 lg:p-8 relative shadow-xl rounded-md">
+        <section id={ tagName } className="bg-gray-200 p-4 pt-14 lg:pt-20 md:pt-20 md:p-8 lg:p-8 relative shadow-xl rounded-md">
             <div className="absolute bg-blue-900 w-fit p-3 text-white">
                 <h1 >{ assetName }</h1>
             </div>
