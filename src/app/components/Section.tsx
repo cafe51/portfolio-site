@@ -9,7 +9,7 @@ const Section = <T, >({ setExpanded, ...props }: SectionProps<T>) => {
     const ref = useRef<HTMLDivElement>(null);
 
     return (
-        <div id="skills" ref={ ref }>
+        <div ref={ ref }>
             <GenericSection<T>
                 { ...props }
                 showLess={ () => {
