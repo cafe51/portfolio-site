@@ -28,7 +28,8 @@ const GenericSection = <T, >({
     maxHeight,
     assetsInARow,
 }: GenericSectionProps<T>) => {
-    const styleForSmallCards = 'grid grid-cols-2 sm:grid-cols-4 gap-6';
+    const styleForSmallCards = 'flex flex-wrap justify-center gap-6 md:w-2/3';
+    // const styleForSmallCards = 'grid grid-cols-2 sm:grid-cols-4 gap-6';
     const styleForBigCards = `grid grid-cols-1 md:grid-cols-${assetsInARow - 1} lg:grid-cols-${assetsInARow} gap-8`;
 
     const cardStyle =  initialNumberOfAssets === 4 ? styleForSmallCards : styleForBigCards;
@@ -38,8 +39,8 @@ const GenericSection = <T, >({
             <div className="absolute bg-blue-900 w-fit p-3 text-white">
                 <h1 >{ assetName }</h1>
             </div>
-            <div className="bg-white mx-auto p-8 rounded-xl">
-                <div className={ `${expanded ? 'max-h-[8000px]' : maxHeight} ${cardStyle} overflow-hidden transition-all duration-500 p-8 mt-8` }>
+            <div className="bg-white mx-auto p-8 rounded-xl flex flex-col items-center">
+                <div className={ `${expanded ? 'max-h-[8000px]' : maxHeight} ${cardStyle} overflow-hidden transition-all duration-500 pt-8 md:p-8 mt-8 ` }>
                     { assetData.map((asset: any) => (
                         <div key={ asset.id }>
                             <AssetCard assetData={ asset } />

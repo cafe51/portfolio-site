@@ -18,7 +18,7 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ assetData }: ProjectCardProps) => {
     return (
-        <div className="bg-gray-100 md:h-[500px] md:p-6 rounded shadow flex flex-col place-content-around items-center transition-transform duration-500 ease-in-out transform hover:scale-110">
+        <div className="bg-gray-200 md:h-[500px] md:p-6 rounded shadow flex flex-col place-content-around items-center transition-transform duration-500 ease-in-out transform hover:scale-110">
             <Image
                 src={ assetData.image }
                 alt={ assetData.imageAlt }
@@ -27,7 +27,10 @@ const ProjectCard = ({ assetData }: ProjectCardProps) => {
                 className="rounded transition-transform duration-500 ease-in-out transform hover:scale-110"
             />
             <h3 className="text-xl font-semibold mt-4 mb-2">{ assetData.title }</h3>
-            <p className="text-gray-600 mb-4">{ assetData.description }</p>
+            <div className='mb-4'>
+                <p className="text-gray-600 ">{ assetData.description }</p>
+            </div>
+            
             <div className="flex flex-wrap mb-4">
                 { assetData.skills.map((skill, index) => (
                     <span key={ index } className="bg-blue-900 text-white text-sm py-1 px-2 mr-2 mb-2 rounded">

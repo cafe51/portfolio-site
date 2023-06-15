@@ -11,7 +11,7 @@ type SkillCardProps = {
 
 const SkillCard = ({ assetData }: SkillCardProps) => {
     return (
-        <div className="flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110">
+        <div className="flex flex-col justify-between items-center transition-transform duration-500 ease-in-out transform hover:scale-110 w-fit">
             <Image
                 src={ assetData.skillsImage }
                 alt={ assetData.skillsImageAlt }
