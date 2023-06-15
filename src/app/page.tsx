@@ -19,7 +19,7 @@ const Home: NextPage = () => {
     const [expandedCertificates, setExpandedCertificates] = useState(false);
 
     return (
-        <div className="h-full">
+        <div className=" bg-gray-200">
             <Header />
             <main className="py-16 h-full">
                 <About />

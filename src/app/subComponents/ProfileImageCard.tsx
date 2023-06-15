@@ -15,7 +15,7 @@ const ProfileImageCard = ({ tailwindClassInDiv, tailwindClassInImgTag, isMobile,
                 className={ `
                 ${ tailwindClassInImgTag }
                 rounded-full
-                shadow
+
                 ` }
                 src={ imgSrc }
                 alt="Sua imagem"

@@ -16,7 +16,7 @@ const ScrollDownButton: React.FC<ScrollDownButtonProps> = ({ href }) => {
 
     return (
         <div className='flex justify-center'>
-            <div className="hover:animate-bounce flex justify-center mt-8">
+            <div className="hover:animate-bounce flex justify-center mt-8 md:-mt-4">
                 <a
                     href={ `${href}` }
                     className="bg-blue-900 rounded-full p-3 shadow-lg hover:bg-blue-700 transition-colors duration-300"
