@@ -19,9 +19,9 @@ const Home: NextPage = () => {
     const [expandedCertificates, setExpandedCertificates] = useState(false);
 
     return (
-        <div>
+        <div className="h-full">
             <Header />
-            <main className="py-16">
+            <main className="py-16 h-full">
                 <About />
                 <Section<SkillData>
                     assetName='Habilidades'

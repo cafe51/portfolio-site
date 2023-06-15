@@ -2,23 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  height: 100%;
+  color: #2d2e32;
+  /* font-family: Mulish, Proxima Nova, sans-serif; */
+}
+
 html {
   scroll-behavior: smooth;
+  height: 100%;
+}
+
+p {
+  font-family: Mulish, Proxima Nova, sans-serif;
+  color: #555;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 h1 {
   font-size: 2rem;
   font-weight: 500;
+  font-family: Mulish, Proxima Nova, sans-serif;
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: bolder;
-  font-family: Merriweather, Proxima Nova, sans-serif;
+  font-family: Mulish, Proxima Nova, sans-serif;
 }
 
 a {
-  font-family: Merriweather, Proxima Nova, sans-serif;
+  font-family: Mulish, Proxima Nova, sans-serif;
 }
 
 .asset-enter {

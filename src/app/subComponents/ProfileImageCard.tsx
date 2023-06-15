@@ -7,14 +7,19 @@ type ProfileProps = {
 }
 
 const ProfileImageCard = ({ tailwindClassInDiv, tailwindClassInImgTag, isMobile }: ProfileProps) => {
-    const imgSrc = isMobile ? '/images/profile_mobile1.png' : '/images/profile.jpg';
+    const imgSrc = isMobile ? '/images/profile_mobile4.png' : '/images/ProfileImageSite2.png';
     return (
-        <div className={ tailwindClassInDiv }>
+        <div className={ `${tailwindClassInDiv}` }>
             <Image
-                className={ `${ tailwindClassInImgTag } rounded-lg shadow ` }
+                className={ `
+                ${ tailwindClassInImgTag }
+                rounded-full
+                shadow
+                ` }
                 src={ imgSrc }
                 alt="Sua imagem"
-                width={ 300 }
+                width='250'
+                // fill={ true }
                 height={ 0 }
             />
         </div>
