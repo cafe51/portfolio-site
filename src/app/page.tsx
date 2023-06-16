@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import About from './components/About';
+import Landing from './components/Landing';
 import { skills, SkillData } from './data/skills';
 import { projects, ProjectData } from './data/projects';
 import { certificates, CertificateData } from './data/certificates';
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <div className=" bg-gray-200">
             <Header />
             <main className="py-16 h-full">
-                <About />
+                <Landing />
                 <Section<SkillData>
                     assetName='Habilidades'
                     tagName='skills'

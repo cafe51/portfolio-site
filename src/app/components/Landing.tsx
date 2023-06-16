@@ -4,9 +4,9 @@ import { HiDocumentArrowDown } from 'react-icons/hi2';
 import { BsLinkedin } from 'react-icons/bs';
 import { FaGithub } from 'react-icons/fa';
 
-const About: NextPage = () => {
+const Landing: NextPage = () => {
     return (
-        <section id="about" className="bg-gray-200 p-4 md:p-12 md:pt-4 md:mb-10 relative rounded-md md:h-full">
+        <section id="landing" className="bg-gray-200 p-4 md:p-12 md:pt-4 md:mb-10 relative rounded-md md:h-full">
             <div className="bg-white flex justify-center items-center md:items-center lg:items-start mx-auto sm:p-4 rounded-xl md:h-[80vh]">
                 { /* Seção visível apenas em telas pequenas */ }
                 <div className="md:hidden flex flex-col items-center justify-center ">
@@ -103,4 +103,4 @@ const About: NextPage = () => {
     );
 };
 
-export default About;
+export default Landing;
