@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 // import ProfileImageCard from '../subComponents/ProfileImageCard';
 // import ProfileDescriptionCard from '../subComponents/ProfileDescriptionCard';
 import ScrollDownButton from '../subComponents/ScrollDownButton';
-import { HiDocumentDownload } from 'react-icons/hi';
+import { HiDocumentArrowDown } from 'react-icons/hi2';
 import { BsLinkedin } from 'react-icons/bs';
 import { FaGithub } from 'react-icons/fa';
 // import ProfileTitleCard from '../subComponents/ProfileTitleCard';
@@ -36,7 +36,7 @@ const About: NextPage = () => {
                         <div className='flex flex-row gap-4'>
                             <FaGithub size={ 36 }/>
                             <BsLinkedin size={ 36 }/>
-                            <HiDocumentDownload size={ 36 }/>
+                            <HiDocumentArrowDown size={ 38 }/>
                         </div>
                         <p className='pt-4'>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor web Full Stack e amo muito o que faço.</p>
                     </div>
@@ -66,7 +66,7 @@ const About: NextPage = () => {
                             <div className='flex flex-row gap-4 pt-4  '>
                                 <FaGithub size={ 36 }/>
                                 <BsLinkedin size={ 36 }/>
-                                <HiDocumentDownload size={ 36 }/>
+                                <HiDocumentArrowDown size={ 38 }/>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ const About: NextPage = () => {
                             <div className='flex flex-row gap-10 pt-6'>
                                 <FaGithub size={ 40 }/>
                                 <BsLinkedin size={ 40 }/>
-                                <HiDocumentDownload size={ 40 }/>
+                                <HiDocumentArrowDown size={ 42 }/>
                             </div>
                         </div>
                     </div>
