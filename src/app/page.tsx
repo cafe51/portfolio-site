@@ -27,20 +27,16 @@ const Home: NextPage = () => {
                     assetName='Habilidades'
                     tagName='skills'
                     assetData={ skills }
-                    initialNumberOfAssets={ 4 }
-                
                     AssetCard={ SkillCard }
                     expanded={ expandedSkills }
                     setExpanded={ setExpandedSkills }
                     nextSection = 'projects'
-                    maxHeight={ 'max-h-40' }
+                    maxHeight={ 'max-h-[240px]' }
                 />
                 <Section<ProjectData>
                     assetName='Projetos'
                     tagName='projects'
                     assetData={ projects }
-                    initialNumberOfAssets={ 3 }
-                    
                     AssetCard={ ProjectCard }
                     expanded={ expandedProjects }
                     setExpanded={ setExpandedProjects }
@@ -51,8 +47,6 @@ const Home: NextPage = () => {
                     assetName='Certificados'
                     tagName='certificates'
                     assetData={ certificates }
-                    initialNumberOfAssets={ 3 }
-                    
                     AssetCard={ CertificatesCard }
                     expanded={ expandedCertificates }
                     setExpanded={ setExpandedCertificates }

@@ -5,7 +5,6 @@ export type GenericSectionProps<T> = {
   tagName: string,
   assetName: string,
   assetData: T[],
-  initialNumberOfAssets: number,
   AssetCard: React.FC<{ assetData: T }>,
   expanded: boolean,
   showLess?: () => void,
@@ -18,7 +17,6 @@ const GenericSection = <T, >({
     tagName,
     assetName,
     assetData,
-    initialNumberOfAssets,
     AssetCard,
     expanded,
     showLess,
@@ -31,7 +29,7 @@ const GenericSection = <T, >({
     const styleForBigCards = 'flex flex-wrap justify-center gap-6 md:full';
     // const styleForBigCards = `grid grid-cols-1 md:grid-cols-${assetsInARow - 1} lg:grid-cols-${assetsInARow} gap-8`;
 
-    const cardStyle =  initialNumberOfAssets === 4 ? styleForSmallCards : styleForBigCards;
+    const cardStyle =  tagName === 'skills' ? styleForSmallCards : styleForBigCards;
 
     return (
         <section id={ tagName } className="bg-gray-200 p-4 pt-14 lg:pt-20 md:pt-20 md:p-8 lg:p-8 relative shadow-xl rounded-md">
@@ -46,13 +44,13 @@ const GenericSection = <T, >({
                         </div>
                     )) }
                 </div>
-                { assetData.length > initialNumberOfAssets && (
-                    <ExpandButton
-                        expanded={ expanded }
-                        onExpand={ showMore }
-                        onCollapse={ showLess }
-                    />
-                ) }
+
+                <ExpandButton
+                    expanded={ expanded }
+                    onExpand={ showMore }
+                    onCollapse={ showLess }
+                />
+
             </div>
             <ScrollDownButton href={ `#${nextSection}` } />
         </section>
