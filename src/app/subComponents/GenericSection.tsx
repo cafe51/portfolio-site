@@ -30,10 +30,10 @@ const GenericSection = <T, >({
 
     return (
         <section id={ tagName } className="bg-gray-200 p-4 pt-14 lg:pt-20 md:pt-20 md:p-8 lg:p-8 relative shadow-xl rounded-md">
-            <div className="absolute bg-blue-900 w-fit p-3 text-white">
-                <h1 >{ assetName }</h1>
+            <div className="absolute bg-blue-900 w-fit p-3 text-white md:p-6 rounded">
+                <h1 className='md:text-5xl'>{ assetName }</h1>
             </div>
-            <div className="bg-white mx-auto p-8 rounded-xl flex flex-col items-center">
+            <div className="bg-white mx-auto p-8 md:p-9 rounded-xl flex flex-col items-center">
                 <div className={ `
                 ${expanded ? 'max-h-[8000px]' : maxHeight}
                 ${cardStyle}
