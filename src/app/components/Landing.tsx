@@ -98,7 +98,7 @@ const Landing: NextPage = () => {
                     </div>
                 </div>
             </div>
-            <ScrollDownButton href="#skills" />
+            <ScrollDownButton href="#about" />
         </section>
     );
 };

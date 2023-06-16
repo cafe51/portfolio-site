@@ -11,6 +11,7 @@ import SkillCard from './subComponents/SkillCard';
 import ProjectCard from './subComponents/ProjectCard';
 import CertificatesCard from './subComponents/CertificatesCard';
 import Section from './components/Section';
+import About from './components/About';
 
 
 const Home: NextPage = () => {
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
             <Header />
             <main className="py-16 h-full">
                 <Landing />
+                <About />
                 <Section<SkillData>
                     assetName='Habilidades'
                     tagName='skills'
