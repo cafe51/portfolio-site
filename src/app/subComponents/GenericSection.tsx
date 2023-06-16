@@ -6,7 +6,6 @@ export type GenericSectionProps<T> = {
   assetName: string,
   assetData: T[],
   initialNumberOfAssets: number,
-  assetsInARow: number;
   AssetCard: React.FC<{ assetData: T }>,
   expanded: boolean,
   showLess?: () => void,
@@ -26,11 +25,11 @@ const GenericSection = <T, >({
     showMore,
     nextSection,
     maxHeight,
-    assetsInARow,
 }: GenericSectionProps<T>) => {
     const styleForSmallCards = 'flex flex-wrap justify-center gap-6 md:w-2/3';
     // const styleForSmallCards = 'grid grid-cols-2 sm:grid-cols-4 gap-6';
-    const styleForBigCards = `grid grid-cols-1 md:grid-cols-${assetsInARow - 1} lg:grid-cols-${assetsInARow} gap-8`;
+    const styleForBigCards = 'flex flex-wrap justify-center gap-6 md:full';
+    // const styleForBigCards = `grid grid-cols-1 md:grid-cols-${assetsInARow - 1} lg:grid-cols-${assetsInARow} gap-8`;
 
     const cardStyle =  initialNumberOfAssets === 4 ? styleForSmallCards : styleForBigCards;
 

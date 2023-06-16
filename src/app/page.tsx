@@ -28,7 +28,7 @@ const Home: NextPage = () => {
                     tagName='skills'
                     assetData={ skills }
                     initialNumberOfAssets={ 4 }
-                    assetsInARow = { 4 }
+                
                     AssetCard={ SkillCard }
                     expanded={ expandedSkills }
                     setExpanded={ setExpandedSkills }
@@ -40,19 +40,19 @@ const Home: NextPage = () => {
                     tagName='projects'
                     assetData={ projects }
                     initialNumberOfAssets={ 3 }
-                    assetsInARow = { 2 }
+                    
                     AssetCard={ ProjectCard }
                     expanded={ expandedProjects }
                     setExpanded={ setExpandedProjects }
                     nextSection = 'certificates'
-                    maxHeight={ 'max-h-[600px]' }
+                    maxHeight={ 'max-h-[750px]' }
                 />
                 <Section<CertificateData>
                     assetName='Certificados'
                     tagName='certificates'
                     assetData={ certificates }
                     initialNumberOfAssets={ 3 }
-                    assetsInARow = { 3 }
+                    
                     AssetCard={ CertificatesCard }
                     expanded={ expandedCertificates }
                     setExpanded={ setExpandedCertificates }
