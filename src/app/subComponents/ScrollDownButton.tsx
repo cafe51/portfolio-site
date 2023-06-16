@@ -16,13 +16,13 @@ const ScrollDownButton: React.FC<ScrollDownButtonProps> = ({ href }) => {
 
     return (
         <div className='flex justify-center'>
-            <div className="hover:animate-bounce flex justify-center mt-8 md:-mt-4">
+            <div className="hover:animate-bounce flex justify-center mt-6 ">
                 <a
                     href={ `${href}` }
                     className="bg-blue-900 rounded-full p-3 shadow-lg hover:bg-blue-700 transition-colors duration-300"
                     onClick={ href == '#japhe' ?  handleClick : undefined }
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8 md:w-12 md:h-12 lg:w-16 lg:h-16 text-white">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={ 2 } d={ arrow } />
                     </svg>
                 </a>
