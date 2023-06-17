@@ -41,7 +41,7 @@ const Landing: NextPage = () => {
                                 <HiDocumentArrowDown size={ 38 }/>   
                             </a>
                         </div>
-                        <p className='pt-4'>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor web Full Stack e amo muito o que faço.</p>
+                        <p className='pt-4'>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor Web Full Stack e amo muito o que faço.</p>
                     </div>
                 </div>
                 { /* Seção visível apenas em telas medias */ }
