@@ -90,9 +90,16 @@ const Landing: NextPage = () => {
                         <div className='pt-36 pl-16 flex flex-col justify-center items-start w-2/6 text-2xl  '>
                             <p>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor web Full Stack e amo muito o que faço.</p>
                             <div className='flex flex-row gap-10 pt-6'>
-                                <FaGithub size={ 40 }/>
-                                <BsLinkedin size={ 40 }/>
-                                <HiDocumentArrowDown size={ 42 }/>
+                                <a href={ 'https://github.com/cafe51/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                                    <FaGithub size={ 40 }/>
+                                </a>
+                                <a href={ 'https://www.linkedin.com/in/japh%C3%A9-nogueira-67aa7b1a8/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                                    <BsLinkedin size={ 40 }/>
+                                </a>
+
+                                <a href={ 'github.com/cafe51' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                                    <HiDocumentArrowDown size={ 42 }/>   
+                                </a>
                             </div>
                         </div>
                     </div>
