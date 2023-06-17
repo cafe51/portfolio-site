@@ -51,9 +51,13 @@ const ProjectCard = ({ assetData }: ProjectCardProps) => {
                     <Link href={ assetData.github } className="mr-4" target="_blank" rel="noopener noreferrer">
                         <FaGithub color="black" size={ 24 }/>
                     </Link>
-                    <Link href={ assetData.link } target="_blank" rel="noopener noreferrer">
-                        <FiExternalLink color="black" size={ 24 }/>
-                    </Link>
+                    {
+                        assetData.link.length > 0
+                            ? <Link href={ assetData.link } target="_blank" rel="noopener noreferrer">
+                                <FiExternalLink color="black" size={ 24 }/>
+                            </Link>
+                            : ''
+                    }
                 </div>
             </div>
         </div>
