@@ -51,7 +51,7 @@ const About: NextPage = () => {
                         <div className='flex flex-col justify-center items-center text-center md:text-start px-4 p-4 md:mt-2 lg:mt-0 md:w-3/6 lg:w-2/6'>
                             <h2>Olá, mundo!</h2>
                             <p>
-                                Sou um apaixonado por literatura, One Piece, Nintendo Switch e Red Hot Chilli Peppers, nessa ordem. Já morei em sete estados brasileiros e três anos em Portugal, vendendo desenhos enquanto decidia entre arquitetura e engenharia. Eu não tinha dinheiro pra ter um pc gamer, mas acabei ganhando no jogo das criptomoedas e me tornei um programador full stack, amante de JavaScript, mas se apaixonando por Python.
+                                Sou um apaixonado por literatura, One Piece, Nintendo Switch e Red Hot Chilli Peppers, nessa ordem. Já morei em nove estados brasileiros e três anos em Portugal, vendendo desenhos enquanto decidia entre arquitetura e engenharia. Eu não tinha dinheiro pra ter um pc gamer, mas acabei ganhando no jogo das criptomoedas e me tornei um programador full stack, amante de JavaScript, mas se apaixonando por Python.
                                 Aprendi inglês do jeito nerd: jogando e ouvindo música.
                                 Podemos conversar melhor: <a className='font-bold text-blue-800 hover:text-lg'href='#contact'>entre em contato comigo</a>, será um prazer.
                             </p>
