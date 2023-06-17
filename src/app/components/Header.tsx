@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <header id="japhe" className={ `bg-gray-800 fixed w-full transition-all duration-500 z-50 px-8 md:px-16 py-3 md:py-0  ${opacity}` }>
             <div className="flex justify-between items-center ">
-                <div>
+                <div className=''>
                     <a 
                         href="#japhe" 
                         className="text-2xl font-bold text-white" 
