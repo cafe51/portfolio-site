@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
             py-4`
         }>
             <div className="nav-gradient font-bold text-center">
-                <div className="flex flex-col space-y-8 py-4 px-4 md:flex-row md:space-y-0  md:py-0 md:px-0 md:justify-end">
+                <div className="flex flex-col space-y-8 py-4 px-4 md:flex-row md:space-y-0  md:py-0 md:px-0 md:justify-end lg:gap-6">
                     <a href="#japhe" onClick={ goToStart } className={ navItemsStyle } >Início</a>
                     <a href="#about" onClick={ () => setIsMenuOpen(false) } className={ navItemsStyle }>Sobre Mim</a>
                     <a href="#skills" onClick={ () => setIsMenuOpen(false) } className={ navItemsStyle }>Habilidades</a>

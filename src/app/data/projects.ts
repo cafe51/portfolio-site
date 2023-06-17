@@ -46,8 +46,8 @@ export const projects = [
     {
         id: 5,
         title: 'Site Portfolio',
-        image: '/images/projects/project_333.png',
-        imageAlt: '/images/projects/site-portfolio.png',
+        image: '/images/projects/site-portfolio1.png',
+        imageAlt: '/images/projects/site-portfolio1.png',
         description: 'Site feito para divulgação de portfolio de projetos e habilidades de programação',
         skills: ['React', 'Next.js', 'Typescript', 'Tailwind'],
         github: 'https://github.com/cafe51/portfolio-site.git',
