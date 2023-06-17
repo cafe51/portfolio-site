@@ -55,12 +55,14 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
             md:h-auto
             py-4`
         }>
-            <div className="nav-gradient text-center font-bold">
-                <div className="flex flex-col space-y-8 py-4 px-6 md:flex-row md:space-y-0 md:space-x-4 md:py-0 md:px-0">
+            <div className="nav-gradient font-bold text-center">
+                <div className="flex flex-col space-y-8 py-4 px-4 md:flex-row md:space-y-0 md:space-x-4 md:py-0 md:px-0">
                     <a href="#japhe" onClick={ goToStart } className={ navItemsStyle } >Início</a>
+                    <a href="#about" onClick={ () => setIsMenuOpen(false) } className={ navItemsStyle }>Sobre Mim</a>
                     <a href="#skills" onClick={ () => setIsMenuOpen(false) } className={ navItemsStyle }>Habilidades</a>
                     <a href="#projects" onClick={ () => setIsMenuOpen(false) } className={ navItemsStyle }>Projetos</a>
                     <a href="#certificates" onClick={ () => setIsMenuOpen(false) } className={ navItemsStyle }>Certificações</a>
+                    <a href="#contact" onClick={ () => setIsMenuOpen(false) } className={ navItemsStyle }>Fale Comigo</a>
                 </div>
             </div>
         </nav>
