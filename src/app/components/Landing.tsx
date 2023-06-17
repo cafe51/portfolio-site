@@ -65,7 +65,7 @@ const Landing: NextPage = () => {
                             ` }>
                         </div>
                         <div className='pt-24 flex flex-col justify-center items-start w-2/6 text-xl  '>
-                            <p>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor web Full Stack e amo muito o que faço.</p>
+                            <p>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor Web Full Stack e amo muito o que faço.</p>
                             <div className='flex flex-row gap-4 pt-4 z-50'>
                                 <a href={ 'https://github.com/cafe51/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                     <FaGithub size={ 36 }/>
