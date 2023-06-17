@@ -8,7 +8,7 @@ export const projects = [
       'Projeto front-end Trybe-Tunes feito durante o período de curso da Trybe refeito em typescript. Um site para pesquisar albums de música, permite ouvir amostras das músicas do album e favoritar. Possui um cadastro simples de usuário e salva as informações no local storage do navegador. Consome a api o iTunes para funcionar',
         skills: ['React', 'Typescript', 'Styled-Components'],
         github: 'https://github.com/cafe51/Type-Tunes',
-        link: 'google.com',
+        link: 'https://typetunes.vercel.app/',
     },
     {
         id: 2,
