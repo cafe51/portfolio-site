@@ -53,7 +53,7 @@ const About: NextPage = () => {
                             <p>
                                 Sou um apaixonado por literatura, One Piece, Nintendo Switch e Red Hot Chilli Peppers, nessa ordem. Já morei em nove estados brasileiros e três anos em Portugal, vendendo desenhos enquanto decidia entre arquitetura e engenharia. Eu não tinha dinheiro pra ter um pc gamer, mas acabei ganhando no jogo das criptomoedas e me tornei um programador full stack, amante de JavaScript, mas se apaixonando por Python.
                                 Aprendi inglês do jeito nerd: jogando e ouvindo música.
-                                Podemos conversar melhor: <a className='font-bold text-blue-800 hover:text-lg'href='#contact'>entre em contato comigo</a>, será um prazer.
+                                Podemos conversar melhor: <a className='font-bold text-blue-800'href='#contact'>entre em contato comigo</a>, será um prazer.
                             </p>
                         </div>
                     </div>
