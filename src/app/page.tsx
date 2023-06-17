@@ -12,6 +12,7 @@ import ProjectCard from './subComponents/ProjectCard';
 import CertificatesCard from './subComponents/CertificatesCard';
 import Section from './components/Section';
 import About from './components/About';
+import Contact from './components/ContactMe';
 
 
 const Home: NextPage = () => {
@@ -52,9 +53,10 @@ const Home: NextPage = () => {
                     AssetCard={ CertificatesCard }
                     expanded={ expandedCertificates }
                     setExpanded={ setExpandedCertificates }
-                    nextSection = 'japhe'
+                    nextSection = 'contact'
                     maxHeight={ 'max-h-[540px]' }
                 />
+                <Contact />
             </main>
             <Footer />
         </div>
