@@ -1,6 +1,17 @@
 export const projects = [
     {
         id: 1,
+        title: 'Type Tunes',
+        image: '/images/projects/trype-tunes.png',
+        imageAlt: '/images/projects/trype-tunes.png',
+        description:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+        skills: ['React', 'Typescript', 'Styled-Components'],
+        github: '/',
+        link: 'google.com',
+    },
+    {
+        id: 2,
         title: 'Api para Blog',
         image: '/images/projects/project_333.png',
         imageAlt: '/images/projects/project_1.png',
@@ -9,17 +20,6 @@ export const projects = [
         skills: ['Node.js', 'Typescript', 'Express', 'MySql', 'Sequelize', 'Chai'],
         github: 'https://github.com/cafe51/blog-api.git',
         link: '/',
-    },
-    {
-        id: 2,
-        title: 'Car de Shop',
-        image: '/images/projects/project_333.png',
-        imageAlt: '/images/projects/project_2.png',
-        description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        skills: ['Express', 'MongoDB'],
-        github: '/',
-        link: 'google.com',
     },
     {
         id: 3,
@@ -34,12 +34,12 @@ export const projects = [
     },
     {
         id: 4,
-        title: 'Trybe Tunes',
+        title: 'Car de Shop',
         image: '/images/projects/project_333.png',
-        imageAlt: '/images/projects/project_3.png',
+        imageAlt: '/images/projects/project_2.png',
         description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-        skills: ['React', 'Express', 'MongoDB'],
+        skills: ['Express', 'MongoDB'],
         github: '/',
         link: 'google.com',
     },
