@@ -17,7 +17,7 @@ export const projects = [
         imageAlt: '/images/projects/project_1.png',
         description:
       'Sistema de back-end completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens. Front-end foi feito para ser responsivo a vários tamanhos de tela. As imagens usadas foram geradas por mim usando o model de geração de imagens por inteligência artificial Midjourney.',
-        skills: ['Node.js', 'Typescript', 'Express', 'MySql', 'Sequelize', 'Chai, Docker'],
+        skills: ['Node.js', 'Typescript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
         github: 'https://github.com/cafe51/blog-api.git',
         link: '/',
     },
@@ -28,7 +28,7 @@ export const projects = [
         imageAlt: '/images/projects/project_1.png',
         description:
       'Api com CRUD completo para cadastro de times de futebol que alimenta uma interface front-end. Inclui cadastro de usuários no banco de dados e login com autenticação.',
-        skills: ['React', 'Express', 'MySql, Sequelize, Chai, Docker'],
+        skills: ['React', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
         github: 'https://github.com/cafe51/trybe-futebol-clube',
         link: '',
     },
@@ -39,7 +39,7 @@ export const projects = [
         imageAlt: '/images/projects/project_2.png',
         description:
       'Api com CRUD completo para cadastro de carros e motos em um banco de dados não relacional. Inclui cadastro de usuário e login com autenticação. Nesse projeto pratiquei injeção de dependência e as práticas SOLID',
-        skills: ['Typescript, Express', 'MongoDB, Docker'],
+        skills: ['Typescript', 'Express', 'MongoDB', 'Docker'],
         github: 'https://github.com/cafe51/car-shop',
         link: '',
     },
