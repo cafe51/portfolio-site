@@ -19,7 +19,7 @@ export const projects = [
       'Sistema de back-end completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens. Front-end foi feito para ser responsivo a vários tamanhos de tela. As imagens usadas foram geradas por mim usando o model de geração de imagens por inteligência artificial Midjourney.',
         skills: ['Node.js', 'Typescript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
         github: 'https://github.com/cafe51/blog-api.git',
-        link: '/',
+        link: '',
     },
     {
         id: 3,
