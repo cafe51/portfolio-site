@@ -18,7 +18,7 @@ const Landing: NextPage = () => {
                     </div>
                     <div
                         className={ `
-                            bg-[url('/images/profile_mobile7.png')]
+                            bg-[url('/profile_mobile7.png')]
                             bg-cover
                             rounded-full
                             relative
@@ -37,7 +37,7 @@ const Landing: NextPage = () => {
                                 <BsLinkedin size={ 36 }/>
                             </a>
 
-                            <a href={ 'github.com/cafe51' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                            <a href={ '/japhe-cv.pdf' } target="_blank" download rel="noopener noreferrer" className='hover:scale-110'>
                                 <HiDocumentArrowDown size={ 38 }/>   
                             </a>
                         </div>
@@ -74,7 +74,7 @@ const Landing: NextPage = () => {
                                     <BsLinkedin size={ 36 }/>
                                 </a>
 
-                                <a href={ 'github.com/cafe51' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                                <a href={ '/images/japhe-cv.pdf' } target="_blank" download rel="noopener noreferrer" className='hover:scale-110'>
                                     <HiDocumentArrowDown size={ 38 }/>   
                                 </a>
                             </div>
@@ -111,7 +111,7 @@ const Landing: NextPage = () => {
                                     <BsLinkedin size={ 40 }/>
                                 </a>
 
-                                <a href={ 'github.com/cafe51' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                                <a href={ '/japhe-cv.pdf' } target="_blank" download rel="noopener noreferrer" className='hover:scale-110'>
                                     <HiDocumentArrowDown size={ 42 }/>   
                                 </a>
                             </div>
