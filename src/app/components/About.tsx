@@ -25,6 +25,7 @@ const About: NextPage = () => {
                             sm:pb-[45%]
                             md:pb-[50%]
                             lg:pb-[28%]
+                            min-[1930px]:pb-[18%]
                             
                             
                             `}
