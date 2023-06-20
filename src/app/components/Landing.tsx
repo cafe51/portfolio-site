@@ -18,7 +18,7 @@ const Landing: NextPage = () => {
                     </div>
                     <div
                         className={ `
-                            bg-[url('/profile_mobile7.png')]
+                            bg-[url('/images/profile_mobile7.png')]
                             bg-cover
                             rounded-full
                             relative
