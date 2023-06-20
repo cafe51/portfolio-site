@@ -5,7 +5,7 @@ export const projects = [
         image: '/images/projects/trype-tunes.png',
         imageAlt: '/images/projects/trype-tunes.png',
         description:
-      'Projeto front-end Trybe-Tunes feito durante o período de curso da Trybe refeito em typescript. Um site para pesquisar albums de música, permite ouvir amostras das músicas do album e favoritar. Possui um cadastro simples de usuário e salva as informações no local storage do navegador. Consome a api o iTunes para funcionar',
+      'Projeto front-end Trybe-Tunes feito durante o período de curso da Trybe refeito em typescript. Um site para pesquisar albums de música, permite ouvir amostras das músicas do album e favoritar. Possui um cadastro simples de usuário e salva as informações no local storage do navegador. Consome a api o iTunes para funcionar. As imagens usadas foram geradas por mim usando o model de geração de imagens por inteligência artificial Midjourney.',
         skills: ['React', 'Typescript', 'Styled-Components'],
         github: 'https://github.com/cafe51/Type-Tunes',
         link: 'https://typetunes.vercel.app/',
@@ -16,7 +16,7 @@ export const projects = [
         image: '/images/projects/blog-api.png',
         imageAlt: '/images/projects/project_1.png',
         description:
-      'Sistema de back-end completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens. Front-end foi feito para ser responsivo a vários tamanhos de tela. As imagens usadas foram geradas por mim usando o model de geração de imagens por inteligência artificial Midjourney.',
+      'Sistema de back-end completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens.',
         skills: ['Node.js', 'Typescript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
         github: 'https://github.com/cafe51/blog-api.git',
         link: '',
