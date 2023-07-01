@@ -34,7 +34,7 @@ export const projects = [
     },
     {
         id: 4,
-        title: 'Car de Shop',
+        title: 'Loja de Carros',
         image: '/images/projects/car-shop.png',
         imageAlt: '/images/projects/project_2.png',
         description:
