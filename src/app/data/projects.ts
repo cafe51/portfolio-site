@@ -45,7 +45,7 @@ export const projects = [
     },
     {
         id: 5,
-        title: 'Site Portfolio',
+        title: 'Site Portfólio',
         image: '/images/projects/site-portfolio1.png',
         imageAlt: '/images/projects/site-portfolio1.png',
         description: 'Site feito para divulgação de portfolio de projetos e habilidades de programação que serve como meu cartão de visitas',
