@@ -6,7 +6,7 @@ export default async function CarShop(){
 
     const data: CarType[] = await getCars();
     return (
-        <div className=" bg-gray-200">
+        <div className="bg-gray-200 p-4">
             <CardCar carData={ data[0] }/>
         </div>
     );

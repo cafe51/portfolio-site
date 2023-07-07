@@ -7,11 +7,11 @@ type CardCarProps = {
 export default async function CardCar({ carData }: CardCarProps){
 
     return (
-        <div className=" bg-gray-400 w-[200px] flex flex-col items-center p-4 rounded-lg shadow-lg
-        transition-transform duration-500 ease-in-out transform hover:scale-110">
+        <div className=" bg-gray-400 w-[200px] flex flex-col items-center rounded-lg shadow-lg">
+            <button className="absolute bg-blue-900 p-3 text-white rounded self-start z-10 px-2" >E</button>
+            <button className="absolute bg-red-900 p-3 text-white rounded self-end z-10 px-2" >X</button>
             <div>
-                <button>X</button>
-                <div>{ carData.model }</div>
+                <div className="mt-2">{ carData.model }</div>
             </div>
             <div>
                 <div>cor: { carData.color }</div>
@@ -19,7 +19,7 @@ export default async function CardCar({ carData }: CardCarProps){
                 <div>Assentos:{ carData.seatsQty }</div>
             </div>
             <div>
-                <div>R$ { carData.buyValue } </div>
+                <div className="mb-2">R$ { carData.buyValue } </div>
             </div>
 
         </div>
