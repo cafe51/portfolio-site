@@ -1,6 +1,5 @@
 export type CarType = {
-  status: boolean
-  id: string
+  id?: string
   model: string
   year: number
   color: string

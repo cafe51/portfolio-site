@@ -1,6 +1,7 @@
 import { getCars } from './api';
 import CardCar from './carCard';
 import { CarType } from './interfaces';
+import CarForm from './carForm';
 
 export default async function CarShop(){
 
@@ -10,6 +11,8 @@ export default async function CarShop(){
             { data.map((carData) => <div key={ carData.id }><CardCar carData={ carData } /></div>) }
 
             <button className=" bg-green-700 p-3 text-white rounded h-fit">+</button>
+
+            <CarForm />
         </div>
     );
 }
