@@ -30,7 +30,7 @@ export const projects = [
       'Api com CRUD completo para cadastro de times de futebol que alimenta uma interface front-end. Inclui cadastro de usuários no banco de dados e login com autenticação.',
         skills: ['React', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
         github: 'https://github.com/cafe51/trybe-futebol-clube',
-        link: 'https://trybe-futebol-clube-japhe.up.railway.app',
+        link: 'https://trybe-futebol-clube-japhe.netlify.app/',
     },
     {
         id: 4,
