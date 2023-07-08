@@ -15,6 +15,10 @@ export default function CardCar({ carData, updateCars }: CardCarProps){
         setEditMode(true);
     };
 
+    const closeEditMode = () => {
+        setEditMode(false);
+    };
+
     const handleDelete = async() => {
         carData.id ? await deleteCar(carData.id) : '';
         updateCars();
@@ -23,30 +27,28 @@ export default function CardCar({ carData, updateCars }: CardCarProps){
     return (
         editMode ? 
             <CarForm updateCars={ updateCars } carData={ carData } setShowForm={ setEditMode } /> :
-            <div className=" bg-gray-400 w-[200px] h-44 flex flex-col items-center rounded-lg shadow-lg">
-                <button 
-                    onClick={ handleEdit } 
-                    className="absolute bg-blue-900 p-3 text-white rounded self-start z-10 px-2" 
-                >
-                E
-                </button>
-                <button
-                    onClick={ handleDelete }
-                    className="absolute bg-red-900 p-3 text-white rounded self-end z-10 px-2"
-                >
-                X
-                </button>
-                <div>
-                    <div className="mt-2">{ carData.model }</div>
+            <div className=" bg-gray-400 w-[250px] h-72 flex flex-col items-center rounded-lg shadow-lg">
+                <div className="flex w-full justify-between">
+                    <button 
+                        onClick={ handleEdit } 
+                        className="bg-blue-900 p-3 text-white rounded z-10 px-2" 
+                    >
+                    E
+                    </button>
+                    <button
+                        onClick={ editMode ? closeEditMode : handleDelete }
+                        className="bg-red-900 p-3 text-white rounded z-10 px-2"
+                    >
+                    X
+                    </button>
                 </div>
-                <div>
+                <div className="flex flex-col gap-2">
+                    <div className="">{ carData.model }</div>
                     <div>ano: { carData.year }</div>
                     <div>cor: { carData.color }</div>
                     <div>Portas: { carData.doorsQty }</div>
                     <div>Assentos:{ carData.seatsQty }</div>
-                </div>
-                <div>
-                    <div className="mb-2">R$ { carData.buyValue } </div>
+                    <div className="">R$ { carData.buyValue } </div>
                 </div>
 
             </div>
