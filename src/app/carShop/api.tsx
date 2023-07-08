@@ -23,3 +23,8 @@ export const carRegister = async(registerValues: CarType) => {
 export const deleteCar = async(id: string) => {
     await axiosInstance.delete(`cars/${id}`);
 };
+
+export const updateCar = async(newValues: CarType, id: string) => {
+    const { data } = await axiosInstance.put(`cars/${id}`, newValues);
+    return data;
+};

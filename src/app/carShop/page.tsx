@@ -6,6 +6,7 @@ import CarForm from './carForm';
 import { CarType } from './interfaces';
 
 export default function CarShop(){
+    const [showForm, setShowForm] = useState(false);
     const [cars, setCars] = useState<CarType[]>([]);
 
     const updateCars = async() => {
@@ -13,15 +14,27 @@ export default function CarShop(){
         setCars(carsData);
     };
 
+    const newCard = () => {
+        setShowForm(true);
+    };
+
+
     useEffect(() => {
         updateCars();
     }, []);
 
     return (
-        <div className="bg-gray-200 flex flex-wrap items-center items-baseline gap-4 p-4">
+        <div className="bg-gray-200 flex flex-wrap items-center gap-4 p-4">
             { cars.map((carData) => <CardCar key={ carData.id } carData={ carData } updateCars={ updateCars } />) }
-            <button className=" bg-green-700 self-center p-3 text-white rounded h-fit">+</button>
-            <CarForm updateCars={ updateCars } />
+            <div className=" w-fit h-44 flex flex-col items-center justify-center">
+                <button
+                    className=" bg-green-700 p-3 text-white rounded h-fit"
+                    onClick={ newCard }
+                >
+                    +
+                </button>
+            </div>
+            { showForm ? <CarForm updateCars={ updateCars } setShowForm={ setShowForm } /> : '' }
         </div>
     );
 }

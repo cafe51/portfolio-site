@@ -1,14 +1,16 @@
 'use client';
 import { useState } from 'react';
-import { carRegister } from './api';
+import { carRegister, updateCar } from './api';
+import { CarType } from './interfaces';
 
 type CarFormProps = {
   updateCars: () => Promise<void>;
+  setShowForm: (formStatus: boolean) => void;
+  carData?: CarType;
 }
 
-
-export default function CarForm({ updateCars }: CarFormProps) {
-    const [registerValues, setRegisterValues] = useState({
+export default function CarForm({ updateCars, setShowForm, carData }: CarFormProps) {
+    const [registerValues, setRegisterValues] = useState(carData || {
         model: '',
         year: 1,
         color: '',
@@ -23,8 +25,13 @@ export default function CarForm({ updateCars }: CarFormProps) {
 
     const handleSubmit = async(e: any) => {
         e.preventDefault();
-        console.log('cadastrou', registerValues);
-        await carRegister(registerValues);
+        if (carData && carData.id) {
+            // If carData is provided, we assume it's an update operation
+            await updateCar(registerValues, carData.id);
+        } else {
+            await carRegister(registerValues);
+        }
+        setShowForm && setShowForm(false);
         updateCars();
     };
 
