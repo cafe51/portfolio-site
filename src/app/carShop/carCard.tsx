@@ -6,10 +6,10 @@ import CarInfo from './CarInfo';
 
 type CardCarProps = {
     carData: CarType;
-    updateCars: () => Promise<void>;
+    updateVehicleState: () => Promise<void>;
 }
   
-export default function CardCar({ carData, updateCars }: CardCarProps){
+export default function CardCar({ carData, updateVehicleState }: CardCarProps){
     const [editMode, setEditMode] = useState(false);
 
     const handleEdit = () => {
@@ -22,12 +22,12 @@ export default function CardCar({ carData, updateCars }: CardCarProps){
 
     const handleDelete = async() => {
         carData.id ? await deleteVehicle('cars', carData.id) : '';
-        updateCars();
+        updateVehicleState();
     };
 
     return (
         editMode ? 
-            <CarForm updateCars={ updateCars } carData={ carData } setShowForm={ setEditMode } /> :
+            <CarForm updateVehicleState={ updateVehicleState } carData={ carData } setShowForm={ setEditMode } /> :
             <div className=" bg-gray-400 w-[250px] h-72 flex flex-col items-center rounded-lg shadow-lg">
                 <div className="flex w-full justify-between">
                     <button 

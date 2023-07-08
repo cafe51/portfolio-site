@@ -4,12 +4,12 @@ import { registerVehicle, updateVehicle } from './api';
 import { CarType } from './interfaces';
 
 type CarFormProps = {
-  updateCars: () => Promise<void>;
+  updateVehicleState: () => Promise<void>;
   setShowForm: (formStatus: boolean) => void;
   carData?: CarType;
 }
 
-export default function CarForm({ updateCars, setShowForm, carData }: CarFormProps) {
+export default function CarForm({ updateVehicleState, setShowForm, carData }: CarFormProps) {
     const [registerValues, setRegisterValues] = useState(carData || {
         model: '',
         year: 1,
@@ -35,7 +35,7 @@ export default function CarForm({ updateCars, setShowForm, carData }: CarFormPro
             await registerVehicle('cars', registerValues);
         }
         setShowForm && setShowForm(false);
-        updateCars();
+        updateVehicleState();
     };
 
     return (
