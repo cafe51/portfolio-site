@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { getCars } from './api';
+import { getVehicle } from './api';
 import CardCar from './carCard';
 import CarForm from './carForm';
 import { CarType } from './interfaces';
@@ -10,7 +10,7 @@ export default function CarShop(){
     const [cars, setCars] = useState<CarType[]>([]);
 
     const updateCars = async() => {
-        const carsData = await getCars();
+        const carsData = await getVehicle('cars');
         setCars(carsData);
     };
 

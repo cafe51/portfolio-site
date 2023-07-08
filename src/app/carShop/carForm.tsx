@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { carRegister, updateCar } from './api';
+import { registerVehicle, updateVehicle } from './api';
 import { CarType } from './interfaces';
 
 type CarFormProps = {
@@ -30,9 +30,9 @@ export default function CarForm({ updateCars, setShowForm, carData }: CarFormPro
     const handleSubmit = async(e: any) => {
         e.preventDefault();
         if (carData && carData.id) {
-            await updateCar(registerValues, carData.id);
+            await updateVehicle('cars', registerValues, carData.id);
         } else {
-            await carRegister(registerValues);
+            await registerVehicle('cars', registerValues);
         }
         setShowForm && setShowForm(false);
         updateCars();

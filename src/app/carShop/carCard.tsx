@@ -1,7 +1,8 @@
 import { CarType } from './interfaces';
-import { deleteCar } from './api';
+import { deleteVehicle } from './api';
 import { useState } from 'react';
 import CarForm from './carForm';
+import CarInfo from './CarInfo';
 
 type CardCarProps = {
     carData: CarType;
@@ -20,7 +21,7 @@ export default function CardCar({ carData, updateCars }: CardCarProps){
     };
 
     const handleDelete = async() => {
-        carData.id ? await deleteCar(carData.id) : '';
+        carData.id ? await deleteVehicle('cars', carData.id) : '';
         updateCars();
     };
 
@@ -42,14 +43,7 @@ export default function CardCar({ carData, updateCars }: CardCarProps){
                     X
                     </button>
                 </div>
-                <div className="flex flex-col gap-2">
-                    <div className="">{ carData.model }</div>
-                    <div>ano: { carData.year }</div>
-                    <div>cor: { carData.color }</div>
-                    <div>Portas: { carData.doorsQty }</div>
-                    <div>Assentos:{ carData.seatsQty }</div>
-                    <div className="">R$ { carData.buyValue } </div>
-                </div>
+                <CarInfo carData={ carData } />
 
             </div>
     );

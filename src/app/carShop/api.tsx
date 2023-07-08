@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CarType } from './interfaces';
+import { CarType, IMotorcycle } from './interfaces';
 
 const USER_CONFLICT = 409;
 
@@ -7,24 +7,24 @@ const axiosInstance = axios.create({
     baseURL: 'https://car-shop-japhe.up.railway.app',
 });
 
-export const getCars = async() => {
-    const { data } = await axiosInstance.get('cars/');
+export const getVehicle = async(vehicle: string) => {
+    const { data } = await axiosInstance.get(`${vehicle}/`);
     return data as CarType[];
 };
 
-export const carRegister = async(registerValues: CarType) => {
-    const request = await axiosInstance.post('/cars', registerValues);
+export const registerVehicle = async(vehicle: string, registerValues: CarType | IMotorcycle) => {
+    const request = await axiosInstance.post(`${vehicle}/`, registerValues);
     if (request.status === USER_CONFLICT) {
         return request.status;
     }
     return request;
 };
 
-export const deleteCar = async(id: string) => {
-    await axiosInstance.delete(`cars/${id}`);
+export const deleteVehicle = async(vehicle: string, id: string) => {
+    await axiosInstance.delete(`${vehicle}/${id}`);
 };
 
-export const updateCar = async(newValues: CarType, id: string) => {
-    const { data } = await axiosInstance.put(`cars/${id}`, newValues);
+export const updateVehicle = async(vehicle: string, newValues: CarType | IMotorcycle, id: string) => {
+    const { data } = await axiosInstance.put(`${vehicle}/${id}`, newValues);
     return data;
 };
