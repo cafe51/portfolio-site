@@ -9,7 +9,7 @@ export type CarType = {
   seatsQty: number
 };
 
-export type IMotorcycle = {
+export type MotorcycleType = {
   id?: string
   status?: boolean
   model: string

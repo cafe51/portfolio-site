@@ -1,14 +1,16 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { getVehicle } from './api';
-import CardCar from './carCard';
-import CarForm from './carForm';
-import { CarType } from './interfaces';
+import CardVehicle from './CardVehicle';
+import CarForm from './CarForm';
+import { CarType, MotorcycleType } from './interfaces';
+import MotorcycleForm from './MotorcycleForm';
 
 export default function CarShop(){
     const [vehicles, setVehicles] = useState('cars');
     const [showForm, setShowForm] = useState(false);
     const [cars, setCars] = useState<CarType[]>([]);
+    const [motorcycles, setMotorcycles] = useState<MotorcycleType[]>([]);
 
     const changeForCars = () => {
         setVehicles('cars');
@@ -19,9 +21,9 @@ export default function CarShop(){
     };
 
 
-    const updateVehicleState = async() => {
-        const carsData = await getVehicle('cars');
-        setCars(carsData);
+    const updateVehicleState = async(vehicleType: string) => {
+        const vehicleData = await getVehicle(vehicleType);
+        vehicleType === 'cars' ? setCars(vehicleData) : setMotorcycles(vehicleData);
     };
 
     const newCard = () => {
@@ -30,8 +32,8 @@ export default function CarShop(){
 
 
     useEffect(() => {
-        updateVehicleState();
-    }, []);
+        updateVehicleState(vehicles);
+    }, [vehicles]);
 
     return (
         <div>
@@ -56,7 +58,10 @@ export default function CarShop(){
             </div>
             <div className="bg-gray-200 flex flex-wrap items-center gap-4 p-4">
 
-                { cars.map((carData) => <CardCar key={ carData.id } carData={ carData } updateVehicleState={ updateVehicleState } />) }
+                { vehicles === 'cars'
+                    ? cars.map((carData) => <CardVehicle key={ carData.id } vehicleData={ carData } updateVehicleState={ updateVehicleState } vehicleType={ vehicles } />)
+                    : motorcycles.map((motorcycleData) => <CardVehicle key={ motorcycleData.id } vehicleData={ motorcycleData } updateVehicleState={ updateVehicleState } vehicleType={ vehicles } />)
+                }
                 <div className=" w-fit h-44 flex flex-col items-center justify-center">
                     <button
                         className=" bg-green-700 p-3 text-white rounded h-fit"
@@ -65,7 +70,12 @@ export default function CarShop(){
                     +
                     </button>
                 </div>
-                { showForm ? <CarForm updateVehicleState={ updateVehicleState } setShowForm={ setShowForm } /> : '' }
+                { showForm
+                    ? 
+                    vehicles === 'cars'
+                        ? <CarForm updateVehicleState={ updateVehicleState } setShowForm={ setShowForm } />
+                        : <MotorcycleForm updateVehicleState={ updateVehicleState } setShowForm={ setShowForm } />
+                    : '' }
             </div>
         </div>
     );

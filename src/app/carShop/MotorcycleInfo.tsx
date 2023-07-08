@@ -1,7 +1,7 @@
-import { IMotorcycle } from './interfaces';
+import { MotorcycleType } from './interfaces';
 
 type MotorcycleInfoProps = {
-    motorcycleData: IMotorcycle;
+    motorcycleData: MotorcycleType;
 }
 
 export default function MotorcycleInfo({ motorcycleData }: MotorcycleInfoProps) {
@@ -10,8 +10,8 @@ export default function MotorcycleInfo({ motorcycleData }: MotorcycleInfoProps) 
             <div className="">{ motorcycleData.model }</div>
             <div>ano: { motorcycleData.year }</div>
             <div>cor: { motorcycleData.color }</div>
-            <div>Portas: { motorcycleData.category }</div>
-            <div>Assentos:{ motorcycleData.engineCapacity }</div>
+            <div>categoria: { motorcycleData.category }</div>
+            <div>capacidade do motor:{ motorcycleData.engineCapacity }</div>
             <div className="">R$ { motorcycleData.buyValue } </div>
         </div>
     );

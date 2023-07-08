@@ -4,9 +4,9 @@ import { registerVehicle, updateVehicle } from './api';
 import { CarType } from './interfaces';
 
 type CarFormProps = {
-  updateVehicleState: () => Promise<void>;
-  setShowForm: (formStatus: boolean) => void;
-  carData?: CarType;
+    updateVehicleState: (vehicleType: string) => Promise<void>;
+    setShowForm: (formStatus: boolean) => void;
+    carData?: CarType;
 }
 
 export default function CarForm({ updateVehicleState, setShowForm, carData }: CarFormProps) {
@@ -35,7 +35,7 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
             await registerVehicle('cars', registerValues);
         }
         setShowForm && setShowForm(false);
-        updateVehicleState();
+        updateVehicleState('cars');
     };
 
     return (
@@ -129,14 +129,6 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
                         />
                     </label>
                 </div>
-                { /* <div className='self-center'>
-                    <button
-                        className=" bg-green-700 p-3 text-white rounded h-fit"
-                        type="submit"
-                    >
-            Cadastrar
-                    </button>
-                </div> */ }
             </form>
         </div>
     );
