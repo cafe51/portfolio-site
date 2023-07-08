@@ -13,9 +13,13 @@ export const getCars = async() => {
 };
 
 export const carRegister = async(registerValues: CarType) => {
-    const request = await axiosInstance.post('/register', registerValues);
+    const request = await axiosInstance.post('/cars', registerValues);
     if (request.status === USER_CONFLICT) {
         return request.status;
     }
     return request;
+};
+
+export const deleteCar = async(id: string) => {
+    await axiosInstance.delete(`cars/${id}`);
 };
