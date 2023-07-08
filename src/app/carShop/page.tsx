@@ -24,17 +24,31 @@ export default function CarShop(){
     }, []);
 
     return (
-        <div className="bg-gray-200 flex flex-wrap items-center gap-4 p-4">
-            { cars.map((carData) => <CardCar key={ carData.id } carData={ carData } updateCars={ updateCars } />) }
-            <div className=" w-fit h-44 flex flex-col items-center justify-center">
-                <button
-                    className=" bg-green-700 p-3 text-white rounded h-fit"
-                    onClick={ newCard }
-                >
-                    +
+        <div>
+            <div className=" flex gap-4 items-center justify-center">
+                <button className=" bg-green-700 p-3 text-white rounded h-fit">
+            Carros
+                </button>
+                <button className=" bg-green-700 p-3 text-white rounded h-fit">
+            Motos
                 </button>
             </div>
-            { showForm ? <CarForm updateCars={ updateCars } setShowForm={ setShowForm } /> : '' }
+            <div className='text-center'>
+                <h1>Carros</h1>
+            </div>
+            <div className="bg-gray-200 flex flex-wrap items-center gap-4 p-4">
+
+                { cars.map((carData) => <CardCar key={ carData.id } carData={ carData } updateCars={ updateCars } />) }
+                <div className=" w-fit h-44 flex flex-col items-center justify-center">
+                    <button
+                        className=" bg-green-700 p-3 text-white rounded h-fit"
+                        onClick={ newCard }
+                    >
+                    +
+                    </button>
+                </div>
+                { showForm ? <CarForm updateCars={ updateCars } setShowForm={ setShowForm } /> : '' }
+            </div>
         </div>
     );
 }
