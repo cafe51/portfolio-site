@@ -36,14 +36,14 @@ export default function CarShop() {
         <div>
             <div className=" flex gap-4 items-center justify-center">
                 <button
-                    className=" bg-green-700 p-3 text-white rounded h-fit"
+                    className={`${vehiclesType == 'cars' ? 'bg-green-900 border-2 border-green-600': 'bg-green-700'} p-3 text-white rounded h-fit` }
                     disabled={ vehiclesType == 'motorcycles' ? false : true }
                     onClick={ () => changeVehicleType('cars') }
                 >
                     Carros
                 </button>
                 <button
-                    className=" bg-green-700 p-3 text-white rounded h-fit"
+                    className={`${vehiclesType == 'motorcycles' ? 'bg-green-900 border-2 border-green-600' : 'bg-green-700'} p-3 text-white rounded h-fit` }
                     disabled={ vehiclesType == 'cars' ? false : true }
                     onClick={ () => changeVehicleType('motorcycles') }
                 >
@@ -53,7 +53,7 @@ export default function CarShop() {
             <div className='text-center'>
                 <h1>{ vehiclesType === 'cars' ? 'Carros' : 'Motos' }</h1>
             </div>
-            <div className="bg-gray-200 flex flex-wrap items-center justify-center gap-4 p-4 text-center">
+            <div className="bg-gray-200 flex flex-wrap items-center gap-4 p-4 text-center">
                 { isLoading ? (
                     <h2>Loading...</h2>
                 ) : (
