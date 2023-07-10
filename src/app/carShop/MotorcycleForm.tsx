@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { registerVehicle, updateVehicle } from './api';
 import { MotorcycleType } from './interfaces';
+import { BsFillCheckCircleFill } from 'react-icons/bs';
+import { ImCancelCircle } from 'react-icons/im';
 
 type MotorcycleFormProps = {
     updateVehicleState: (vehicleType: string) => Promise<void>;
@@ -39,7 +41,7 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
     };
 
     return (
-        <div className=" bg-gray-400 w-[250px] h-72 flex flex-col rounded-lg shadow-lg">
+        <div className=" bg-gray-400 w-[250px] h-72 flex flex-col rounded-lg shadow-lg  p-2">
             <form
                 method="post"
                 onSubmit={ (e) => handleSubmit(e) }
@@ -48,19 +50,19 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                 <div className="flex w-full justify-between">
                     <button 
                         type="submit"
-                        className="bg-green-700 p-3 text-white rounded z-10 px-2"
+                        className="bg-green-700 p-3 text-white rounded"
 
                     >
-                      V
+                        <BsFillCheckCircleFill />
                     </button>
                     <button
-                        className="bg-red-900 p-3 text-white rounded z-10 px-2" 
+                        className="bg-red-900 p-3 text-white rounded" 
                         onClick={ closeForm }
                     >
-                      X
+                        <ImCancelCircle />
                     </button>
                 </div>
-                <div className="px-4">
+                <div className="px-4 flex flex-col gap-2">
                     <label className='flex justify-between' htmlFor="model">
                         <p>Modelo:</p>
                         <input
@@ -95,19 +97,8 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                             className='w-[120px]'
                         />
                     </label>
-                    <label className='flex justify-between' htmlFor="buyValue">
-                        <p>Preço:</p>
-                        <input
-                            type="number"
-                            name="buyValue"
-                            placeholder="Digite um preço"
-                            value={ registerValues.buyValue }
-                            onChange={ handleChange }
-                            className='w-[120px]'
-                        />
-                    </label>
                     <label className='flex justify-between' htmlFor="category">
-                        <p>categoria</p>
+                        <p>Categoria</p>
                         <input
                             type="text"
                             name="category"
@@ -118,12 +109,23 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                         />
                     </label>
                     <label className='flex justify-between' htmlFor="engineCapacity">
-                        <p>capacidade do motor:</p>
+                        <p>Motor:</p>
                         <input
                             type="number"
                             name="engineCapacity"
                             placeholder="capacidade do motor"
                             value={ registerValues.engineCapacity }
+                            onChange={ handleChange }
+                            className='w-[120px]'
+                        />
+                    </label>
+                    <label className='flex justify-between' htmlFor="buyValue">
+                        <p>Preço:</p>
+                        <input
+                            type="number"
+                            name="buyValue"
+                            placeholder="Digite um preço"
+                            value={ registerValues.buyValue }
                             onChange={ handleChange }
                             className='w-[120px]'
                         />

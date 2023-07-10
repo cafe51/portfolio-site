@@ -14,14 +14,14 @@ export default function CarShop() {
     const [isLoading, setIsLoading] = useState(true);
 
     const changeVehicleType = (type: 'cars' | 'motorcycles') => {
+        setIsLoading(true);
+        setIsLoading(false);
         setVehiclesType(type);
     };
 
     const updateVehicleState = async() => {
-        setIsLoading(true);
         const vehicleData = await getVehicle(vehiclesType);
         setVehicles(vehicleData);
-        setIsLoading(false);
     };
 
     const newCard = () => {
@@ -29,21 +29,23 @@ export default function CarShop() {
     };
 
     useEffect(() => {
+        setIsLoading(true);
         updateVehicleState();
+        setIsLoading(false);
     }, [vehiclesType]);
 
     return (
         <div>
             <div className=" flex gap-4 items-center justify-center">
                 <button
-                    className={`${vehiclesType == 'cars' ? 'bg-green-900 border-2 border-green-600': 'bg-green-700'} p-3 text-white rounded h-fit` }
+                    className={ `${vehiclesType == 'cars' ? 'bg-green-900 border-2 border-green-600': 'bg-green-700'} p-3 text-white rounded h-fit` }
                     disabled={ vehiclesType == 'motorcycles' ? false : true }
                     onClick={ () => changeVehicleType('cars') }
                 >
                     Carros
                 </button>
                 <button
-                    className={`${vehiclesType == 'motorcycles' ? 'bg-green-900 border-2 border-green-600' : 'bg-green-700'} p-3 text-white rounded h-fit` }
+                    className={ `${vehiclesType == 'motorcycles' ? 'bg-green-900 border-2 border-green-600' : 'bg-green-700'} p-3 text-white rounded h-fit` }
                     disabled={ vehiclesType == 'cars' ? false : true }
                     onClick={ () => changeVehicleType('motorcycles') }
                 >

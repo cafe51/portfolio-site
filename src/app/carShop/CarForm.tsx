@@ -50,13 +50,13 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
                 <div className="flex w-full justify-between">
                     <button 
                         type="submit"
-                        className="bg-green-700 p-3 text-white rounded px-2"
+                        className="bg-green-700 p-3 text-white rounded"
 
                     >
                         <BsFillCheckCircleFill />
                     </button>
                     <button
-                        className="bg-red-900 p-3 text-white rounded px-2" 
+                        className="bg-red-900 p-3 text-white rounded" 
                         onClick={ closeForm }
                     >
                         <ImCancelCircle />

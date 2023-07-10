@@ -6,13 +6,13 @@ type CarInfoProps = {
 
 export default function CarInfo({ carData }: CarInfoProps) {
     return (
-        <div className="flex flex-col gap-2">
-            <div className="">{ carData.model }</div>
-            <div>Ano: { carData.year }</div>
-            <div>Cor: { carData.color }</div>
-            <div>Portas: { carData.doorsQty }</div>
-            <div>Assentos:{ carData.seatsQty }</div>
-            <div className="">R$ { carData.buyValue } </div>
+        <div className="flex flex-col gap-2 mt-2">
+            <div className=""><h2>{ carData.model }</h2></div>
+            <div><strong>Ano:</strong>  { carData.year }</div>
+            <div><strong>Cor:</strong>  { carData.color }</div>
+            <div><strong>Portas:</strong>  { carData.doorsQty }</div>
+            <div><strong>Assentos:</strong> { carData.seatsQty }</div>
+            <div className=""><h2>R$ { carData.buyValue }</h2> </div>
         </div>
     );
 }

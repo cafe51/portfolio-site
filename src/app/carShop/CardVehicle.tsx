@@ -34,19 +34,19 @@ export default function CardVehicle({ vehicleData, updateVehicleState, vehicleTy
     };
 
     return (
-        <div className={ `card-container ${editMode ? 'flip' : ''} bg-gray-400 w-[250px] h-72 flex flex-col items-center rounded-lg shadow-lg p-2` }>
-            <div className="card-face card-face-front">
+        <div className={ `card-container ${editMode ? 'flip' : ''} bg-gray-400 w-[250px] h-72 flex flex-col items-center rounded-lg shadow-lg` }>
+            <div className="card-face card-face-front p-2">
                 <div className="flex w-full justify-between">
                     <button 
                         onClick={ handleEdit }
-                        className={ `bg-blue-900 p-3 text-white rounded px-2 ${ editMode ? 'z-0' : 'z-10'}` }
+                        className={ `bg-blue-900 p-3 text-white rounded ${ editMode ? 'z-0' : 'z-10'}` }
 
                     >
                         <RiEditBoxFill />
                     </button>
                     <button
                         onClick={ editMode ? closeEditMode : handleDelete }
-                        className={ `bg-red-900 p-3 text-white rounded px-2 ${ editMode ? 'z-0' : 'z-10'}` }
+                        className={ `bg-red-900 p-3 text-white rounded ${ editMode ? 'z-0' : 'z-10'}` }
 
                     >
                         <BsFillTrashFill />
