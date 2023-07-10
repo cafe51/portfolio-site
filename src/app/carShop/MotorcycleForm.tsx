@@ -11,17 +11,35 @@ type MotorcycleFormProps = {
     motorcycleData?: MotorcycleType;
 }
 
+const anoAtual = () => {
+    const dataAtual = new Date();
+    const ano = dataAtual.getFullYear();
+    return ano;
+};
+
 export default function MotorcycleForm({ updateVehicleState, setShowForm, motorcycleData }: MotorcycleFormProps) {
     const [registerValues, setRegisterValues] = useState(motorcycleData || {
         model: '',
-        year: 1,
+        year: 2023,
         color: '',
         buyValue: 1,
         category: '',
         engineCapacity: 1,
     });
 
-    const handleChange = ({ target: { name, value } }: any) => {
+    const isDisable = () => {
+        const model = registerValues.model.length > 0;
+        const year = registerValues.year > 0;
+        const color = registerValues.color.length > 0;
+        const buyValue = registerValues.buyValue > 0;
+        const category = typeof registerValues.category === 'string' ? registerValues.category.length > 0 : '';
+        const engineCapacity = registerValues.engineCapacity > 0;
+        const properties = [model, year, color, buyValue, category, engineCapacity];
+        return !properties.every(property => property);
+    };
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
         setRegisterValues({ ...registerValues, [name]: value });
     };
 
@@ -50,8 +68,8 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                 <div className="flex w-full justify-between">
                     <button 
                         type="submit"
-                        className="bg-green-700 p-3 text-white rounded"
-
+                        className={ `${ isDisable() ? 'bg-gray-300 ' : 'bg-green-700 ' }p-3 text-white rounded` }
+                        disabled={ isDisable() }
                     >
                         <BsFillCheckCircleFill />
                     </button>
@@ -70,6 +88,15 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                             name="model"
                             placeholder="Ex.: Fiat Uno"
                             minLength={ 6 }
+                            maxLength={ 18 }
+                            onInvalid={ event => {
+                                const target = event.target as HTMLInputElement;
+                                target.setCustomValidity('Por favor, insira ao menos 6 caracteres.');
+                            } }
+                            onInput={ event => {
+                                const target = event.target as HTMLInputElement;
+                                target.setCustomValidity('');
+                            } }
                             value={ registerValues.model }
                             onChange={ handleChange }
                             className='w-[120px]'
@@ -78,8 +105,22 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                     <label className='flex justify-between' htmlFor="year">
                         <p>Ano:</p>
                         <input
-                            type="year"
+                            type="number"
                             name="year"
+                            min={ 1886 }
+                            max={ anoAtual() }
+                            onInvalid={ event => {
+                                const target = event.target as HTMLInputElement;
+                                if (target.valueAsNumber < 1886) {
+                                    target.setCustomValidity('Por favor, insira um ano maior que 1885.');
+                                } else if (target.valueAsNumber > anoAtual()) {
+                                    target.setCustomValidity(`Por favor, insira um ano menor ou igual a ${anoAtual()}.`);
+                                }
+                            } }
+                            onInput={ event => {
+                                const target = event.target as HTMLInputElement;
+                                target.setCustomValidity('');
+                            } }
                             placeholder="Ex.: 1998"
                             value={ registerValues.year }
                             onChange={ handleChange }
@@ -91,6 +132,16 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                         <input
                             type="text"
                             name="color"
+                            minLength={ 3 }
+                            maxLength={ 12 }
+                            onInvalid={ event => {
+                                const target = event.target as HTMLInputElement;
+                                target.setCustomValidity('Por favor, insira ao menos 3 caracteres.');
+                            } }
+                            onInput={ event => {
+                                const target = event.target as HTMLInputElement;
+                                target.setCustomValidity('');
+                            } }
                             placeholder="Digite uma cor"
                             value={ registerValues.color }
                             onChange={ handleChange }
@@ -102,6 +153,16 @@ export default function MotorcycleForm({ updateVehicleState, setShowForm, motorc
                         <input
                             type="text"
                             name="category"
+                            minLength={ 3 }
+                            maxLength={ 12 }
+                            onInvalid={ event => {
+                                const target = event.target as HTMLInputElement;
+                                target.setCustomValidity('Por favor, insira ao menos 3 caracteres.');
+                            } }
+                            onInput={ event => {
+                                const target = event.target as HTMLInputElement;
+                                target.setCustomValidity('');
+                            } }
                             placeholder="categoria"
                             value={ registerValues.category }
                             onChange={ handleChange }
