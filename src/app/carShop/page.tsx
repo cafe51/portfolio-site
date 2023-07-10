@@ -1,90 +1,21 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { getVehicle } from './api';
-import CardVehicle from './CardVehicle';
-import CarForm from './CarForm';
-import MotorcycleForm from './MotorcycleForm';
-import { CarType, MotorcycleType } from './interfaces';
-import { BsPlusCircle } from 'react-icons/bs';
 import CarShopHeader from './CarShopHeader';
+import CarShop from './CarShop';
 
-export default function CarShop() {
-    const [vehiclesType, setVehiclesType] = useState<'cars' | 'motorcycles'>('cars');
-    const [showForm, setShowForm] = useState(false);
-    const [vehicles, setVehicles] = useState<CarType[] | MotorcycleType[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    const changeVehicleType = (type: 'cars' | 'motorcycles') => {
-        setIsLoading(true);
-        setIsLoading(false);
-        setVehiclesType(type);
-    };
-
-    const updateVehicleState = async() => {
-        const vehicleData = await getVehicle(vehiclesType);
-        setVehicles(vehicleData);
-    };
-
-    const newCard = () => {
-        setShowForm(true);
-        setTimeout(() => {
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }, 200);
-
-    };
-
-    useEffect(() => {
-        setIsLoading(true);
-        updateVehicleState();
-        setIsLoading(false);
-    }, [vehiclesType]);
-
+export default function Home() {
     return (
-        <div>
+        <div className='w-full flex flex-col items-center justify-center'>
             <CarShopHeader />
-            <div className="flex gap-4 items-center justify-center p-4">
-                <button
-                    className={ `${vehiclesType == 'cars' ? 'bg-green-900 border-2 border-green-600': 'bg-green-700'} p-3 text-white rounded h-fit` }
-                    disabled={ vehiclesType == 'motorcycles' ? false : true }
-                    onClick={ () => changeVehicleType('cars') }
-                >
-                    Carros
-                </button>
-                <button
-                    className={ `${vehiclesType == 'motorcycles' ? 'bg-green-900 border-2 border-green-600' : 'bg-green-700'} p-3 text-white rounded h-fit` }
-                    disabled={ vehiclesType == 'cars' ? false : true }
-                    onClick={ () => changeVehicleType('motorcycles') }
-                >
-                    Motos
-                </button>
+            <section className='w-full bg-gray-200 flex flex-col items-center px-4 pt-4'>
+                <div className='flex flex-col items-center justify-center text-center md:w-3/5 '>
+                    <h1>Bem vindo à loja de Carros!</h1>
+                    <p>Essa é uma interface feita para interagir com a API que eu desenvolvi, abaixo você pode interagir com os cards editando, criando e excluindo. Todas as ações fazem requisições a API que está online. Abaixo os links para a API e para o repositório com o código fonte</p>
+                </div>
+            </section>
+            <div className='text-start bg-gray-200 px-4 flex flex-col gap-2 pb-4'>
+                <p><strong>API:</strong> <a className='text-blue-600 underline' href='https://car-shop-japhe.up.railway.app/'>https://car-shop-japhe.up.railway.app/</a></p>
+                <p><strong>Repositório:</strong> <a className='text-blue-600 underline' href='https://github.com/cafe51/car-shop'>https://github.com/cafe51/car-shop</a></p>
             </div>
-            <div className='text-center'>
-                <h1>{ vehiclesType === 'cars' ? 'Carros' : 'Motos' }</h1>
-            </div>
-            <div className="bg-gray-200 flex flex-wrap items-center justify-center md:justify-start gap-4 p-4 text-center">
-                { isLoading ? (
-                    <h2>Loading...</h2>
-                ) : (
-                    <div className="bg-gray-200 flex flex-col md:flex md:flex-row md:flex-wrap justify-center items-center gap-4 p-4 text-center">
-                        { vehicles.map((vehicleData) => <CardVehicle key={ vehicleData.id } vehicleData={ vehicleData } updateVehicleState={ updateVehicleState } vehicleType={ vehiclesType } />) }
-
-                        <div className=" w-fit h-44 flex flex-col items-center justify-center">
-                            <button
-                                className=" bg-green-700 rounded-full text-white h-fit"
-                                onClick={ newCard }
-                            >
-                                <BsPlusCircle size='50'/>
-                            </button>
-                        </div>
-                        { showForm
-                            ?
-                            vehiclesType === 'cars'
-                                ? <CarForm updateVehicleState={ updateVehicleState } setShowForm={ setShowForm } />
-                                : <MotorcycleForm updateVehicleState={ updateVehicleState } setShowForm={ setShowForm } />
-                            : '' }
-                    </div>
-                ) }
-            </div>
+            <CarShop />
         </div>
     );
 }
