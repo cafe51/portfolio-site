@@ -41,7 +41,7 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
     };
 
     return (
-        <div className=" bg-gray-400 w-[250px] h-72 flex flex-col rounded-lg shadow-lg">
+        <div className=" bg-gray-400 w-[250px] h-72 flex flex-col rounded-lg shadow-lg p-2">
             <form
                 method="post"
                 onSubmit={ (e) => handleSubmit(e) }
@@ -62,7 +62,7 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
                         <ImCancelCircle />
                     </button>
                 </div>
-                <div className="px-4">
+                <div className="px-4 flex flex-col gap-2">
                     <label className='flex justify-between' htmlFor="model">
                         <p>Modelo:</p>
                         <input
@@ -97,17 +97,6 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
                             className='w-[120px]'
                         />
                     </label>
-                    <label className='flex justify-between' htmlFor="buyValue">
-                        <p>Preço:</p>
-                        <input
-                            type="number"
-                            name="buyValue"
-                            placeholder="Digite um preço"
-                            value={ registerValues.buyValue }
-                            onChange={ handleChange }
-                            className='w-[120px]'
-                        />
-                    </label>
                     <label className='flex justify-between' htmlFor="doorsQty">
                         <p>Portas</p>
                         <input
@@ -126,6 +115,17 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
                             name="seatsQty"
                             placeholder="Quantidade de assentos"
                             value={ registerValues.seatsQty }
+                            onChange={ handleChange }
+                            className='w-[120px]'
+                        />
+                    </label>
+                    <label className='flex justify-between' htmlFor="buyValue">
+                        <p>Preço:</p>
+                        <input
+                            type="number"
+                            name="buyValue"
+                            placeholder="Digite um preço"
+                            value={ registerValues.buyValue }
                             onChange={ handleChange }
                             className='w-[120px]'
                         />

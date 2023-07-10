@@ -36,7 +36,7 @@ export default function CardVehicle({ vehicleData, updateVehicleState, vehicleTy
                 ? <CarForm updateVehicleState={ updateVehicleState } carData={ vehicleData as CarType }setShowForm={ setEditMode } />
                 : <MotorcycleForm updateVehicleState={ updateVehicleState } motorcycleData={ vehicleData as MotorcycleType } setShowForm={ setEditMode } />
             :
-            <div className=" bg-gray-400 w-[250px] h-72 flex flex-col items-center rounded-lg shadow-lg">
+            <div className=" bg-gray-400 w-[250px] h-72 flex flex-col items-center rounded-lg shadow-lg p-2">
                 <div className="flex w-full justify-between">
                     <button 
                         onClick={ handleEdit } 
