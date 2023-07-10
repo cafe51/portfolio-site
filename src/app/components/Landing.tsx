@@ -33,7 +33,7 @@ const Landing: NextPage = () => {
                             <a href={ 'https://github.com/cafe51/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                 <FaGithub size={ 36 }/>
                             </a>
-                            <a href={ 'https://www.linkedin.com/in/japh%C3%A9-nogueira-67aa7b1a8/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                            <a href={ 'https://www.linkedin.com/in/japhe-full-stack' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                 <BsLinkedin size={ 36 }/>
                             </a>
 
