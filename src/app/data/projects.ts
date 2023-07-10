@@ -41,7 +41,7 @@ export const projects = [
       'Api com CRUD completo para cadastro de carros e motos em um banco de dados não relacional. Inclui cadastro de usuário e login com autenticação. Nesse projeto pratiquei injeção de dependência e as práticas SOLID',
         skills: ['Typescript', 'Express', 'MongoDB', 'Mongoose', 'Docker'],
         github: 'https://github.com/cafe51/car-shop',
-        link: 'https://car-shop-japhe.up.railway.app/',
+        link: '/carShop',
     },
     {
         id: 5,

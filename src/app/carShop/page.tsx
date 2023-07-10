@@ -6,6 +6,7 @@ import CarForm from './CarForm';
 import MotorcycleForm from './MotorcycleForm';
 import { CarType, MotorcycleType } from './interfaces';
 import { BsPlusCircle } from 'react-icons/bs';
+import CarShopHeader from './CarShopHeader';
 
 export default function CarShop() {
     const [vehiclesType, setVehiclesType] = useState<'cars' | 'motorcycles'>('cars');
@@ -26,6 +27,10 @@ export default function CarShop() {
 
     const newCard = () => {
         setShowForm(true);
+        setTimeout(() => {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }, 200);
+
     };
 
     useEffect(() => {
@@ -36,7 +41,8 @@ export default function CarShop() {
 
     return (
         <div>
-            <div className=" flex gap-4 items-center justify-center">
+            <CarShopHeader />
+            <div className="flex gap-4 items-center justify-center p-4">
                 <button
                     className={ `${vehiclesType == 'cars' ? 'bg-green-900 border-2 border-green-600': 'bg-green-700'} p-3 text-white rounded h-fit` }
                     disabled={ vehiclesType == 'motorcycles' ? false : true }
@@ -55,11 +61,11 @@ export default function CarShop() {
             <div className='text-center'>
                 <h1>{ vehiclesType === 'cars' ? 'Carros' : 'Motos' }</h1>
             </div>
-            <div className="bg-gray-200 flex flex-wrap items-center gap-4 p-4 text-center">
+            <div className="bg-gray-200 flex flex-wrap items-center justify-center md:justify-start gap-4 p-4 text-center">
                 { isLoading ? (
                     <h2>Loading...</h2>
                 ) : (
-                    <div className="bg-gray-200 flex flex-wrap items-center gap-4 p-4 text-center">
+                    <div className="bg-gray-200 flex flex-col md:flex md:flex-row md:flex-wrap justify-center items-center gap-4 p-4 text-center">
                         { vehicles.map((vehicleData) => <CardVehicle key={ vehicleData.id } vehicleData={ vehicleData } updateVehicleState={ updateVehicleState } vehicleType={ vehiclesType } />) }
 
                         <div className=" w-fit h-44 flex flex-col items-center justify-center">
