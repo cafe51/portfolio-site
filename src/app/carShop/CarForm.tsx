@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { registerVehicle, updateVehicle } from './api';
 import { CarType } from './interfaces';
+import { BsFillCheckCircleFill } from 'react-icons/bs';
+import { ImCancelCircle } from 'react-icons/im';
 
 type CarFormProps = {
     updateVehicleState: (vehicleType: string) => Promise<void>;
@@ -51,13 +53,13 @@ export default function CarForm({ updateVehicleState, setShowForm, carData }: Ca
                         className="bg-green-700 p-3 text-white rounded z-10 px-2"
 
                     >
-                      V
+                        <BsFillCheckCircleFill />
                     </button>
                     <button
                         className="bg-red-900 p-3 text-white rounded z-10 px-2" 
                         onClick={ closeForm }
                     >
-                      X
+                        <ImCancelCircle />
                     </button>
                 </div>
                 <div className="px-4">

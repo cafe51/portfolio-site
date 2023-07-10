@@ -5,6 +5,8 @@ import CardVehicle from './CardVehicle';
 import CarForm from './CarForm';
 import { CarType, MotorcycleType } from './interfaces';
 import MotorcycleForm from './MotorcycleForm';
+// import { BsFillPlusCircleFill } from 'react-icons/bs';
+import { BsPlusCircle } from 'react-icons/bs';
 
 export default function CarShop(){
     const [vehicles, setVehicles] = useState('cars');
@@ -64,10 +66,10 @@ export default function CarShop(){
                 }
                 <div className=" w-fit h-44 flex flex-col items-center justify-center">
                     <button
-                        className=" bg-green-700 p-3 text-white rounded h-fit"
+                        className=" bg-green-700 rounded-full text-white h-fit"
                         onClick={ newCard }
                     >
-                    +
+                        <BsPlusCircle size='50'/>
                     </button>
                 </div>
                 { showForm

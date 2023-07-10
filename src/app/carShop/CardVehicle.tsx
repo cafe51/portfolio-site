@@ -5,6 +5,8 @@ import CarForm from './CarForm';
 import CarInfo from './CarInfo';
 import MotorcycleForm from './MotorcycleForm';
 import MotorcycleInfo from './MotorcycleInfo';
+import { BsFillTrashFill } from 'react-icons/bs';
+import { RiEditBoxFill } from 'react-icons/ri';
 
 type CardCarProps = {
     vehicleData: CarType | MotorcycleType;
@@ -40,13 +42,13 @@ export default function CardVehicle({ vehicleData, updateVehicleState, vehicleTy
                         onClick={ handleEdit } 
                         className="bg-blue-900 p-3 text-white rounded z-10 px-2" 
                     >
-                    E
+                        <RiEditBoxFill />
                     </button>
                     <button
                         onClick={ editMode ? closeEditMode : handleDelete }
                         className="bg-red-900 p-3 text-white rounded z-10 px-2"
                     >
-                    X
+                        <BsFillTrashFill />
                     </button>
                 </div>
                 
