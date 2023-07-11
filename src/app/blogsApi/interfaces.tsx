@@ -18,4 +18,5 @@ export type PostType = {
   published: Date
   updated: Date
   users: UserType
+  categories: CategoryType[]
 };
