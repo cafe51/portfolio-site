@@ -15,8 +15,8 @@ export type PostType = {
   title: string
   content: string
   user_id: number
-  published: Date
-  updated: Date
+  published: string
+  updated: string
   users: UserType
   categories: CategoryType[]
 };
