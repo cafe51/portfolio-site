@@ -7,7 +7,7 @@ type PostsProps = {
 
 export default function Posts({ posts }: PostsProps) {
     return(
-        <section className='flex flex-col gap-2'>
+        <section className='flex flex-col items-center gap-2'>
             { posts.map((post) => (<PostCard key={ post.id } postData={ post }/>)) }
         </section>
     );

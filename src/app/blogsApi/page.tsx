@@ -12,7 +12,7 @@ export default function Home() {
     }, []);
 
     return(
-        <div>
+        <div className=''>
             <Posts posts={ posts }/>
         </div>
     );
