@@ -7,6 +7,7 @@ export default function Login() {
                         <label className='flex gap-4'>
                             <h2>e-mail</h2>
                             <input
+                                className="text-center"
                                 type='text'
                             />
                         </label>
@@ -15,6 +16,7 @@ export default function Login() {
                         <label className='flex gap-4'>
                             <h2>senha</h2>
                             <input
+                                className="text-center"
                                 type='text'
                             />
                         </label>
