@@ -32,7 +32,7 @@ export default function PostCard({ postData }: PostCardProps) {
                 <div className=''>
                     <p>{ postData.content }</p>
                 </div>
-                <div>
+                <div className='flex'>
                     {
                         postData.categories.map((category) => (
                             <div

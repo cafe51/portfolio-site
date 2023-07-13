@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-// import { loginRequestApi } from '../api';
+import { loginRequestApi } from '../api';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
+    const router = useRouter();
     const [loginErrorMessage, setLoginErrorMessage] = useState(false);
     const [registerValues, setRegisterValues] = useState({
         email: '',
@@ -25,7 +27,11 @@ export default function Login() {
     const handleSubmit = async(e: any) => {
         try {
             e.preventDefault();
-            // const response = await loginRequestApi(registerValues);
+            const { token } = await loginRequestApi(registerValues);
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(registerValues.email));
+            router.push('/blogsApi');
+
         } catch({ response }: any) {
             console.log(response.request.status, response.request.statusText, response.data.message || response.data.error);
 

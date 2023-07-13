@@ -3,25 +3,18 @@ import { useEffect, useState } from 'react';
 import { PostType, UserType } from './interfaces';
 import Select, { ActionMeta } from 'react-select';
 
-// import { BsFillCheckCircleFill } from 'react-icons/bs';
-// import { ImCancelCircle } from 'react-icons/im';
+
 
 type PostFormProps = {
-    // setShowForm: (formStatus: boolean) => void;
     postData?: PostType;
     userData: UserType
 }
-
-// const anoAtual = () => {
-//     const dataAtual = new Date();
-//     const ano = dataAtual.getFullYear();
-//     return ano;
-// };
 
 type CategoryType = { label: string, value: string, __isNew__?: boolean; };
 
 
 export default function PostForm({ postData, userData }: PostFormProps) {
+
     const [selectedCategories, setSelectedCategories] = useState<CategoryType[]>([]);
     const [categories, setCategories] = useState([
         { value: 'categoria1', label: 'Categoria 1' },
@@ -46,6 +39,8 @@ export default function PostForm({ postData, userData }: PostFormProps) {
     
         setSelectedCategories(selected ? Array.from(selected) : []);
     }
+
+
 
     useEffect(() => {
         setRegisterValues({
