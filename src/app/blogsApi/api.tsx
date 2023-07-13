@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { UserType, PostType, CategoryType } from './interfaces';
+import { PostType, CategoryType } from './interfaces';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3001',
+    baseURL: 'https://blog-api-japhe.up.railway.app/',
 });
 
 
-export const loginRequestApi = async(body: UserType) => {
+export const loginRequestApi = async(body: {email: string, password: string}) => {
     const { data } = await axiosInstance.post('/login', body);
     return data;
 };
@@ -33,9 +33,10 @@ export const getUsersApi = async(token: string) => {
         const { data } = await axiosInstance.get('/user', {
             headers: { Authorization: token },
         });
+
         return data;
     } catch(error: any) {
-        return error.response;
+        return error;
     }
 };
 

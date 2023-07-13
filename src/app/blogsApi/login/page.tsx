@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-// import { getUsersApi, loginRequestApi } from '../api';
+// import { loginRequestApi } from '../api';
 
 export default function Login() {
     const [loginErrorMessage, setLoginErrorMessage] = useState(false);
@@ -25,10 +25,7 @@ export default function Login() {
     const handleSubmit = async(e: any) => {
         try {
             e.preventDefault();
-            // const { response } = await loginRequestApi(registerValues);
-            // const userResponse = await getUsersApi();
-            // console.log('LOGIN BEM SUCEDIDO', response);
-            // console.log('USERS', userResponse);
+            // const response = await loginRequestApi(registerValues);
         } catch({ response }: any) {
             console.log(response.request.status, response.request.statusText, response.data.message || response.data.error);
 
