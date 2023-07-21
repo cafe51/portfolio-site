@@ -50,7 +50,6 @@ describe('Test login screen', () => {
         fireEvent.change(passwordInput, { target: { value: '123456' } });
         fireEvent.click(button);
     
-        // Aguarde um tempo até que o redirecionamento aconteça
         await waitFor(() => expect(push).toHaveBeenCalledWith('/blogapi'));
     });
     

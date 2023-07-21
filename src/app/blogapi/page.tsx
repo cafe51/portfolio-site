@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { UserType } from './types';
+import CategoriesList from './CategoriesList';
 
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600' onClick={ handleLogOut }>Sair</button>
             <div className='flex flex-col gap-4'>
+                { userData ? <CategoriesList /> : 'Loading...' }
                 Initial Page
                 { userData?.token }
             </div>
