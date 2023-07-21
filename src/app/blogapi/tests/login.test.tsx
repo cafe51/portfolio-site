@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Login from '../login/page';
 import '@testing-library/jest-dom';
 import { AppRouterContextProviderMock } from './AppRouterContextProviderMockProps';
@@ -38,18 +38,20 @@ describe('Test login screen', () => {
         expect(await screen.findByText('Usuário ou senha inválidos')).toBeInTheDocument();
     });
 
-    it('should redirect to /blogapi after successful login', () => {
+    it('should redirect to /blogapi after successful login', async() => {
         const push = jest.fn();
         render(<AppRouterContextProviderMock router={ { push } }><Login /></AppRouterContextProviderMock>);
-    
+        
         const button = screen.getByRole('button', { name: 'Login' });
         const emailInput = screen.getByPlaceholderText('insira seu email');
         const passwordInput = screen.getByPlaceholderText('insira sua senha');
-    
+        
         fireEvent.change(emailInput, { target: { value: 'lewishamilton@gmail.com' } });
         fireEvent.change(passwordInput, { target: { value: '123456' } });
         fireEvent.click(button);
     
-        expect(push).toHaveBeenCalledWith('/blogapi');
+        // Aguarde um tempo até que o redirecionamento aconteça
+        await waitFor(() => expect(push).toHaveBeenCalledWith('/blogapi'));
     });
+    
 }); 
