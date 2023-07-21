@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { UserType } from './types';
+import { Dispatch, UserType } from './types';
 import CategoriesList from './CategoriesList';
+import { updateCategoriesFromApiStateThunkAction } from './redux/actions';
+import { useDispatch } from 'react-redux';
 
 
 export default function Home() {
-
-
-
+    const dispatch: Dispatch = useDispatch();
     const router = useRouter();
     const [ userData, setUserData ] = useState<{user: UserType, token: string} | null>(null);
 
@@ -30,6 +30,12 @@ export default function Home() {
     
     }, [router]);
 
+    useEffect(() => {
+        if (userData && userData.token) {
+            dispatch(updateCategoriesFromApiStateThunkAction(userData.token));
+        }
+    
+    }, [userData, dispatch]);
 
 
     return (
@@ -38,7 +44,7 @@ export default function Home() {
             <div className='flex flex-col gap-4'>
                 { userData ? <CategoriesList /> : 'Loading...' }
                 Initial Page
-                { userData?.token }
+                <p className='w-96 overflow-wrap break-words'>{ userData?.token }</p>
             </div>
         </main>
     );

@@ -1,5 +1,5 @@
-import { createPostApi, getPostsApi } from '../api';
-import { CategoryType, NewPostType, PostType, UPDATE_POSTS_FROM_API } from '../types';
+import { createPostApi, getCategoriesApi, getPostsApi } from '../api';
+import { CategoryType, NewPostType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API, UPDATE_SELECTED_CATEGORIES } from '../types';
 import { Dispatch } from '../types';
 
 export const updateCategories = (categories: CategoryType[], type: string) => ({
@@ -31,4 +31,13 @@ export const addNewPostFromApiStateThunkAction = (token: string, newPost: NewPos
         }
     };
 };
+
+export const updateCategoriesFromApiStateThunkAction = (token: string) => {
+    return async(dispatch: Dispatch) => {
+        const categoriesFromApi = await getCategoriesApi(token);
+        dispatch(updateCategories(categoriesFromApi, UPDATE_CATEGORIES_FROM_API));
+        dispatch(updateCategories([], UPDATE_SELECTED_CATEGORIES));
+    };
+};
+  
 
