@@ -1,8 +1,16 @@
-import { createPostApi, getCategoriesApi, getPostsApi } from '../api';
-import { CategoryType, NewPostType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API, UPDATE_SELECTED_CATEGORIES } from '../types';
+import { createCategoryApi, createPostApi, getCategoriesApi, getPostsApi } from '../api';
+import { CategoryPropsType, CategoryType, NewPostType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API, UPDATE_SELECTED_CATEGORIES } from '../types';
 import { Dispatch } from '../types';
 
-export const updateCategories = (categories: CategoryType[], type: string) => ({
+function identifyNewCategories(newCategories: CategoryType[], oldCategories: CategoryType[]) {
+    return newCategories.filter((newItem) => 
+        !oldCategories.some((oldItem) => 
+            oldItem.name === newItem.name,
+        ),
+    );
+}
+
+export const updateCategories = (categories: CategoryType[] | CategoryPropsType[], type: string) => ({
     type: type,
     payload: categories,
 });
@@ -37,6 +45,29 @@ export const updateCategoriesFromApiStateThunkAction = (token: string) => {
         const categoriesFromApi = await getCategoriesApi(token);
         dispatch(updateCategories(categoriesFromApi, UPDATE_CATEGORIES_FROM_API));
         dispatch(updateCategories([], UPDATE_SELECTED_CATEGORIES));
+    };
+};
+
+export const addNewCategoriesFromApiStateThunkAction = (token: string, selectedCategoriesRaw: CategoryPropsType[], categoriesFromApi: CategoryType[]) => {
+    return async(dispatch: Dispatch) => {
+        try {
+  
+            const selectedCategories = selectedCategoriesRaw
+                .map((selectedCategoryRaw) => ({ name: selectedCategoryRaw.value }));
+  
+            const newCategories = identifyNewCategories(selectedCategories, categoriesFromApi);
+  
+            const newCategoriesCreated = await Promise.all(newCategories.map(newCategory => createCategoryApi(token, newCategory)));
+  
+  
+            await dispatch(updateCategoriesFromApiStateThunkAction(token));
+  
+            return newCategoriesCreated;
+  
+        } catch (error) {
+            console.log(error);
+  
+        }
     };
 };
   

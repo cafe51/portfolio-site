@@ -6,6 +6,7 @@ import { Dispatch, UserType } from './types';
 import CategoriesList from './CategoriesList';
 import { updateCategoriesFromApiStateThunkAction } from './redux/actions';
 import { useDispatch } from 'react-redux';
+import PostForm from './PostForm';
 
 
 export default function Home() {
@@ -43,7 +44,7 @@ export default function Home() {
             <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600' onClick={ handleLogOut }>Sair</button>
             <div className='flex flex-col gap-4'>
                 { userData ? <CategoriesList /> : 'Loading...' }
-                Initial Page
+                { userData ? <PostForm userData={ userData }/> : 'Loading...' }
                 <p className='w-96 overflow-wrap break-words'>{ userData?.token }</p>
             </div>
         </main>

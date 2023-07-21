@@ -39,10 +39,15 @@ export type ReduxState = {
   categoriesReducer: {
     categoriesFromApi: CategoryType[],
   },
+  selectedCategoriesReducer: {
+    selectedCategories: CategoryPropsType[],
+  },
   postsReducer: {
     postsFromApi: PostType[],
   }
 };
+
+export type CategoryPropsType = { label: string, value: string; };
 
 
 export type Dispatch = ThunkDispatch<ReduxState, null, AnyAction>;
