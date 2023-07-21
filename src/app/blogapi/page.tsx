@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Dispatch, UserType } from './types';
 import CategoriesList from './CategoriesList';
-import { updateCategoriesFromApiStateThunkAction } from './redux/actions';
+import { updateCategoriesFromApiStateThunkAction, updatePostsFromApiStateThunkAction } from './redux/actions';
 import { useDispatch } from 'react-redux';
 import PostForm from './PostForm';
+import Posts from './Posts';
 
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
     useEffect(() => {
         if (userData && userData.token) {
             dispatch(updateCategoriesFromApiStateThunkAction(userData.token));
+            dispatch(updatePostsFromApiStateThunkAction(userData.token));
         }
     
     }, [userData, dispatch]);
@@ -45,7 +47,7 @@ export default function Home() {
             <div className='flex flex-col gap-4'>
                 { userData ? <CategoriesList /> : 'Loading...' }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
-                <p className='w-96 overflow-wrap break-words'>{ userData?.token }</p>
+                { userData ? <Posts userData={ userData }/> : 'Loading...' }
             </div>
         </main>
     );
