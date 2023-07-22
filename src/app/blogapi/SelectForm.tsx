@@ -32,7 +32,7 @@ export default function SelectForm({
         try {
             setCategoriesForm(categoriesFromApi.map(({ name }: CategoryType) => ({ label: name, value: name })));
         } catch(error) {
-            console.log('Erro na linha 26 de SelectForm', error);
+            console.log('Erro na linha 35 de SelectForm', error);
         }
     }, [categoriesFromApi]);
 

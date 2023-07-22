@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CategoryType, NewPostType, PostType } from './types';
+import { CategoryType, NewPostType } from './types';
 
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3001/',
@@ -109,9 +109,10 @@ export const getPostByQueryApi = async(token: string, query: number) => {
     }
 };
 
-export const updatePostApi = async(body: PostType, id: number) => {
-    const { data } = await axiosInstance.put(`/post/${id}`, body);
-    return data;
+export const updatePostApi = async(token: string, body: {title: string, content: string}, id: string) => {
+    await axiosInstance.put(`/post/${id}`, body, {
+        headers: { Authorization: token },
+    });
 };
 
 export const deleteVehicle = async(id: number) => {

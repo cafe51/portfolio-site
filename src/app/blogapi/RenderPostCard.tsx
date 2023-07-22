@@ -11,6 +11,8 @@ type RenderPostCardProps = {
 export default function RenderPostCard({ postData, userData }: RenderPostCardProps) {
     const [ editMode, setEditMode ] = useState(false);
     return(
-        editMode ? <PostForm postData={ postData } userData={ userData } setEditMode={ setEditMode }/> : <PostCard postData={ postData } setEditMode={ setEditMode }/>
+        editMode
+            ? <PostForm postData={ postData } userData={ userData } editMode={ editMode } setEditMode={ setEditMode }/>
+            : <PostCard postData={ postData } setEditMode={ setEditMode }/>
     );
 }

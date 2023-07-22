@@ -17,7 +17,7 @@ export type CategoryType = {
 };
 
 export type PostType = {
-  id?: number
+  id?: string
   title: string
   content: string
   user_id?: number

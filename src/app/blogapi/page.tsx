@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Dispatch, UserType } from './types';
 import CategoriesList from './CategoriesList';
-import { updateCategoriesFromApiStateThunkAction, updatePostsFromApiStateThunkAction } from './redux/actions';
+import { updateCategoriesStateFromApiStateThunkAction, updatePostsStateFromApiStateThunkAction } from './redux/actions';
 import { useDispatch } from 'react-redux';
 import PostForm from './PostForm';
 import Posts from './Posts';
@@ -34,8 +34,8 @@ export default function Home() {
 
     useEffect(() => {
         if (userData && userData.token) {
-            dispatch(updateCategoriesFromApiStateThunkAction(userData.token));
-            dispatch(updatePostsFromApiStateThunkAction(userData.token));
+            dispatch(updateCategoriesStateFromApiStateThunkAction(userData.token));
+            dispatch(updatePostsStateFromApiStateThunkAction(userData.token));
         }
     
     }, [userData, dispatch]);

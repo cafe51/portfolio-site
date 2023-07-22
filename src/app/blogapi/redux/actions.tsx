@@ -1,4 +1,4 @@
-import { createCategoryApi, createPostApi, getCategoriesApi, getPostsApi } from '../api';
+import { createCategoryApi, createPostApi, getCategoriesApi, getPostsApi, updatePostApi } from '../api';
 import { CategoryPropsType, CategoryType, NewPostType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API } from '../types';
 import { Dispatch } from '../types';
 
@@ -10,20 +10,29 @@ function identifyNewCategories(newCategories: CategoryType[], oldCategories: Cat
     );
 }
 
-export const updateCategories = (categories: CategoryType[] | CategoryPropsType[], type: string) => ({
+export const updateCategoriesState = (categories: CategoryType[] | CategoryPropsType[], type: string) => ({
     type: type,
     payload: categories,
 });
 
-export const updatePosts = (posts: PostType[], type: string) => ({
+export const updatePostsState = (posts: PostType[], type: string) => ({
     type: type,
     payload: posts,
 });
 
-export const updatePostsFromApiStateThunkAction = (token: string) => {
+export const updatePostsStateFromApiStateThunkAction = (token: string) => {
     return async(dispatch: Dispatch) => {
         const postsFromApi = await getPostsApi(token);
-        dispatch(updatePosts(postsFromApi, UPDATE_POSTS_FROM_API));
+        dispatch(updatePostsState(postsFromApi, UPDATE_POSTS_FROM_API));
+    };
+};
+
+export const updatePostOnDatabaseByIdThunkAction = (token: string, body: {title: string, content: string}, id: string) => {
+    return async(dispatch: Dispatch) => {
+        await updatePostApi(token, body, id);
+        console.log('Atualizou', body);
+        const postsFromApi = await getPostsApi(token);
+        dispatch(updatePostsState(postsFromApi, UPDATE_POSTS_FROM_API));
     };
 };
 
@@ -32,7 +41,7 @@ export const addNewPostFromApiStateThunkAction = (token: string, newPost: NewPos
         try {
             await createPostApi(token, newPost);
             const posts = await getPostsApi(token);
-            dispatch(updatePosts(posts, UPDATE_POSTS_FROM_API));
+            dispatch(updatePostsState(posts, UPDATE_POSTS_FROM_API));
         } catch (error) {
             console.log(error);
 
@@ -40,10 +49,10 @@ export const addNewPostFromApiStateThunkAction = (token: string, newPost: NewPos
     };
 };
 
-export const updateCategoriesFromApiStateThunkAction = (token: string) => {
+export const updateCategoriesStateFromApiStateThunkAction = (token: string) => {
     return async(dispatch: Dispatch) => {
         const categoriesFromApi = await getCategoriesApi(token);
-        dispatch(updateCategories(categoriesFromApi, UPDATE_CATEGORIES_FROM_API));
+        dispatch(updateCategoriesState(categoriesFromApi, UPDATE_CATEGORIES_FROM_API));
     };
 };
 
@@ -59,7 +68,7 @@ export const addNewCategoriesFromApiStateThunkAction = (token: string, selectedC
             const newCategoriesCreated = await Promise.all(newCategories.map(newCategory => createCategoryApi(token, newCategory)));
   
   
-            await dispatch(updateCategoriesFromApiStateThunkAction(token));
+            await dispatch(updateCategoriesStateFromApiStateThunkAction(token));
   
             return newCategoriesCreated;
   

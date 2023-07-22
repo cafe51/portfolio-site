@@ -7,23 +7,17 @@ import {
 import SelectForm from './SelectForm';
 import { CategoryPropsType, CategoryType, Dispatch, PostType, ReduxState, UserType } from './types';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewCategoriesFromApiStateThunkAction, addNewPostFromApiStateThunkAction } from './redux/actions';
+import { addNewCategoriesFromApiStateThunkAction, addNewPostFromApiStateThunkAction, updatePostOnDatabaseByIdThunkAction } from './redux/actions';
 
 type PostFormProps = {
     postData?: PostType;
+    editMode?: boolean;
     userData: {user: UserType, token: string};
     setEditMode?: (mode: boolean) => void;
 }
 
-export default function PostForm({ postData, userData, setEditMode }: PostFormProps) {
-    const [ categoriesForm, setCategoriesForm ] = useState<CategoryPropsType[]>([]);
-    const [selectedCategories, setSelectedCategories] = useState<CategoryPropsType[]>(postData?.categories ? Array.from(postData?.categories.map(({ name }: CategoryType) => ({ label: name, value: name }))) : []);
-
-
-    const dispatch: Dispatch = useDispatch();
-    const { categoriesFromApi } = useSelector((state: ReduxState) => state.categoriesReducer);
+export default function PostForm({ postData, userData, editMode, setEditMode }: PostFormProps) {
     const { user, token } = userData;
-
     const REGISTER_VALUES_INITIAL_STATE = {
         title: '',
         content: '',
@@ -31,7 +25,10 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
         users: user,
         categories: [],
     };
-    
+    const dispatch: Dispatch = useDispatch();
+    const [ categoriesForm, setCategoriesForm ] = useState<CategoryPropsType[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<CategoryPropsType[]>(postData?.categories ? Array.from(postData?.categories.map(({ name }: CategoryType) => ({ label: name, value: name }))) : []);
+    const { categoriesFromApi } = useSelector((state: ReduxState) => state.categoriesReducer);
     const [registerValues, setRegisterValues] = useState<PostType>(postData || REGISTER_VALUES_INITIAL_STATE);
 
     const filterCategoriesFromApi = (categoriesFromApi: CategoryType[], selectedCategories: CategoryPropsType[]) => {
@@ -84,6 +81,19 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
         }
     };
 
+    const handleUpdatePost = () => {
+        setEditMode ? setEditMode(false) : '';
+        if(postData?.id) {
+            const postUpdating = {
+                title: registerValues.title,
+                content: registerValues.content,
+            };
+            // console.log('Atualizou', postUpdating);
+            dispatch(updatePostOnDatabaseByIdThunkAction(token, postUpdating, postData?.id));
+        }
+
+    };
+
     const buttons = (
         <div className='flex justify-between'>
             <button
@@ -94,6 +104,7 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
             </button>
             <button
                 className='p-1 rounded shadow-sm bg-green-500 hover:bg-green-700 text-white self-end w-1/3'
+                onClick={ handleUpdatePost }
             >
                 Confirm
             </button>
@@ -169,18 +180,29 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
                     { isDisable() ? <p className='text-red-600 text-sm'>Preencha todos os campos</p> : '' }
                     
                 </div>
-                <SelectForm
-                    categoriesForm={ categoriesForm }
-                    selectedCategories={ selectedCategories }
-                    setCategoriesForm={ setCategoriesForm }
-                    setSelectedCategories={ setSelectedCategories }
-                    // setRegisterValues={ setRegisterValues }
-                />
-                <div>
-                    {
-                        registerValues.categories.map((selectedCategory, index) => (<div key={ index }>{ selectedCategory.name }</div>))
-                    }
-                </div>
+                {
+                    !editMode
+                        ? 
+                        (<SelectForm
+                            categoriesForm={ categoriesForm }
+                            selectedCategories={ selectedCategories }
+                            setCategoriesForm={ setCategoriesForm }
+                            setSelectedCategories={ setSelectedCategories }
+                        />)
+                        : 
+                        (<div className='flex items-center justify-center'>
+                            {
+                                registerValues.categories.map((category) => (
+                                    <div
+                                        key={ category.id }
+                                        className="bg-blue-900 text-white text-sm py-1 px-2 mr-2 mb-2 rounded"
+                                    >
+                                        { category.name }
+                                    </div>
+                                ))
+                            }
+                        </div>)
+                }
                 <div className="flex w-full justify-end">
                     { !postData && (
                         <button 
