@@ -42,12 +42,12 @@ export default function Home() {
 
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main className="flex min-h-screen flex-col items-center justify-between p-2">
             <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600' onClick={ handleLogOut }>Sair</button>
             <div className='flex flex-col gap-4'>
                 { userData ? <CategoriesList /> : 'Loading...' }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
-                { userData ? <Posts userData={ userData }/> : 'Loading...' }
+                { userData ? <Posts userData={ userData } /> : 'Loading...' }
             </div>
         </main>
     );

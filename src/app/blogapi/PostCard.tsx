@@ -9,7 +9,7 @@ const defaultPhoto = 'https://media.istockphoto.com/id/587805156/pt/vetorial/pro
 
 export default function PostCard({ postData, setEditMode }: PostCardProps) {
     return(
-        <div className='bg-gray-200 p-4 md:w-3/5 gap-6 rounded shadow flex flex-col justify-center'>
+        <div className='bg-gray-200 p-4 gap-6 rounded shadow flex flex-col justify-center'>
             <button
                 className='p-1 rounded shadow-sm bg-blue-500 hover:bg-blue-700 text-white self-end w-1/3'
                 onClick={ () => setEditMode(true) }

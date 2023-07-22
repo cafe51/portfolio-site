@@ -1,5 +1,5 @@
 import { createCategoryApi, createPostApi, getCategoriesApi, getPostsApi } from '../api';
-import { CategoryPropsType, CategoryType, NewPostType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API, UPDATE_SELECTED_CATEGORIES } from '../types';
+import { CategoryPropsType, CategoryType, NewPostType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API } from '../types';
 import { Dispatch } from '../types';
 
 function identifyNewCategories(newCategories: CategoryType[], oldCategories: CategoryType[]) {
@@ -44,7 +44,6 @@ export const updateCategoriesFromApiStateThunkAction = (token: string) => {
     return async(dispatch: Dispatch) => {
         const categoriesFromApi = await getCategoriesApi(token);
         dispatch(updateCategories(categoriesFromApi, UPDATE_CATEGORIES_FROM_API));
-        dispatch(updateCategories([], UPDATE_SELECTED_CATEGORIES));
     };
 };
 

@@ -1,21 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { CategoryPropsType, CategoryType, Dispatch, UPDATE_SELECTED_CATEGORIES } from './types';
-import { updateCategories } from './redux/actions';
+import {
+    useEffect,
+} from 'react';
+import {
+    useSelector,
+} from 'react-redux';
+import {
+    CategoryPropsType,
+    CategoryType,
+} from './types';
 import CreatableSelect from 'react-select/creatable';
 import { ActionMeta } from 'react-select';
 import { ReduxState } from './types';
 
 type SelectFormProps = {
-  categories?: CategoryType[];
+  categoriesForm: CategoryPropsType[],
+  selectedCategories: CategoryPropsType[],
+  setCategoriesForm: any;
+  setSelectedCategories: any;
 }
 
-
-export default function SelectForm({ categories }: SelectFormProps) {
-    const dispatch: Dispatch = useDispatch();
+export default function SelectForm({
+    categoriesForm,
+    setCategoriesForm,
+    selectedCategories,
+    setSelectedCategories,
+    // setRegisterValues,
+}: SelectFormProps) {
     const { categoriesFromApi } = useSelector((state: ReduxState) => state.categoriesReducer);
-    const [ categoriesForm, setCategoriesForm ] = useState<CategoryPropsType[]>([]);
-    const { selectedCategories } = useSelector((state: ReduxState) => state.selectedCategoriesReducer);
 
     useEffect(() => {
         try {
@@ -28,20 +39,21 @@ export default function SelectForm({ categories }: SelectFormProps) {
 
     function handleCreateOption(option: CategoryPropsType) {
         const newCategory = { label: option.label, value: option.value };
-        setCategoriesForm(prevCategories => [...prevCategories, newCategory]);
-        dispatch(updateCategories([...selectedCategories, newCategory], UPDATE_SELECTED_CATEGORIES));
+        setCategoriesForm((prevCategories: any) => [...prevCategories, newCategory]);
+        setSelectedCategories((prevCategories: any) => [...prevCategories, newCategory]);
     }
 
     function handleRemoveOption(removedValue: CategoryPropsType) {
-        dispatch(updateCategories(selectedCategories.filter((category: CategoryPropsType) => category.value !== removedValue.value), UPDATE_SELECTED_CATEGORIES));
+        setSelectedCategories((prevCategories: any[]) => (prevCategories.filter((category: CategoryPropsType) => category.value !== removedValue.value)));
+        console.log('removou');
     }
 
     function handleClear() {
-        dispatch(updateCategories([], UPDATE_SELECTED_CATEGORIES));
+        setSelectedCategories([]);
     }
 
     function handleSelectDeselectOption(selected: readonly CategoryPropsType[] | null) {
-        dispatch(updateCategories(selected ? Array.from(selected) : [], UPDATE_SELECTED_CATEGORIES));
+        setSelectedCategories(selected ? Array.from(selected) : []);
     }
 
     function handleCategoryChange(selected: readonly CategoryPropsType[] | null, { action, option, removedValue }: ActionMeta<CategoryPropsType>) {
@@ -73,7 +85,7 @@ export default function SelectForm({ categories }: SelectFormProps) {
                 className="basic-multi-select"
                 classNamePrefix="select"
                 placeholder="Selecione as categorias"
-                value={ categories ? categories.map(({ name }: CategoryType) => ({ label: name, value: name })) : selectedCategories }
+                value={ selectedCategories }
                 onChange={ handleCategoryChange }
                 isSearchable
                 isClearable

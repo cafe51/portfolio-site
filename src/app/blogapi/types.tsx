@@ -2,7 +2,6 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 
 export const UPDATE_CATEGORIES_FROM_API = 'UPDATE_CATEGORIES_FROM_API';
-export const UPDATE_SELECTED_CATEGORIES = 'UPDATE_SELECTED_CATEGORIES';
 export const UPDATE_POSTS_FROM_API = 'UPDATE_POSTS_FROM_API';
 
 export type UserType = {
@@ -39,9 +38,7 @@ export type ReduxState = {
   categoriesReducer: {
     categoriesFromApi: CategoryType[],
   },
-  selectedCategoriesReducer: {
-    selectedCategories: CategoryPropsType[],
-  },
+
   postsReducer: {
     postsFromApi: PostType[],
   }

@@ -1,5 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
+import {
+    useEffect,
+    useState,
+} from 'react';
 
 import SelectForm from './SelectForm';
 import { CategoryPropsType, CategoryType, Dispatch, PostType, ReduxState, UserType } from './types';
@@ -13,17 +16,23 @@ type PostFormProps = {
 }
 
 export default function PostForm({ postData, userData, setEditMode }: PostFormProps) {
+    const [ categoriesForm, setCategoriesForm ] = useState<CategoryPropsType[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<CategoryPropsType[]>(postData?.categories ? Array.from(postData?.categories.map(({ name }: CategoryType) => ({ label: name, value: name }))) : []);
+
+
     const dispatch: Dispatch = useDispatch();
-    const { selectedCategories } = useSelector((state: ReduxState) => state.selectedCategoriesReducer);
     const { categoriesFromApi } = useSelector((state: ReduxState) => state.categoriesReducer);
     const { user, token } = userData;
-    const [registerValues, setRegisterValues] = useState<PostType>(postData || {
+
+    const REGISTER_VALUES_INITIAL_STATE = {
         title: '',
         content: '',
         user_id: user.id,
         users: user,
-        categories: [{ name: '' }],
-    });
+        categories: [],
+    };
+    
+    const [registerValues, setRegisterValues] = useState<PostType>(postData || REGISTER_VALUES_INITIAL_STATE);
 
     const filterCategoriesFromApi = (categoriesFromApi: CategoryType[], selectedCategories: CategoryPropsType[]) => {
         return categoriesFromApi.filter((categoryFromApi) =>
@@ -36,7 +45,7 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
     const isDisable = () => {
         const title = registerValues.title.length > 0;
         const content = registerValues.content.length > 0;
-        const categories = registerValues.categories.length > 0;
+        const categories = selectedCategories.length > 0;
 
         const properties = [title, content, categories];
         return !properties.every(property => property);
@@ -65,8 +74,9 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
                 };
 
                 dispatch(addNewPostFromApiStateThunkAction(token, postData));
+                setSelectedCategories([]);
+                setRegisterValues(REGISTER_VALUES_INITIAL_STATE);
 
-                console.log('categorias selecionadas', selectedCategories);
             }
     
         } catch(error) {
@@ -91,7 +101,7 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
     );
 
     return (
-        <section className="flex flex-col gap-2 bg-gray-200 p-4 md:w-3/5 rounded shadow text-center justify-center border-solid border border-gray-950">
+        <section className="flex flex-col gap-2 bg-gray-200 p-4 rounded shadow text-center justify-center border-solid border border-gray-950">
             { postData && buttons }
             <form
                 method="post"
@@ -159,7 +169,13 @@ export default function PostForm({ postData, userData, setEditMode }: PostFormPr
                     { isDisable() ? <p className='text-red-600 text-sm'>Preencha todos os campos</p> : '' }
                     
                 </div>
-                <SelectForm categories={ postData?.categories }/>
+                <SelectForm
+                    categoriesForm={ categoriesForm }
+                    selectedCategories={ selectedCategories }
+                    setCategoriesForm={ setCategoriesForm }
+                    setSelectedCategories={ setSelectedCategories }
+                    // setRegisterValues={ setRegisterValues }
+                />
                 <div>
                     {
                         registerValues.categories.map((selectedCategory, index) => (<div key={ index }>{ selectedCategory.name }</div>))
