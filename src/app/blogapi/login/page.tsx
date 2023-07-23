@@ -110,6 +110,9 @@ export default function Login() {
                         Login
                     </button>
                 </form>
+                <div>
+                    <p>Não tem uma conta? <a href="/blogapi/signup">Cadastre-se</a></p>
+                </div>
             </div>
         </section>
     );
