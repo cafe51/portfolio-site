@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useDispatch } from 'react-redux';
 import { Dispatch, PostType, UserType } from './types';
 import { deletePostOnDataBaseThunkAction } from './redux/actions';
@@ -16,7 +17,6 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
 
     const handleDeletePost = () => {
         if(postData?.id) {
-            console.log('deletou', postData.id);
             dispatch(deletePostOnDataBaseThunkAction(token, postData.id));
         }
     };

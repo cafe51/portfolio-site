@@ -1,15 +1,22 @@
 'use client';
-import {
-    useEffect,
-    useState,
-} from 'react';
-
-import SelectForm from './SelectForm';
-import { CategoryPropsType, CategoryType, Dispatch, PostType, ReduxState, UserType } from './types';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewCategoriesFromApiStateThunkAction, addNewPostFromApiStateThunkAction, updatePostOnDatabaseByIdThunkAction } from './redux/actions';
+import SelectForm from './SelectForm';
+import { 
+    CategoryPropsType, 
+    CategoryType, 
+    Dispatch, 
+    PostType, 
+    ReduxState, 
+    UserType,
+} from './types';
+import { 
+    addNewCategoriesFromApiStateThunkAction, 
+    addNewPostFromApiStateThunkAction, 
+    updatePostOnDatabaseByIdThunkAction,
+} from './redux/actions';
 
-type PostFormProps = {
+interface PostFormProps {
     postData?: PostType;
     editMode?: boolean;
     userData: {user: UserType, token: string};
@@ -18,18 +25,19 @@ type PostFormProps = {
 
 export default function PostForm({ postData, userData, editMode, setEditMode }: PostFormProps) {
     const { user, token } = userData;
-    const REGISTER_VALUES_INITIAL_STATE = {
+    const dispatch: Dispatch = useDispatch();
+
+    const initialRegisterValues = {
         title: '',
         content: '',
         user_id: user.id,
         users: user,
         categories: [],
     };
-    const dispatch: Dispatch = useDispatch();
     const [ categoriesForm, setCategoriesForm ] = useState<CategoryPropsType[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<CategoryPropsType[]>(postData?.categories ? Array.from(postData?.categories.map(({ name }: CategoryType) => ({ label: name, value: name }))) : []);
     const { categoriesFromApi } = useSelector((state: ReduxState) => state.categoriesReducer);
-    const [registerValues, setRegisterValues] = useState<PostType>(postData || REGISTER_VALUES_INITIAL_STATE);
+    const [registerValues, setRegisterValues] = useState<PostType>(postData || initialRegisterValues);
 
     const filterCategoriesFromApi = (categoriesFromApi: CategoryType[], selectedCategories: CategoryPropsType[]) => {
         return categoriesFromApi.filter((categoryFromApi) =>
@@ -58,7 +66,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
 
     }, [categoriesFromApi, selectedCategories, dispatch]);
 
-    const handleSubmit = async(e: any) => {
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             if (userData && token) {
@@ -72,7 +80,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
 
                 dispatch(addNewPostFromApiStateThunkAction(token, postData));
                 setSelectedCategories([]);
-                setRegisterValues(REGISTER_VALUES_INITIAL_STATE);
+                setRegisterValues(initialRegisterValues);
 
             }
     

@@ -25,7 +25,7 @@ export default function Login() {
         setRegisterValues({ ...registerValues, [name]: value });
     };
     
-    const handleSubmit = async(e: any) => {
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
             const { token } = await loginRequestApi(registerValues);
@@ -37,8 +37,8 @@ export default function Login() {
 
             router.push('/blogapi');
 
-        } catch({ response }: any) {
-            console.log(response.request.status, response.request.statusText, response.data.message || response.data.error);
+        } catch(error) {
+            console.log('erro no login: ', error);
 
             setLoginErrorMessage(true);
         }

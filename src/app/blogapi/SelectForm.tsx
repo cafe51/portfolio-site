@@ -1,22 +1,15 @@
-import {
-    useEffect,
-} from 'react';
-import {
-    useSelector,
-} from 'react-redux';
-import {
-    CategoryPropsType,
-    CategoryType,
-} from './types';
+import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { CategoryPropsType, CategoryType, ReduxState } from './types';
 import CreatableSelect from 'react-select/creatable';
 import { ActionMeta } from 'react-select';
-import { ReduxState } from './types';
 
-type SelectFormProps = {
-  categoriesForm: CategoryPropsType[],
-  selectedCategories: CategoryPropsType[],
-  setCategoriesForm: any;
-  setSelectedCategories: any;
+
+interface SelectFormProps {
+    categoriesForm: CategoryPropsType[],
+    selectedCategories: CategoryPropsType[],
+    setCategoriesForm:  Dispatch<SetStateAction<CategoryPropsType[]>>;
+    setSelectedCategories: Dispatch<SetStateAction<CategoryPropsType[]>>;
 }
 
 export default function SelectForm({
@@ -24,7 +17,6 @@ export default function SelectForm({
     setCategoriesForm,
     selectedCategories,
     setSelectedCategories,
-    // setRegisterValues,
 }: SelectFormProps) {
     const { categoriesFromApi } = useSelector((state: ReduxState) => state.categoriesReducer);
 
@@ -34,18 +26,17 @@ export default function SelectForm({
         } catch(error) {
             console.log('Erro na linha 35 de SelectForm', error);
         }
-    }, [categoriesFromApi]);
+    }, [categoriesFromApi, setCategoriesForm]);
 
 
     function handleCreateOption(option: CategoryPropsType) {
         const newCategory = { label: option.label, value: option.value };
-        setCategoriesForm((prevCategories: any) => [...prevCategories, newCategory]);
-        setSelectedCategories((prevCategories: any) => [...prevCategories, newCategory]);
+        setCategoriesForm((prevCategories: CategoryPropsType[]) => [...prevCategories, newCategory]);
+        setSelectedCategories((prevCategories: CategoryPropsType[]) => [...prevCategories, newCategory]);
     }
 
     function handleRemoveOption(removedValue: CategoryPropsType) {
-        setSelectedCategories((prevCategories: any[]) => (prevCategories.filter((category: CategoryPropsType) => category.value !== removedValue.value)));
-        console.log('removou');
+        setSelectedCategories((prevCategories: CategoryPropsType[]) => (prevCategories.filter((category: CategoryPropsType) => category.value !== removedValue.value)));
     }
 
     function handleClear() {

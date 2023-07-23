@@ -9,7 +9,7 @@ export const mockAppState = {
                 id: 2,
                 name: 'Escola',
             },
-        ], // Insira os dados mockados desejados aqui
+        ],
     },
     postsReducer: {
         postsFromApi: [
