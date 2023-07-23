@@ -114,6 +114,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
         <section className="flex flex-col gap-2 bg-gray-200 p-4 rounded shadow text-center justify-center border-solid border border-gray-950">
             { postData && buttons }
             <form
+                name={ editMode ? 'edit-post' :  'new-post' }
                 method="post"
                 onSubmit={ (e) => handleSubmit(e) }
                 className='flex flex-col gap-2 '
@@ -128,7 +129,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             height={ 50 }
                         />
                         <div className='flex flex-col'>
-                            <h2>{ user.display_name }</h2>
+                            <h2>{ user.display_name ? user.display_name : 'sem nome' }</h2>
                             <p>{ user.email }</p>
                         </div>
                     </div>
