@@ -115,7 +115,9 @@ export const updatePostApi = async(token: string, body: {title: string, content:
     });
 };
 
-export const deleteVehicle = async(id: number) => {
-    await axiosInstance.delete(`/post/${id}`);
+export const deletePostApi = async(token: string, id: string) => {
+    await axiosInstance.delete(`/post/${id}`, {
+        headers: { Authorization: token },
+    });
 };
 

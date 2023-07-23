@@ -88,7 +88,6 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                 title: registerValues.title,
                 content: registerValues.content,
             };
-            // console.log('Atualizou', postUpdating);
             dispatch(updatePostOnDatabaseByIdThunkAction(token, postUpdating, postData?.id));
         }
 

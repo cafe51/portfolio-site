@@ -13,6 +13,6 @@ export default function RenderPostCard({ postData, userData }: RenderPostCardPro
     return(
         editMode
             ? <PostForm postData={ postData } userData={ userData } editMode={ editMode } setEditMode={ setEditMode }/>
-            : <PostCard postData={ postData } setEditMode={ setEditMode }/>
+            : <PostCard postData={ postData } userData={ userData } setEditMode={ setEditMode }/>
     );
 }

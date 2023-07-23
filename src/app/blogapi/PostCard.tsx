@@ -1,21 +1,43 @@
-import { PostType } from './types';
+import { useDispatch } from 'react-redux';
+import { Dispatch, PostType, UserType } from './types';
+import { deletePostOnDataBaseThunkAction } from './redux/actions';
 
 type PostCardProps = {
     postData: PostType;
     setEditMode: (mode: boolean) => void;
+    userData: {user: UserType, token: string};
 }
 
 const defaultPhoto = 'https://media.istockphoto.com/id/587805156/pt/vetorial/profile-picture-vector-illustration.jpg?s=1024x1024&w=is&k=20&c=9LD7Wx4KupKWbEddmEAI-HqJT8orG6l_1qPKUE9FvMg=';
 
-export default function PostCard({ postData, setEditMode }: PostCardProps) {
+export default function PostCard({ postData, setEditMode, userData }: PostCardProps) {
+    const { token } = userData;
+    const dispatch: Dispatch = useDispatch();
+
+    const handleDeletePost = () => {
+        if(postData?.id) {
+            console.log('deletou', postData.id);
+            dispatch(deletePostOnDataBaseThunkAction(token, postData.id));
+        }
+    };
+
     return(
         <div className='bg-gray-200 p-4 gap-6 rounded shadow flex flex-col justify-center'>
-            <button
-                className='p-1 rounded shadow-sm bg-blue-500 hover:bg-blue-700 text-white self-end w-1/3'
-                onClick={ () => setEditMode(true) }
-            >
-                Edit
-            </button>
+            <div className='flex justify-between'>
+                <button
+                    className='p-1 rounded shadow-sm bg-red-500 hover:bg-red-700 text-white self-end w-1/3'
+                    onClick={ handleDeletePost }
+                >
+                    delete
+                </button>
+                <button
+                    className='p-1 rounded shadow-sm bg-blue-500 hover:bg-blue-700 text-white self-end w-1/3'
+                    onClick={ () => setEditMode(true) }
+                >
+                    Edit
+                </button>
+            </div>
+
             <div className='flex flex-row items-center justify-between gap-4 w-full '>
                 <div className='flex flex-row items-center gap-4'>
                     <img
