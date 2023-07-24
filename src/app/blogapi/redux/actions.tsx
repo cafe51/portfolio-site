@@ -1,5 +1,5 @@
-import { createCategoryApi, createPostApi, deletePostApi, getCategoriesApi, getPostsApi, updatePostApi } from '../api';
-import { CategoryPropsType, CategoryType, NewPostType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API } from '../types';
+import { createCategoryApi, createPostApi, createUserApi, deletePostApi, getCategoriesApi, getPostsApi, updatePostApi } from '../api';
+import { CategoryPropsType, CategoryType, NewPostType, NewUserType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API } from '../types';
 import { Dispatch } from '../types';
 
 function identifyNewCategories(newCategories: CategoryType[], oldCategories: CategoryType[]) {
@@ -19,6 +19,19 @@ export const updatePostsState = (posts: PostType[], type: string) => ({
     type: type,
     payload: posts,
 });
+
+export const addNewUserFromApiStateThunkAction = (newUser: NewUserType) => {
+    return async() => {
+        try {
+            const data = await createUserApi(newUser);
+            console.log('criado', data);
+            return data;
+        } catch (error) {
+            console.log(error);
+
+        }
+    };
+};
 
 export const updatePostsStateFromApiStateThunkAction = (token: string) => {
     return async(dispatch: Dispatch) => {

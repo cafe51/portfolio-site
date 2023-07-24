@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CategoryType, NewPostType } from './types';
+import { CategoryType, NewPostType, NewUserType } from './types';
 
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3001/',
@@ -69,8 +69,13 @@ export const createPostApi = async(token:string, body: NewPostType) => {
         const { data } = await axiosInstance.post('/post', body, {
             headers: { Authorization: token },
         });
+        console.log('token da req: ', token);
+        console.log('body da req: ', body);
         return data;
+        
     } catch(error: any) {
+        console.log('token da req: ', token);
+        console.log('body da req: ', body);
         console.log('ERRRO', error);
         return error.response;
     }
@@ -121,3 +126,12 @@ export const deletePostApi = async(token: string, id: string) => {
     });
 };
 
+export const createUserApi = async(body: NewUserType) => {
+    try {
+        const { data } = await axiosInstance.post('/user', body);
+        return data;
+    } catch(error: any) {
+        console.log('ERRRO', error.response.status);
+        return error.response.status;
+    }
+};

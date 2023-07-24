@@ -11,6 +11,12 @@ export type UserType = {
   image?: string
 };
 
+export type NewUserType = {
+  displayName: string
+  email: string
+  image?: string
+};
+
 export type CategoryType = {
   id?: number
   name: string

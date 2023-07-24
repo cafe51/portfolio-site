@@ -2,14 +2,15 @@
 import { useDispatch } from 'react-redux';
 import { Dispatch, PostType, UserType } from './types';
 import { deletePostOnDataBaseThunkAction } from './redux/actions';
+import { ProfileImage } from './profileImage';
 
-type PostCardProps = {
+interface PostCardProps {
     postData: PostType;
     setEditMode: (mode: boolean) => void;
     userData: {user: UserType, token: string};
 }
 
-const defaultPhoto = 'https://media.istockphoto.com/id/587805156/pt/vetorial/profile-picture-vector-illustration.jpg?s=1024x1024&w=is&k=20&c=9LD7Wx4KupKWbEddmEAI-HqJT8orG6l_1qPKUE9FvMg=';
+// const defaultPhoto = 'https://media.istockphoto.com/id/587805156/pt/vetorial/profile-picture-vector-illustration.jpg?s=1024x1024&w=is&k=20&c=9LD7Wx4KupKWbEddmEAI-HqJT8orG6l_1qPKUE9FvMg=';
 
 export default function PostCard({ postData, setEditMode, userData }: PostCardProps) {
     const { token } = userData;
@@ -40,13 +41,14 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
 
             <div className='flex flex-row items-center justify-between gap-4 w-full '>
                 <div className='flex flex-row items-center gap-4'>
-                    <img
+                    <ProfileImage imageUrl={ postData.users?.image } />
+                    { /* <img
                         className='w-[50px] h-[50px]'
                         src={ postData.users?.image ? postData.users.image : defaultPhoto }
                         alt='profile-image'
                         width={ 50 }
                         height={ 50 }
-                    />
+                    /> */ }
                     <div className='flex flex-col'>
                         <h2>{ postData.users ? postData.users.display_name : '...' }</h2>
                         <p>{ postData.users ? postData.users.email : '...' }</p>

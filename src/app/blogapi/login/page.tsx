@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { UserType } from '../types';
 import { getUsersApi, loginRequestApi } from '../api';
@@ -11,6 +11,15 @@ export default function Login() {
     const [registerValues, setRegisterValues] = useState({
         email: '',
         password: '',
+    });
+
+    useEffect(() => {
+        const userFromLocalStorage = localStorage.getItem('userData');
+        const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
+        if (userData && userData.token) {
+            router.push('blogapi/');
+        }
+    
     });
 
     const isDisable = () => {
@@ -56,7 +65,7 @@ export default function Login() {
 
                     <label className='flex gap-4' htmlFor="email">
                         <input
-                            type="text"
+                            type="email"
                             name="email"
                             placeholder="insira seu email"
                             minLength={ 6 }
@@ -111,7 +120,7 @@ export default function Login() {
                     </button>
                 </form>
                 <div>
-                    <p>Não tem uma conta? <a href="/blogapi/signup">Cadastre-se</a></p>
+                    <p>Não tem uma conta? <a className='text-blue-500' href="/blogapi/signup">Cadastre-se</a></p>
                 </div>
             </div>
         </section>
