@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Dispatch, UserType } from './types';
-// import CategoriesList from './CategoriesList';
+import { Dispatch, ReduxState, UserType } from './types';
 import { updateCategoriesStateFromApiStateThunkAction, updatePostsStateFromApiStateThunkAction } from './redux/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PostForm from './PostForm';
 import Posts from './Posts';
 import BlogApiMainHeader from './BlogApiMainHeader';
@@ -15,6 +14,7 @@ import { BlogApiNavBar } from './BlogApiNavBar';
 
 export default function Home() {
     const dispatch: Dispatch = useDispatch();
+    const { postsFromApi } = useSelector((state: ReduxState) => state.postsReducer);
     const router = useRouter();
     const [ userData, setUserData ] = useState<{user: UserType, token: string} | null>(null);
 
@@ -43,14 +43,12 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center justify-between p-2 gap-2">
             <BlogApiMainHeader />
-            { /* { userData ? <Settings userData={ userData }/> : 'Loading...' } */ }
             { userData ? <BlogApiNavBar userData={ userData }/> : 'Loading...' }
             
             <div className='flex flex-col gap-4'>
                 { userData ? <ProfilePresentation userData={ userData }/> : 'Loading...' }
-                { /* { userData ? <CategoriesList /> : 'Loading...' } */ }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
-                { userData ? <Posts userData={ userData } /> : 'Loading...' }
+                { userData ? <Posts userData={ userData } posts={ postsFromApi }/> : 'Loading...' }
             </div>
         </main>
     );
