@@ -8,7 +8,7 @@ import { Dispatch, UserType } from '../types';
 import { useDispatch } from 'react-redux';
 import { ProfileImage } from '../profileImage';
 import { getUsersApi } from '../api';
-import BlogApiHeader from '../BlogApiHeader';
+import BlogApiMainHeader from '../BlogApiMainHeader';
 
 export default function SignUp() {
     const dispatch: Dispatch = useDispatch();
@@ -76,7 +76,7 @@ export default function SignUp() {
 
     return(
         <div className='flex flex-col w-full h-full '>
-            <BlogApiHeader />
+            <BlogApiMainHeader />
 
             <section className='flex flex-col items-center justify-center self-center h-full bg-gray-200 rounded shadow md:w-2/5 p-6'>
                 <h1>Crie sua conta</h1>

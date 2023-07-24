@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const BlogApiHeader = () => {
+const BlogApiMainHeader = () => {
 
     return (
         <header id="blogApi" className={ 'bg-gray-800 w-full z-50 px-8 md:px-16 py-2' }>
@@ -18,4 +18,4 @@ const BlogApiHeader = () => {
     );
 };
 
-export default BlogApiHeader;
+export default BlogApiMainHeader;

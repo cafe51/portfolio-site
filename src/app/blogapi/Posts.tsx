@@ -12,7 +12,7 @@ export default function Posts({ userData }: PostProps) {
     const { postsFromApi } = useSelector((state: ReduxState) => state.postsReducer);
 
     return(
-        <section className='flex flex-col items-center gap-2'>
+        <section className='flex flex-col w-full items-center gap-2 p-4'>
             { postsFromApi ? postsFromApi.map((post: PostType) => (<RenderPostCard key={ post.id } postData={ post } userData={ userData }/>)) : 'loading...' }
         </section>
     );

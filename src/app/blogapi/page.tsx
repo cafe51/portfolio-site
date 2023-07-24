@@ -8,7 +8,8 @@ import { updateCategoriesStateFromApiStateThunkAction, updatePostsStateFromApiSt
 import { useDispatch } from 'react-redux';
 import PostForm from './PostForm';
 import Posts from './Posts';
-import BlogApiHeader from './BlogApiHeader';
+import BlogApiMainHeader from './BlogApiMainHeader';
+import BlogApiHeader from '../BlogApiHeader';
 
 
 export default function Home() {
@@ -16,10 +17,6 @@ export default function Home() {
     const router = useRouter();
     const [ userData, setUserData ] = useState<{user: UserType, token: string} | null>(null);
 
-    const handleLogOut = () => {
-        localStorage.removeItem('userData');
-        router.push('blogapi/login');
-    };
 
  
     useEffect(() => {
@@ -43,9 +40,10 @@ export default function Home() {
 
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-2">
-            <BlogApiHeader />
-            <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600' onClick={ handleLogOut }>Sair</button>
+        <main className="flex flex-col items-center justify-between p-2">
+            <BlogApiMainHeader />
+            { userData ? <BlogApiHeader userData={ userData }/> : 'Loading...' }
+            
             <div className='flex flex-col gap-4'>
                 { /* { userData ? <CategoriesList /> : 'Loading...' } */ }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }

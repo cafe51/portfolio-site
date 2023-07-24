@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { UserType } from '../types';
 import { getUsersApi, loginRequestApi } from '../api';
-import BlogApiHeader from '../BlogApiHeader';
+import BlogApiMainHeader from '../BlogApiMainHeader';
 
 export default function Login() {
     const router = useRouter();
@@ -57,7 +57,7 @@ export default function Login() {
     
     return(
         <div className='flex flex-col h-full'>
-            <BlogApiHeader />
+            <BlogApiMainHeader />
             <section className='w-full h-full flex flex-col justify-center items-center  '>
                 <div className='bg-gray-200 rounded shadow md:w-2/5'>
                     <form 
