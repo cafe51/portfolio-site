@@ -10,8 +10,6 @@ interface PostCardProps {
     userData: {user: UserType, token: string};
 }
 
-// const defaultPhoto = 'https://media.istockphoto.com/id/587805156/pt/vetorial/profile-picture-vector-illustration.jpg?s=1024x1024&w=is&k=20&c=9LD7Wx4KupKWbEddmEAI-HqJT8orG6l_1qPKUE9FvMg=';
-
 export default function PostCard({ postData, setEditMode, userData }: PostCardProps) {
     const { token } = userData;
     const dispatch: Dispatch = useDispatch();
@@ -24,7 +22,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
 
     return(
         <div className='bg-gray-200 p-4 gap-6 rounded shadow flex flex-col justify-center'>
-            <div className='flex justify-between'>
+            { postData.user_id === userData.user.id && <div className='flex justify-between'>
                 <button
                     className='p-1 rounded shadow-sm bg-red-500 hover:bg-red-700 text-white self-end w-1/3'
                     onClick={ handleDeletePost }
@@ -37,18 +35,11 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                 >
                     Edit
                 </button>
-            </div>
+            </div> }
 
             <div className='flex flex-row items-center justify-between gap-4 w-full '>
                 <div className='flex flex-row items-center gap-4'>
                     <ProfileImage imageUrl={ postData.users?.image } />
-                    { /* <img
-                        className='w-[50px] h-[50px]'
-                        src={ postData.users?.image ? postData.users.image : defaultPhoto }
-                        alt='profile-image'
-                        width={ 50 }
-                        height={ 50 }
-                    /> */ }
                     <div className='flex flex-col'>
                         <h2>{ postData.users ? postData.users.display_name : '...' }</h2>
                         <p>{ postData.users ? postData.users.email : '...' }</p>

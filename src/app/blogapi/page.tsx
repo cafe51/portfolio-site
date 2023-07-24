@@ -3,11 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Dispatch, UserType } from './types';
-import CategoriesList from './CategoriesList';
+// import CategoriesList from './CategoriesList';
 import { updateCategoriesStateFromApiStateThunkAction, updatePostsStateFromApiStateThunkAction } from './redux/actions';
 import { useDispatch } from 'react-redux';
 import PostForm from './PostForm';
 import Posts from './Posts';
+import BlogApiHeader from './BlogApiHeader';
 
 
 export default function Home() {
@@ -43,9 +44,10 @@ export default function Home() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-2">
+            <BlogApiHeader />
             <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600' onClick={ handleLogOut }>Sair</button>
             <div className='flex flex-col gap-4'>
-                { userData ? <CategoriesList /> : 'Loading...' }
+                { /* { userData ? <CategoriesList /> : 'Loading...' } */ }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
                 { userData ? <Posts userData={ userData } /> : 'Loading...' }
             </div>

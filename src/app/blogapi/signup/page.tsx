@@ -8,6 +8,7 @@ import { Dispatch, UserType } from '../types';
 import { useDispatch } from 'react-redux';
 import { ProfileImage } from '../profileImage';
 import { getUsersApi } from '../api';
+import BlogApiHeader from '../BlogApiHeader';
 
 export default function SignUp() {
     const dispatch: Dispatch = useDispatch();
@@ -74,9 +75,10 @@ export default function SignUp() {
     };
 
     return(
-        <div className='w-full h-screen flex flex-col justify-center items-center'>
+        <div className='flex flex-col w-full h-full '>
+            <BlogApiHeader />
 
-            <section className='flex flex-col items-center justify-center bg-gray-200 rounded shadow md:w-2/5 p-6'>
+            <section className='flex flex-col items-center justify-center self-center h-full bg-gray-200 rounded shadow md:w-2/5 p-6'>
                 <h1>Crie sua conta</h1>
                 <div className='flex flex-col items-center gap-2 text-sm'>
                     <ProfileImage imageUrl={ registerValues.image } signUp={ true } />
@@ -202,7 +204,6 @@ export default function SignUp() {
                                     if(registerValues.password !== registerValues.passwordAgain) {
                                         target.setCustomValidity('Repita a mesma senha');
                                     }
-                                    // target.setCustomValidity('a senha deve ter entre 6 e 16 caracteres.');
                                 } }
                                 onInput={ event => {
                                     const target = event.target as HTMLInputElement;

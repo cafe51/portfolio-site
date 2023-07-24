@@ -3,7 +3,7 @@ import CarShop from './CarShop';
 
 export default function Home() {
     return (
-        <div className='w-full flex flex-col items-center justify-center'>
+        <div className='w-full flex flex-col h-full '>
             <CarShopHeader />
             <section className='w-full bg-gray-200 flex flex-col items-center px-4 pt-4'>
                 <div className='flex flex-col items-center justify-center text-center md:w-3/5 '>
