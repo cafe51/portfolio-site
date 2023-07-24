@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Dispatch, PostType, UserType } from './types';
 import { deletePostOnDataBaseThunkAction } from './redux/actions';
 import { ProfileImage } from './profileImage';
+import Link from 'next/link';
 
 interface PostCardProps {
     postData: PostType;
@@ -39,7 +40,9 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
 
             <div className='flex flex-row items-center justify-between gap-4 w-full '>
                 <div className='flex flex-row items-center gap-4'>
-                    <ProfileImage imageUrl={ postData.users?.image } />
+                    <Link href={ `blogapi/${postData.user_id}` }>
+                        <ProfileImage imageUrl={ postData.users?.image } />
+                    </Link>
                     <div className='flex flex-col'>
                         <h2>{ postData.users ? postData.users.display_name : '...' }</h2>
                         <p>{ postData.users ? postData.users.email : '...' }</p>

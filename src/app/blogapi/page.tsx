@@ -9,7 +9,8 @@ import { useDispatch } from 'react-redux';
 import PostForm from './PostForm';
 import Posts from './Posts';
 import BlogApiMainHeader from './BlogApiMainHeader';
-import BlogApiHeader from '../BlogApiHeader';
+import { ProfilePresentation } from './ProfilePresentation';
+import { BlogApiNavBar } from './BlogApiNavBar';
 
 
 export default function Home() {
@@ -40,11 +41,13 @@ export default function Home() {
 
 
     return (
-        <main className="flex flex-col items-center justify-between p-2">
+        <main className="flex flex-col items-center justify-between p-2 gap-2">
             <BlogApiMainHeader />
-            { userData ? <BlogApiHeader userData={ userData }/> : 'Loading...' }
+            { /* { userData ? <Settings userData={ userData }/> : 'Loading...' } */ }
+            { userData ? <BlogApiNavBar userData={ userData }/> : 'Loading...' }
             
             <div className='flex flex-col gap-4'>
+                { userData ? <ProfilePresentation userData={ userData }/> : 'Loading...' }
                 { /* { userData ? <CategoriesList /> : 'Loading...' } */ }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
                 { userData ? <Posts userData={ userData } /> : 'Loading...' }

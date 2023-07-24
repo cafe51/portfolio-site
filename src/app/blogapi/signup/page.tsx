@@ -64,13 +64,15 @@ export default function SignUp() {
         if(response === 409) { setErrorMessage('Email já cadastro');}
         if(response === 400) { setErrorMessage('Insira um email válido');}
 
-        const allUsers = await getUsersApi(response.token);
-        const user = allUsers.find((myUser: UserType) => myUser.email === registerValues.email);
-
-        const userData = { user, token: response.token };
-        localStorage.setItem('userData', JSON.stringify(userData));
-
-        router.push('/blogapi');
+        if(response.token) {
+            const allUsers = await getUsersApi(response.token);
+            const user = allUsers.find((myUser: UserType) => myUser.email === registerValues.email);
+    
+            const userData = { user, token: response.token };
+            localStorage.setItem('userData', JSON.stringify(userData));
+    
+            router.push('/blogapi');
+        }
 
     };
 
@@ -126,7 +128,7 @@ export default function SignUp() {
                                 type='text'
                                 className="text-center w-full text-xl"
                                 placeholder="nome"
-                                minLength={ 2 }
+                                minLength={ 8 }
                                 maxLength={ 16 }
                                 required
                                 onInvalid={ event => {

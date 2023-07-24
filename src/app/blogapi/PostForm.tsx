@@ -15,7 +15,6 @@ import {
     addNewPostFromApiStateThunkAction, 
     updatePostOnDatabaseByIdThunkAction,
 } from './redux/actions';
-import { ProfileImage } from './profileImage';
 
 interface PostFormProps {
     postData?: PostType;
@@ -128,7 +127,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                 onSubmit={ (e) => handleSubmit(e) }
                 className='flex flex-col gap-2 '
             >
-                <div className='flex flex-row items-center justify-between gap-4 w-full '>
+                { /* <div className='flex flex-row items-center justify-between gap-4 w-full '>
                     <div className='flex flex-row items-center gap-4'>
                         <ProfileImage imageUrl={ user.image } />
                         <div className='flex flex-col'>
@@ -136,7 +135,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             <p>{ user.email }</p>
                         </div>
                     </div>
-                </div>
+                </div> */ }
                
                 <div className="px-4 flex flex-col gap-2">
                     <label className='' htmlFor="title">

@@ -24,7 +24,6 @@ export const addNewUserFromApiStateThunkAction = (newUser: NewUserType) => {
     return async() => {
         try {
             const data = await createUserApi(newUser);
-            console.log('criado', data);
             return data;
         } catch (error) {
             console.log(error);

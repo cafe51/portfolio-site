@@ -137,7 +137,7 @@ export const createUserApi = async(body: NewUserType) => {
         const { data } = await axiosInstance.post('/user', body);
         return data;
     } catch(error: any) {
-        console.log('ERRRO', error.response.status);
+        console.log('ERRRO', error.response);
         return error.response.status;
     }
 };

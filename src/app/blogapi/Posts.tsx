@@ -3,8 +3,7 @@ import { PostType, ReduxState, UserType } from './types';
 import { useSelector } from 'react-redux';
 import RenderPostCard from './RenderPostCard';
 
-type PostProps = {
-//   postData?: PostType;
+interface PostProps {
   userData: {user: UserType, token: string};
 }
 

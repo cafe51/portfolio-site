@@ -4,11 +4,11 @@ import { ProfileImage } from './blogapi/profileImage';
 import { useState } from 'react';
 import { deleteAccountApi } from './blogapi/api';
 
-interface BlogApiHeaderProps {
+interface SettingsProps {
     userData: {user: UserType, token: string};
 }
 
-export default function BlogApiHeader({ userData }: BlogApiHeaderProps) {
+export default function Settings({ userData }: SettingsProps) {
     const { user, token } = userData;
     const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
