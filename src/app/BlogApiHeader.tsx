@@ -2,13 +2,14 @@ import { useRouter } from 'next/navigation';
 import { UserType } from './blogapi/types';
 import { ProfileImage } from './blogapi/profileImage';
 import { useState } from 'react';
+import { deleteAccountApi } from './blogapi/api';
 
 interface BlogApiHeaderProps {
     userData: {user: UserType, token: string};
 }
 
 export default function BlogApiHeader({ userData }: BlogApiHeaderProps) {
-    const { user } = userData;
+    const { user, token } = userData;
     const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [deleteWarning, setDeleteWarning] = useState(false);
@@ -18,10 +19,11 @@ export default function BlogApiHeader({ userData }: BlogApiHeaderProps) {
         router.push('blogapi/login');
     };
 
-    const handleDeleteAccount = () => {
-        console.log('a');
-        setDeleteWarning(true);
-        setIsMenuOpen(false);
+    const handleDeleteAccount = async() => {
+        await deleteAccountApi(token);
+        localStorage.removeItem('userData');
+        router.push('blogapi/login');
+        
     };
 
 
@@ -33,8 +35,18 @@ export default function BlogApiHeader({ userData }: BlogApiHeaderProps) {
                     <h1>Tem certeza?</h1>
                     <p>Todos as suas postagens serão excluídas</p>
                     <div className='flex gap-2'>
-                        <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600 w-full'>Sim</button>
-                        <button className='bg-green-400 p-2 rounded shadow-md text-white hover:bg-green-600 w-full' onClick={ () => setDeleteWarning(false) }>Voltar</button>
+                        <button
+                            className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600 w-full'
+                            onClick={ handleDeleteAccount }
+                        >
+                            Sim
+                        </button>
+                        <button
+                            className='bg-green-400 p-2 rounded shadow-md text-white hover:bg-green-600 w-full'
+                            onClick={ () => setDeleteWarning(false) }
+                        >
+                            Voltar
+                        </button>
                     </div>
                 </div>
             }
@@ -48,8 +60,21 @@ export default function BlogApiHeader({ userData }: BlogApiHeaderProps) {
                 isMenuOpen &&
             <div className='flex flex-col items-center gap-2 justify-between absolute bg-white p-4'>
                 <ProfileImage imageUrl={ user.image } />
-                <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600 w-full' onClick={ handleLogOut }>Sair</button>
-                <button className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600 w-full' onClick={ handleDeleteAccount }>Excluir Minha Conta</button>
+                <button
+                    className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600 w-full'
+                    onClick={ handleLogOut }
+                >
+                    Sair
+                </button>
+                <button
+                    className='bg-red-400 p-2 rounded shadow-md text-white hover:bg-red-600 w-full'
+                    onClick={ () => {
+                        setDeleteWarning(true);
+                        setIsMenuOpen(false);
+                    } }
+                >
+                    Excluir Minha Conta
+                </button>
                 <button className='bg-blue-400 p-2 rounded shadow-md text-white hover:bg-blue-600 w-full' onClick={ () => setIsMenuOpen(false) }>Fechar</button>
             </div>
             }

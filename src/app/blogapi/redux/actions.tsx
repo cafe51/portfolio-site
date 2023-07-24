@@ -54,6 +54,12 @@ export const deletePostOnDataBaseThunkAction = (token: string, id: string) => {
     };
 };
 
+// export const deleteMyAccountOnDataBaseThunkAction = (token: string) => {
+//     return async() => {
+//         await deleteAccountApi(token);
+//     };
+// };
+
 export const addNewPostFromApiStateThunkAction = (token: string, newPost: NewPostType) => {
     return async(dispatch: Dispatch) => {
         try {

@@ -126,6 +126,12 @@ export const deletePostApi = async(token: string, id: string) => {
     });
 };
 
+export const deleteAccountApi = async(token: string) => {
+    await axiosInstance.delete('/user/me', {
+        headers: { Authorization: token },
+    });
+};
+
 export const createUserApi = async(body: NewUserType) => {
     try {
         const { data } = await axiosInstance.post('/user', body);
