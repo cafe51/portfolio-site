@@ -42,11 +42,11 @@ export default function Home() {
 
 
     return (
-        <main className="container flex flex-col items-center justify-between gap-2 p-2 bg-yellow-300">
+        <main className="container flex flex-col items-center self-center justify-between gap-2 p-2 m-auto justify-self-center">
             <BlogApiMainHeader />
             { userData ? <BlogApiNavBar userData={ userData }/> : 'Loading...' }
             
-            <div className='container flex flex-col gap-4'>
+            <div className='container flex flex-col gap-4 md:w-1/2'>
                 { userData ? <ProfilePresentation userData={ userData.user }/> : 'Loading...' }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
                 { userData ? <Posts userData={ userData } posts={ postsFromApi }/> : 'Loading...' }

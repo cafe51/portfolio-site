@@ -24,7 +24,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
     };
 
     return(
-        <div className='flex flex-col justify-center gap-6 p-4 bg-gray-200 rounded shadow'>
+        <div className='container flex flex-col justify-center gap-6 p-4 bg-gray-200 rounded shadow'>
             { postData.user_id === userData.user.id && <div className='flex justify-between'>
                 <button
                     className='self-end w-1/3 p-1 text-white bg-red-500 rounded shadow-sm hover:bg-red-700'

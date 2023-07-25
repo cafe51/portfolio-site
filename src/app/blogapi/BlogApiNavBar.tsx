@@ -23,7 +23,7 @@ export function BlogApiNavBar({ userData }: BlogApiNavBarProps) {
     };
     
     return(
-        <nav className='container flex items-center justify-between w-full p-2 bg-gray-200'>
+        <nav className='container flex items-center justify-between w-full p-2 bg-gray-200 md:justify-evenly'>
             <div className=''>
                 <button
                     className='p-2 text-white bg-blue-400 rounded shadow-md hover:bg-blue-600'
