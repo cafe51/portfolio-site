@@ -29,7 +29,7 @@ export type PostType = {
   user_id: number
   published?: string
   updated?: string
-  users?: UserType
+  users: UserType
   categories: CategoryType[]
 };
 
