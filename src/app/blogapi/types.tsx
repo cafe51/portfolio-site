@@ -26,7 +26,7 @@ export type PostType = {
   id?: string
   title: string
   content: string
-  user_id?: number
+  user_id: number
   published?: string
   updated?: string
   users?: UserType

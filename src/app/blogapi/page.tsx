@@ -46,7 +46,7 @@ export default function Home() {
             { userData ? <BlogApiNavBar userData={ userData }/> : 'Loading...' }
             
             <div className='flex flex-col gap-4'>
-                { userData ? <ProfilePresentation userData={ userData }/> : 'Loading...' }
+                { userData ? <ProfilePresentation userData={ userData.user }/> : 'Loading...' }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
                 { userData ? <Posts userData={ userData } posts={ postsFromApi }/> : 'Loading...' }
             </div>
