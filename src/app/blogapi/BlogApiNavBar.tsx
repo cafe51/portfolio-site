@@ -23,8 +23,8 @@ export function BlogApiNavBar({ userData }: BlogApiNavBarProps) {
     };
     
     return(
-        <nav className='container flex items-center bg-gray-200 justify-evenly'>
-            <div className='p-4'>
+        <nav className='container flex items-center justify-between w-full p-2 bg-gray-200'>
+            <div className=''>
                 <button
                     className='p-2 text-white bg-blue-400 rounded shadow-md hover:bg-blue-600'
                     onClick={ () => router.push('blogapi/') }
@@ -32,7 +32,7 @@ export function BlogApiNavBar({ userData }: BlogApiNavBarProps) {
                     <AiFillHome size={ 20 }/>
                 </button>
             </div>
-            <div className='p-4'>
+            <div className=''>
                 <form onSubmit={ handleSearch } className="flex items-center justify-center"> 
                     <input
                         className='text-center md:text-2xl'
@@ -46,9 +46,7 @@ export function BlogApiNavBar({ userData }: BlogApiNavBarProps) {
                     </button>
                 </form>
             </div>
-            <div>
-                <Settings userData={ userData }/>
-            </div>
+            <Settings userData={ userData }/>
         </nav>
     );
 }

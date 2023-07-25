@@ -29,7 +29,7 @@ export default function Settings({ userData }: SettingsProps) {
 
 
     return (
-        <section className='flex flex-col items-center p-4'>
+        <div className='flex flex-col items-center'>
             {
                 deleteWarning && 
                 <div className='absolute flex flex-col items-center gap-2 p-4 text-center bg-white border border-red-500'>
@@ -80,6 +80,6 @@ export default function Settings({ userData }: SettingsProps) {
             </div>
             }
 
-        </section>
+        </div>
     );
 }

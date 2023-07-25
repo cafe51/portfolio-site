@@ -127,9 +127,10 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                 method="post"
                 onSubmit={ (e) => handleSubmit(e) }
             >
-                <div className="flex flex-col gap-2 px-4">
+                <div className="flex flex-col gap-4 px-4">
                     <label className='' htmlFor="title">
                         <input
+                            className='w-full p-1 text-3xl text-center'
                             type="text"
                             name="title"
                             placeholder="Título"
@@ -145,7 +146,6 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             } }
                             value={ registerValues.title }
                             onChange={ handleChange }
-                            className='w-1/2 p-1 text-3xl text-center'
                         />
                     </label>
                     <label className='' htmlFor="content">
