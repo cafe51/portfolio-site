@@ -2,14 +2,14 @@
 'use client';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch, PostType, ReduxState, UserType } from '../types';
+import { Dispatch, PostType, ReduxState, UserType } from '../../types';
 import { useEffect, useState } from 'react';
-import Posts from '../Posts';
+import Posts from '../../Posts';
 import { useRouter } from 'next/navigation';
-import { updateCategoriesStateFromApiStateThunkAction, updatePostsStateFromApiStateThunkAction } from '../redux/actions';
-import { BlogApiNavBar } from '../BlogApiNavBar';
-import BlogApiMainHeader from '../BlogApiMainHeader';
-import { ProfilePresentation } from '../ProfilePresentation';
+import { updateCategoriesStateFromApiStateThunkAction, updatePostsStateFromApiStateThunkAction } from '../../redux/actions';
+import { BlogApiNavBar } from '../../BlogApiNavBar';
+import BlogApiMainHeader from '../../BlogApiMainHeader';
+import { ProfilePresentation } from '../../ProfilePresentation';
 
 export default function UserPosts({ params }: { params: { id: string } }) {
     const dispatch: Dispatch = useDispatch();

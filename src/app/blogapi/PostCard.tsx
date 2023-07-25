@@ -22,25 +22,25 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
     };
 
     return(
-        <div className='bg-gray-200 p-4 gap-6 rounded shadow flex flex-col justify-center'>
+        <div className='flex flex-col justify-center gap-6 p-4 bg-gray-200 rounded shadow'>
             { postData.user_id === userData.user.id && <div className='flex justify-between'>
                 <button
-                    className='p-1 rounded shadow-sm bg-red-500 hover:bg-red-700 text-white self-end w-1/3'
+                    className='self-end w-1/3 p-1 text-white bg-red-500 rounded shadow-sm hover:bg-red-700'
                     onClick={ handleDeletePost }
                 >
                     delete
                 </button>
                 <button
-                    className='p-1 rounded shadow-sm bg-blue-500 hover:bg-blue-700 text-white self-end w-1/3'
+                    className='self-end w-1/3 p-1 text-white bg-blue-500 rounded shadow-sm hover:bg-blue-700'
                     onClick={ () => setEditMode(true) }
                 >
                     Edit
                 </button>
             </div> }
 
-            <div className='flex flex-row items-center justify-between gap-4 w-full '>
+            <div className='flex flex-row items-center justify-between w-full gap-4 '>
                 <div className='flex flex-row items-center gap-4'>
-                    <Link href={ `blogapi/${postData.user_id}` }>
+                    <Link href={ `blogapi/user/${postData.user_id}` }>
                         <ProfileImage imageUrl={ postData.users?.image } />
                     </Link>
                     <div className='flex flex-col'>
@@ -61,12 +61,13 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                 <div className='flex'>
                     {
                         postData.categories.map((category) => (
-                            <div
+                            <Link
+                                href={ `blogapi/tag/${category.id}` }
                                 key={ category.id }
-                                className="bg-blue-900 text-white text-sm py-1 px-2 mr-2 mb-2 rounded"
+                                className="px-2 py-1 mb-2 mr-2 text-sm text-white bg-blue-900 rounded"
                             >
                                 { category.name }
-                            </div>
+                            </Link>
                         ))
                     }
                 </div>
