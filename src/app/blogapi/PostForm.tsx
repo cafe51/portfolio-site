@@ -119,7 +119,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
     );
 
     return (
-        <section className="flex flex-col gap-2 p-4 text-center bg-gray-200 border border-solid rounded shadow border-gray-950">
+        <section className="flex flex-col gap-2 p-4 text-center bg-gray-200 rounded shadow">
             { postData && buttons }
             <form
                 className='flex flex-col gap-2 '
