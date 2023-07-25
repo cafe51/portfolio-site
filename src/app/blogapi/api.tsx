@@ -103,7 +103,7 @@ export const getPostByIdApi = async(token: string, id: number) => {
     }
 };
 
-export const getPostByQueryApi = async(token: string, query: number) => {
+export const getPostByQueryApi = async(token: string, query: string) => {
     try {
         const { data } = await axiosInstance.get(`/post/search/?q=${query}`, {
             headers: { Authorization: token },

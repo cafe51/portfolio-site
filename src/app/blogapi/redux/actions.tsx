@@ -1,4 +1,4 @@
-import { createCategoryApi, createPostApi, createUserApi, deletePostApi, getCategoriesApi, getPostsApi, updatePostApi } from '../api';
+import { createCategoryApi, createPostApi, createUserApi, deletePostApi, getCategoriesApi, getPostByQueryApi, getPostsApi, updatePostApi } from '../api';
 import { CategoryPropsType, CategoryType, NewPostType, NewUserType, PostType, UPDATE_CATEGORIES_FROM_API, UPDATE_POSTS_FROM_API } from '../types';
 import { Dispatch } from '../types';
 
@@ -39,6 +39,15 @@ export const updatePostsStateFromApiStateThunkAction = (token: string) => {
     };
 };
 
+export const updatePostsStateByQueryFromApiStateThunkAction = (token: string, query: string) => {
+    return async(dispatch: Dispatch) => {
+        const postsFromApi = await getPostByQueryApi(token, query);
+        console.log('QUERY: ', query);
+        console.log('POSTS BY QUERY: ', postsFromApi);
+        dispatch(updatePostsState(postsFromApi, UPDATE_POSTS_FROM_API));
+    };
+};
+
 export const updatePostOnDatabaseByIdThunkAction = (token: string, body: {title: string, content: string}, id: string) => {
     return async(dispatch: Dispatch) => {
         await updatePostApi(token, body, id);
@@ -53,11 +62,6 @@ export const deletePostOnDataBaseThunkAction = (token: string, id: string) => {
     };
 };
 
-// export const deleteMyAccountOnDataBaseThunkAction = (token: string) => {
-//     return async() => {
-//         await deleteAccountApi(token);
-//     };
-// };
 
 export const addNewPostFromApiStateThunkAction = (token: string, newPost: NewPostType) => {
     return async(dispatch: Dispatch) => {

@@ -104,13 +104,13 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
     const buttons = (
         <div className='flex justify-between'>
             <button
-                className='p-1 rounded shadow-sm bg-red-500 hover:bg-red-700 text-white self-end w-1/3'
+                className='self-end w-1/3 p-1 text-white bg-red-500 rounded shadow-sm hover:bg-red-700'
                 onClick={ () => setEditMode ? setEditMode(false) : {} }
             >
                 Cancel
             </button>
             <button
-                className='p-1 rounded shadow-sm bg-green-500 hover:bg-green-700 text-white self-end w-1/3'
+                className='self-end w-1/3 p-1 text-white bg-green-500 rounded shadow-sm hover:bg-green-700'
                 onClick={ handleUpdatePost }
             >
                 Confirm
@@ -119,7 +119,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
     );
 
     return (
-        <section className="flex flex-col gap-2 bg-gray-200 p-4 rounded shadow text-center justify-center border-solid border border-gray-950">
+        <section className="flex flex-col justify-center gap-2 p-4 text-center bg-gray-200 border border-solid rounded shadow border-gray-950">
             { postData && buttons }
             <form
                 name={ editMode ? 'edit-post' :  'new-post' }
@@ -127,17 +127,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                 onSubmit={ (e) => handleSubmit(e) }
                 className='flex flex-col gap-2 '
             >
-                { /* <div className='flex flex-row items-center justify-between gap-4 w-full '>
-                    <div className='flex flex-row items-center gap-4'>
-                        <ProfileImage imageUrl={ user.image } />
-                        <div className='flex flex-col'>
-                            <h2>{ user.display_name ? user.display_name : 'sem nome' }</h2>
-                            <p>{ user.email }</p>
-                        </div>
-                    </div>
-                </div> */ }
-               
-                <div className="px-4 flex flex-col gap-2">
+                <div className="flex flex-col gap-2 px-4">
                     <label className='' htmlFor="title">
                         <input
                             type="text"
@@ -155,7 +145,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             } }
                             value={ registerValues.title }
                             onChange={ handleChange }
-                            className='w-1/2 text-center p-1 text-3xl'
+                            className='w-1/2 p-1 text-3xl text-center'
                         />
                     </label>
                     <label className='' htmlFor="content">
@@ -179,7 +169,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             className='w-full p-2'
                         />
                     </label>
-                    { isDisable() ? <p className='text-red-600 text-sm'>Preencha todos os campos</p> : '' }
+                    { isDisable() ? <p className='text-sm text-red-600'>Preencha todos os campos</p> : '' }
                     
                 </div>
                 {
@@ -197,7 +187,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                                 registerValues.categories.map((category) => (
                                     <div
                                         key={ category.id }
-                                        className="bg-blue-900 text-white text-sm py-1 px-2 mr-2 mb-2 rounded"
+                                        className="px-2 py-1 mb-2 mr-2 text-sm text-white bg-blue-900 rounded"
                                     >
                                         { category.name }
                                     </div>
@@ -205,7 +195,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             }
                         </div>)
                 }
-                <div className="flex w-full justify-end">
+                <div className="flex justify-end w-full">
                     { !postData && (
                         <button 
                             type="submit"
