@@ -20,7 +20,6 @@ export default function UserPosts({ params }: { params: { id: string } }) {
 
     useEffect(() => {
         if (userData && userData.token) {
-            // dispatch(updateCategoriesStateFromApiStateThunkAction(userData.token));
             dispatch(updatePostsStateFromApiStateThunkAction(userData.token));
         }
 

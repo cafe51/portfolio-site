@@ -4,12 +4,59 @@ import { Dispatch, PostType, UserType } from './types';
 import { deletePostOnDataBaseThunkAction } from './redux/actions';
 import { ProfileImage } from './profileImage';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface PostCardProps {
     postData: PostType;
     setEditMode: (mode: boolean) => void;
     userData: {user: UserType, token: string};
 }
+
+interface DataFormatadaProps {
+    dataISO: string;
+  }
+
+function formatarData(dataISO: string, agora: Date): string {
+    const data = new Date(dataISO);
+
+    const diferencaEmMs = agora.getTime() - data.getTime();
+    const diferencaEmMinutos = Math.floor(diferencaEmMs / (1000 * 60));
+    const diferencaEmHoras = Math.floor(diferencaEmMs / (1000 * 60 * 60));
+
+    if (diferencaEmMinutos === 0) {
+        return 'Agora';
+    } else if (diferencaEmMinutos < 60) {
+        return `${diferencaEmMinutos} minutos atrás`;
+    } else if (diferencaEmHoras < 24) {
+        return `${diferencaEmHoras} horas atrás`;
+    } else {
+        const opcoes: Intl.DateTimeFormatOptions = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone: 'America/Sao_Paulo',
+        };
+
+        return new Intl.DateTimeFormat('pt-BR', opcoes).format(data);
+    }
+} 
+
+function DataFormatada({ dataISO }: DataFormatadaProps) {
+    const [agora, setAgora] = useState(new Date());
+  
+    useEffect(() => {
+        const timerId = setInterval(() => {
+            setAgora(new Date());
+        }, 60 * 1000);
+  
+        return () => clearInterval(timerId);
+    }, []);
+  
+    return <p>{ formatarData(dataISO, agora) }</p>;
+}
+  
 
 export default function PostCard({ postData, setEditMode, userData }: PostCardProps) {
     const { token } = userData;
@@ -48,12 +95,13 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                         <p>{ postData.users ? postData.users.email : '...' }</p>
                     </div>
                 </div>
-                <div>
-                    <p className=''>{ postData.published }</p>
-                </div>
+
             </div>
             <div className='flex flex-col items-center gap-4'>
-                <h1>{ postData.title }</h1>
+                <div className='text-center'>
+                    <h1>{ postData.title }</h1>
+                    <p className=''>{ <DataFormatada dataISO={ postData.published ? postData.published : '' } /> }</p>
+                </div>
                 
                 <div className=''>
                     <p>{ postData.content }</p>
@@ -71,7 +119,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                         ))
                     }
                 </div>
-                <p>Atualizado pela última vez em: { postData.published }</p>
+                <p>Atualizado pela última vez: { <DataFormatada dataISO={ postData.updated ? postData.updated : '' } /> }</p>
             </div>
         </div>
     );

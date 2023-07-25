@@ -2,7 +2,8 @@ import { useState, FormEvent } from 'react';
 import Settings from '../Settings';
 import { UserType } from './types';
 import { useRouter } from 'next/navigation';
-import { FaSearch } from 'react-icons/fa'; // Adicione a biblioteca de ícones react-icons caso ainda não tenha.
+import { FaSearch } from 'react-icons/fa'; 
+import { AiFillHome } from 'react-icons/ai';
 
 interface BlogApiNavBarProps {
     userData: {user: UserType, token: string};
@@ -22,25 +23,25 @@ export function BlogApiNavBar({ userData }: BlogApiNavBarProps) {
     };
     
     return(
-        <nav className='flex items-center w-full bg-gray-200 justify-evenly'>
+        <nav className='container flex items-center bg-gray-200 justify-evenly'>
             <div className='p-4'>
                 <button
                     className='p-2 text-white bg-blue-400 rounded shadow-md hover:bg-blue-600'
                     onClick={ () => router.push('blogapi/') }
                 >
-                    Home
+                    <AiFillHome size={ 20 }/>
                 </button>
             </div>
             <div className='p-4'>
                 <form onSubmit={ handleSearch } className="flex items-center justify-center"> 
                     <input
-                        className='text-2xl text-center'
+                        className='text-center md:text-2xl'
                         type='text'
                         placeholder='Pesquisar'
                         onChange={ handleChange }
                         value={ searchValue }
                     />
-                    <button type="submit" className="ml-2 text-gray-500 hover:text-gray-700">
+                    <button type="submit" className="text-gray-500 hover:text-gray-700">
                         <FaSearch size={ 20 }/>
                     </button>
                 </form>

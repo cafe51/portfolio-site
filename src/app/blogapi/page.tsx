@@ -11,6 +11,8 @@ import BlogApiMainHeader from './BlogApiMainHeader';
 import { ProfilePresentation } from './ProfilePresentation';
 import { BlogApiNavBar } from './BlogApiNavBar';
 
+
+
 export default function Home() {
     const dispatch: Dispatch = useDispatch();
     const { postsFromApi } = useSelector((state: ReduxState) => state.postsReducer);
@@ -40,11 +42,11 @@ export default function Home() {
 
 
     return (
-        <main className="flex flex-col items-center justify-between gap-2 p-2">
+        <main className="container flex flex-col items-center justify-between gap-2 p-2 bg-yellow-300">
             <BlogApiMainHeader />
             { userData ? <BlogApiNavBar userData={ userData }/> : 'Loading...' }
             
-            <div className='flex flex-col gap-4'>
+            <div className='container flex flex-col gap-4'>
                 { userData ? <ProfilePresentation userData={ userData.user }/> : 'Loading...' }
                 { userData ? <PostForm userData={ userData }/> : 'Loading...' }
                 { userData ? <Posts userData={ userData } posts={ postsFromApi }/> : 'Loading...' }

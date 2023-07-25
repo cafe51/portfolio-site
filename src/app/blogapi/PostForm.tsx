@@ -119,13 +119,13 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
     );
 
     return (
-        <section className="flex flex-col justify-center gap-2 p-4 text-center bg-gray-200 border border-solid rounded shadow border-gray-950">
+        <section className="flex flex-col gap-2 p-4 text-center bg-gray-200 border border-solid rounded shadow border-gray-950">
             { postData && buttons }
             <form
+                className='flex flex-col gap-2 '
                 name={ editMode ? 'edit-post' :  'new-post' }
                 method="post"
                 onSubmit={ (e) => handleSubmit(e) }
-                className='flex flex-col gap-2 '
             >
                 <div className="flex flex-col gap-2 px-4">
                     <label className='' htmlFor="title">
@@ -150,7 +150,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                     </label>
                     <label className='' htmlFor="content">
                         <textarea
-
+                            className='w-full p-2'
                             name="content"
                             minLength={ 1 }
                             maxLength={ 300 }
@@ -166,7 +166,6 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             placeholder="Escreva aqui sua postagem"
                             value={ registerValues.content }
                             onChange={ handleChange }
-                            className='w-full p-2'
                         />
                     </label>
                     { isDisable() ? <p className='text-sm text-red-600'>Preencha todos os campos</p> : '' }
