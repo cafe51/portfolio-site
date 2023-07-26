@@ -80,7 +80,7 @@ export default function Settings({ userData }: SettingsProps) {
             {
                 isMenuOpen &&
             <div ref={ menuRef } className='container md:w-auto fixed flex flex-col items-center justify-between w-full gap-2 p-8 bg-gray-200 rounded shadow-lg right-0.5 z-50'>
-                <ProfileImage imageUrl={ user.image } />
+                <ProfileImage height='h-[50px]' width='w-[50px]' imageUrl={ user.image } />
                 <button
                     className='w-full p-2 text-white bg-red-400 rounded shadow-md hover:bg-red-600'
                     onClick={ handleLogOut }

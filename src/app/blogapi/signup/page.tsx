@@ -80,25 +80,25 @@ export default function SignUp() {
         <div className='flex flex-col w-full h-full '>
             <BlogApiMainHeader />
 
-            <section className='flex flex-col items-center justify-center self-center h-full bg-gray-200 rounded shadow md:w-2/5 p-6'>
+            <section className='flex flex-col items-center self-center justify-center h-full p-6 bg-gray-200 rounded shadow md:w-2/5'>
                 <h1>Crie sua conta</h1>
                 <div className='flex flex-col items-center gap-2 text-sm'>
-                    <ProfileImage imageUrl={ registerValues.image } signUp={ true } />
+                    <ProfileImage height='h-[50px]' width='w-[50px]' imageUrl={ registerValues.image } signUp={ true } />
                     {
                         editImageMode
                             ? 
-                            <label className='flex gap-1 w-full' htmlFor="image">
+                            <label className='flex w-full gap-1' htmlFor="image">
                                 <input
                                     name='image'
                                     type='text'
-                                    className="text-center w-full"
+                                    className="w-full text-center"
                                     placeholder="https://exemplo.png"
                                     minLength={ 6 }
                                     value={ registerValues.image }
                                     onChange={ handleChange }
                                 />
                                 <button
-                                    className='p-1 px-2 bg-green-600 text-white rounded hover:bg-green-700'
+                                    className='p-1 px-2 text-white bg-green-600 rounded hover:bg-green-700'
                                     onClick={ () => setEditImageMode(false) }
                                 >
                                     Ok
@@ -107,7 +107,7 @@ export default function SignUp() {
 
                             :
                             <button
-                                className='p-1 px-2 w-full bg-green-600 text-white rounded hover:bg-green-700'
+                                className='w-full p-1 px-2 text-white bg-green-600 rounded hover:bg-green-700'
                                 onClick={ () => { setEditImageMode(true); } }
                             >
                         Escolher Imagem de Perfil
@@ -117,7 +117,7 @@ export default function SignUp() {
                     
                 </div>
                 <form
-                    className='flex flex-col gap-10 p-6 justify-center items-center'
+                    className='flex flex-col items-center justify-center gap-10 p-6'
                     method="post"
                     onSubmit={ (e) => handleSubmit(e) }
                 >
@@ -126,7 +126,7 @@ export default function SignUp() {
                             <input
                                 name='name'
                                 type='text'
-                                className="text-center w-full text-xl"
+                                className="w-full text-xl text-center"
                                 placeholder="nome"
                                 minLength={ 8 }
                                 maxLength={ 16 }
@@ -144,12 +144,12 @@ export default function SignUp() {
                             />
                         </label>
                     </div>
-                    <div className="w-full flex flex-col items-center">
+                    <div className="flex flex-col items-center w-full">
                         <label className='flex gap-4' htmlFor="email">
                             <input
                                 name='email'
                                 type='email'
-                                className="text-center w-full text-xl"
+                                className="w-full text-xl text-center"
                                 placeholder="email"
                                 minLength={ 12 }
                                 maxLength={ 28 }
@@ -173,7 +173,7 @@ export default function SignUp() {
                             <input
                                 name='password'
                                 type='password'
-                                className="text-center w-full text-xl"
+                                className="w-full text-xl text-center"
                                 placeholder="senha"
                                 minLength={ 6 }
                                 maxLength={ 16 }
@@ -196,7 +196,7 @@ export default function SignUp() {
                             <input
                                 name='passwordAgain'
                                 type='password'
-                                className="text-center w-full text-xl"
+                                className="w-full text-xl text-center"
                                 placeholder="repita a senha"
                                 minLength={ 6 }
                                 maxLength={ 16 }

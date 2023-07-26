@@ -9,7 +9,7 @@ interface ProfilePresentationProps {
 export function ProfilePresentation({ userData }: ProfilePresentationProps) {
     return (
         <section className='flex flex-col items-center text-center'>
-            <ProfileImage imageUrl={ userData.image }/>
+            <ProfileImage height='h-[100px]' width='w-[100px]' imageUrl={ userData.image }/>
             <h1>{ userData.display_name }</h1>
             <p>{ userData.email }</p>
         </section>

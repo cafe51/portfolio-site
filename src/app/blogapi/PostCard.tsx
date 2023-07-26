@@ -43,7 +43,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
             <div className='flex flex-row items-center justify-between w-full gap-4 '>
                 <div className='flex flex-row items-center gap-4'>
                     <Link href={ `blogapi/user/${postData.user_id}` }>
-                        <ProfileImage imageUrl={ postData.users?.image } />
+                        <ProfileImage height='h-[50px]' width='w-[50px]' imageUrl={ postData.users?.image } />
                     </Link>
                     <div className='flex flex-col'>
                         <h2>{ postData.users ? postData.users.display_name : '...' }</h2>
