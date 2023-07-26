@@ -51,7 +51,6 @@ export default function SignUp() {
     };
 
     useEffect(() => {
-        console.log('começando', actualRoute);
         setLoading(false);
         setLoadingComponent(false);
         

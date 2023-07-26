@@ -9,12 +9,19 @@ import { ImSpinner9 } from 'react-icons/im';
 
 export default function Login() {
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [loadingComponent, setLoadingComponent] = useState(true);
     const [loginErrorMessage, setLoginErrorMessage] = useState(false);
     const [registerValues, setRegisterValues] = useState({
         email: '',
         password: '',
     });
+
+    useEffect(() => {
+        setLoading(false);
+        setLoadingComponent(false);
+        
+    }, []);
 
     useEffect(() => {
         const userFromLocalStorage = localStorage.getItem('userData');
@@ -73,12 +80,13 @@ export default function Login() {
                     onSubmit={ (e) => handleSubmit(e) }
                 >
                     <div className="w-full">
-                        <label className='flex gap-4' htmlFor="email">
+                        <label className={ `flex gap-4 ${loadingComponent ? 'animate-pulse' : ''}` } htmlFor="email">
                             <input
                                 type="email"
                                 name="email"
-                                className="w-full p-2 text-xl text-center"
-                                placeholder="insira seu email"
+                                className='w-full p-2 text-xl text-center bg-white'
+                                placeholder={ `${loadingComponent ? '' : 'insira seu email'}` }
+                                disabled={ loadingComponent }
                                 minLength={ 12 }
                                 maxLength={ 28 }
                                 onInvalid={ event => {
@@ -95,12 +103,13 @@ export default function Login() {
                         </label>
                     </div>
                     <div className="w-full">
-                        <label className='flex gap-4' htmlFor="password">
+                        <label className={ `flex gap-4 ${loadingComponent ? 'animate-pulse' : ''}` } htmlFor="password">
                             <input
-                                className="w-full p-2 text-xl text-center"
+                                className='w-full p-2 text-xl text-center bg-white'
                                 type="password"
                                 name="password"
-                                placeholder="insira sua senha"
+                                placeholder={ `${loadingComponent ? '' : 'insira sua senha'}` }
+                                disabled={ loadingComponent }
                                 minLength={ 6 }
                                 maxLength={ 16 }
                                 onInvalid={ event => {
