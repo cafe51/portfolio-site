@@ -58,19 +58,19 @@ export default function Login() {
     return(
         <div className='flex flex-col w-full h-full'>
             <BlogApiMainHeader />
-            <section className='flex flex-col items-center justify-center w-full h-full bg-gray-200 rounded shadow md:w-2/5'>
+            <section className='flex flex-col items-center self-center justify-center w-full h-full bg-gray-200 rounded shadow md:w-2/5'>
                 <h1>Entre na sua conta</h1>
                 <form 
                     className='flex flex-col items-center justify-center gap-10 p-6'
                     method="post"
                     onSubmit={ (e) => handleSubmit(e) }
                 >
-                    <div className="flex flex-col items-center w-full">
+                    <div className="w-full">
                         <label className='flex gap-4' htmlFor="email">
                             <input
                                 type="email"
                                 name="email"
-                                className="w-full text-xl text-center"
+                                className="w-full p-2 text-xl text-center"
                                 placeholder="insira seu email"
                                 minLength={ 12 }
                                 maxLength={ 28 }
@@ -90,7 +90,7 @@ export default function Login() {
                     <div className="w-full">
                         <label className='flex gap-4' htmlFor="password">
                             <input
-                                className="w-full text-xl text-center"
+                                className="w-full p-2 text-xl text-center"
                                 type="password"
                                 name="password"
                                 placeholder="insira sua senha"

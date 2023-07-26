@@ -82,8 +82,8 @@ export default function SignUp() {
 
             <section className='flex flex-col items-center self-center justify-center h-full p-6 bg-gray-200 rounded shadow md:w-2/5'>
                 <h1>Crie sua conta</h1>
-                <div className='flex flex-col items-center gap-2 text-sm'>
-                    <ProfileImage height='h-[50px]' width='w-[50px]' imageUrl={ registerValues.image } signUp={ true } />
+                <div className='flex flex-col items-center w-full gap-2 p-6 text-sm'>
+                    <ProfileImage height='h-[100px]' width='w-[100px]' imageUrl={ registerValues.image } signUp={ true } />
                     {
                         editImageMode
                             ? 
@@ -98,7 +98,7 @@ export default function SignUp() {
                                     onChange={ handleChange }
                                 />
                                 <button
-                                    className='p-1 px-2 text-white bg-green-600 rounded hover:bg-green-700'
+                                    className='p-2 text-white bg-green-600 rounded hover:bg-green-700'
                                     onClick={ () => setEditImageMode(false) }
                                 >
                                     Ok
@@ -107,7 +107,7 @@ export default function SignUp() {
 
                             :
                             <button
-                                className='w-full p-1 px-2 text-white bg-green-600 rounded hover:bg-green-700'
+                                className='w-full p-2 text-white bg-green-600 rounded hover:bg-green-700'
                                 onClick={ () => { setEditImageMode(true); } }
                             >
                         Escolher Imagem de Perfil
@@ -117,7 +117,7 @@ export default function SignUp() {
                     
                 </div>
                 <form
-                    className='flex flex-col items-center justify-center gap-10 p-6'
+                    className='flex flex-col items-center justify-center w-full gap-10 p-6'
                     method="post"
                     onSubmit={ (e) => handleSubmit(e) }
                 >
@@ -126,7 +126,7 @@ export default function SignUp() {
                             <input
                                 name='name'
                                 type='text'
-                                className="w-full text-xl text-center"
+                                className="w-full p-2 text-xl text-center"
                                 placeholder="nome"
                                 minLength={ 8 }
                                 maxLength={ 16 }
@@ -144,12 +144,12 @@ export default function SignUp() {
                             />
                         </label>
                     </div>
-                    <div className="flex flex-col items-center w-full">
+                    <div className="w-full">
                         <label className='flex gap-4' htmlFor="email">
                             <input
                                 name='email'
                                 type='email'
-                                className="w-full text-xl text-center"
+                                className="w-full p-2 text-xl text-center"
                                 placeholder="email"
                                 minLength={ 12 }
                                 maxLength={ 28 }
@@ -171,7 +171,7 @@ export default function SignUp() {
                     <div className="w-full">
                         <label className='flex gap-4' htmlFor="password">
                             <input
-                                className="w-full text-xl text-center"
+                                className="w-full p-2 text-xl text-center"
                                 name='password'
                                 type='password'
                                 placeholder="senha"
@@ -196,7 +196,7 @@ export default function SignUp() {
                             <input
                                 name='passwordAgain'
                                 type='password'
-                                className="w-full text-xl text-center"
+                                className="w-full p-2 text-xl text-center"
                                 placeholder="repita a senha"
                                 minLength={ 6 }
                                 maxLength={ 16 }
