@@ -2,16 +2,23 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { addNewUserFromApiStateThunkAction } from '../redux/actions';
 import { Dispatch, UserType } from '../types';
 import { useDispatch } from 'react-redux';
 import { ProfileImage } from '../profileImage';
 import { getUsersApi } from '../api';
 import BlogApiMainHeader from '../BlogApiMainHeader';
+import { ImSpinner9 } from 'react-icons/im';
+
 
 export default function SignUp() {
+    const actualRoute = usePathname();
     const dispatch: Dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
+    const [loadingComponent, setLoadingComponent] = useState(true);
+
+
     const router = useRouter();
     const [errorMessage, setErrorMessage] = useState('');
     const [registerValues, setRegisterValues] = useState({
@@ -42,36 +49,76 @@ export default function SignUp() {
         const properties = [email, password, name, passwordAgain, isTheSamePassword];
         return !properties.every(property => property);
     };
-    
 
     useEffect(() => {
-        const userFromLocalStorage = localStorage.getItem('userData');
-        const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
-        if (userData && userData.token) {
-            router.push('blogapi/');
+        console.log('começando', actualRoute);
+        setLoading(false);
+        setLoadingComponent(false);
+        
+    }, []);
+
+    // useEffect(() => {
+    //     console.log('MOUNTED', actualRoute);
+    //     setLoading(true);
+
+        
+    // }, []);
+
+    // useEffect(() => {
+    //     return() => {
+    //         console.log('UNMOUNT', actualRoute);
+    //         setLoading(true);
+    //     };
+        
+    // }, []);
+
+
+    useEffect(() => {
+        try {
+            // setLoadingComponent(true);
+            const userFromLocalStorage = localStorage.getItem('userData');
+            const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
+            if (userData && userData.token) {
+                setLoading(true);
+                router.push('blogapi/');
+            }
+        } catch(error) {
+            console.log('erro no login: ', error);
         }
     });
 
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const newUserData = {
-            displayName: registerValues.name,
-            email: registerValues.email,
-            password: registerValues.password,
-            image: registerValues.image,
-        };
-        const response = await dispatch(addNewUserFromApiStateThunkAction(newUserData));
-        if(response === 409) { setErrorMessage('Email já cadastro');}
-        if(response === 400) { setErrorMessage('Insira um email válido');}
+        try {
+            e.preventDefault();
+            setLoading(true);
+            console.log('inicio', actualRoute);
+            const newUserData = {
+                displayName: registerValues.name,
+                email: registerValues.email,
+                password: registerValues.password,
+                image: registerValues.image,
+            };
+            const response = await dispatch(addNewUserFromApiStateThunkAction(newUserData));
+            if(response === 409) { setErrorMessage('Email já cadastro');}
+            if(response === 400) { setErrorMessage('Insira um email válido');}
 
-        if(response.token) {
-            const allUsers = await getUsersApi(response.token);
-            const user = allUsers.find((myUser: UserType) => myUser.email === registerValues.email);
+            if(response.token) {
+                const allUsers = await getUsersApi(response.token);
+                const user = allUsers.find((myUser: UserType) => myUser.email === registerValues.email);
     
-            const userData = { user, token: response.token };
-            localStorage.setItem('userData', JSON.stringify(userData));
+                const userData = { user, token: response.token };
+                localStorage.setItem('userData', JSON.stringify(userData));
     
-            router.push('/blogapi');
+                router.push('/blogapi');
+                console.log('fim', actualRoute);
+
+
+            }
+        } catch(error) {
+            console.log('erro no login: ', error);
+        } finally {
+            setLoading(false);
+            
         }
 
     };
@@ -79,11 +126,16 @@ export default function SignUp() {
     return(
         <div className='flex flex-col w-full h-full '>
             <BlogApiMainHeader />
-
             <section className='flex flex-col items-center self-center justify-center h-full p-6 bg-gray-200 rounded shadow md:w-2/5'>
                 <h1>Crie sua conta</h1>
                 <div className='flex flex-col items-center w-full gap-2 p-6 text-sm'>
-                    <ProfileImage height='h-[100px]' width='w-[100px]' imageUrl={ registerValues.image } signUp={ true } />
+                    <ProfileImage
+                        height='h-[100px]'
+                        width='w-[100px]'
+                        imageUrl={ registerValues.image }
+                        signUp={ true }
+                        isLoading={ loadingComponent }
+                    />
                     {
                         editImageMode
                             ? 
@@ -93,7 +145,7 @@ export default function SignUp() {
                                     type='text'
                                     className="w-full text-center"
                                     placeholder="https://exemplo.png"
-                                    minLength={ 6 }
+                                    minLength={ 4 }
                                     value={ registerValues.image }
                                     onChange={ handleChange }
                                 />
@@ -107,10 +159,15 @@ export default function SignUp() {
 
                             :
                             <button
-                                className='w-full p-2 text-white bg-green-600 rounded hover:bg-green-700'
+                                className={ `${ isDisable() || loading ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
                                 onClick={ () => { setEditImageMode(true); } }
                             >
-                        Escolher Imagem de Perfil
+                                { loadingComponent ? (
+                                    < ImSpinner9 className="text-gray-500 animate-spin"/>
+                                ) : (
+                                    'Escolher Imagem de Perfil'
+                                ) }
+                        
                             </button>
                             
                     }
@@ -122,15 +179,16 @@ export default function SignUp() {
                     onSubmit={ (e) => handleSubmit(e) }
                 >
                     <div className="w-full">
-                        <label className='flex gap-4' htmlFor="name">
+                        <label className={ `flex gap-4 ${loadingComponent ? 'animate-pulse' : ''}` } htmlFor="name">
                             <input
                                 name='name'
                                 type='text'
-                                className="w-full p-2 text-xl text-center"
-                                placeholder="nome"
+                                className='w-full p-2 text-xl text-center bg-white'
+                                placeholder={ `${loadingComponent ? '' : 'nome'}` }
                                 minLength={ 8 }
                                 maxLength={ 16 }
                                 required
+                                disabled={ loadingComponent }
                                 onInvalid={ event => {
                                     const target = event.target as HTMLInputElement;
                                     target.setCustomValidity('O nome deve ter entre 2 e 16 caracteres.');
@@ -142,18 +200,21 @@ export default function SignUp() {
                                 value={ registerValues.name }
                                 onChange={ handleChange }
                             />
+
                         </label>
+
                     </div>
                     <div className="w-full">
-                        <label className='flex gap-4' htmlFor="email">
+                        <label className={ `flex gap-4 ${loadingComponent ? 'animate-pulse' : ''}` } htmlFor="email">
                             <input
                                 name='email'
                                 type='email'
-                                className="w-full p-2 text-xl text-center"
-                                placeholder="email"
+                                className='w-full p-2 text-xl text-center bg-white'
+                                placeholder={ `${loadingComponent ? '' : 'email'}` }
                                 minLength={ 12 }
                                 maxLength={ 28 }
                                 required
+                                disabled={ loadingComponent }
                                 onInvalid={ event => {
                                     const target = event.target as HTMLInputElement;
                                     target.setCustomValidity('O email deve ter entre 6 e 28 caracteres.');
@@ -166,21 +227,22 @@ export default function SignUp() {
                                 onChange={ handleChange }
                             />
                         </label>
-                        <p className='text-red-600'>{ errorMessage }</p>
+                        <p className='text-center text-red-600'>{ errorMessage }</p>
                     </div>
                     <div className="w-full">
-                        <label className='flex gap-4' htmlFor="password">
+                        <label className={ `flex gap-4 ${loadingComponent ? 'animate-pulse' : ''}` } htmlFor="password">
                             <input
-                                className="w-full p-2 text-xl text-center"
+                                className='w-full p-2 text-xl text-center bg-white'
                                 name='password'
                                 type='password'
-                                placeholder="senha"
+                                placeholder={ `${loadingComponent ? '' : 'senha'}` }
                                 minLength={ 6 }
                                 maxLength={ 16 }
                                 required
+                                disabled={ loadingComponent }
                                 onInvalid={ event => {
                                     const target = event.target as HTMLInputElement;
-                                    target.setCustomValidity('a senha deve ter entre 6 e 16 caracteres.');
+                                    target.setCustomValidity('A senha deve ter entre 6 e 16 caracteres.');
                                 } }
                                 onInput={ event => {
                                     const target = event.target as HTMLInputElement;
@@ -192,19 +254,20 @@ export default function SignUp() {
                         </label>
                     </div>
                     <div className="w-full">
-                        <label className='flex gap-4' htmlFor="passwordAgain">
+                        <label className={ `flex gap-4 ${loadingComponent ? 'animate-pulse' : ''}` } htmlFor="passwordAgain">
                             <input
                                 name='passwordAgain'
                                 type='password'
-                                className="w-full p-2 text-xl text-center"
-                                placeholder="repita a senha"
+                                className='w-full p-2 text-xl text-center bg-white'
+                                placeholder={ `${loadingComponent ? '' : 'password'}` }
                                 minLength={ 6 }
                                 maxLength={ 16 }
                                 required
+                                disabled={ loadingComponent }
                                 onInvalid={ event => {
                                     const target = event.target as HTMLInputElement;
                                     if(registerValues.password !== registerValues.passwordAgain) {
-                                        target.setCustomValidity('Repita a mesma senha');
+                                        target.setCustomValidity('Repita a sua senha');
                                     }
                                 } }
                                 onInput={ event => {
@@ -218,14 +281,19 @@ export default function SignUp() {
                         </label>
                     </div>
                     <button
-                        className={ `${ isDisable() ? 'bg-gray-300 ' : 'bg-blue-600 hover:bg-blue-800 ' } w-full p-3 text-white rounded` }
+                        className={ `${ isDisable() || loading ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' } p-3 text-white flex justify-center text-center rounded w-full` }
+
                         type="submit"
                         disabled={ isDisable() }
                     >
-                        Pronto
+                        { loading || loadingComponent ? (
+                            < ImSpinner9 className="text-gray-500 animate-spin"/>
+                        ) : (
+                            'Próximo'
+                        ) }
                     </button>
                 </form>
-                <div className="w-full">
+                <div className="w-full text-center">
                     <p>Já tem uma conta? <a className='text-blue-500' href="/blogapi/login">Entrar</a></p>
                 </div>
             </section>

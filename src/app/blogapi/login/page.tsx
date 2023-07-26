@@ -20,6 +20,7 @@ export default function Login() {
         const userFromLocalStorage = localStorage.getItem('userData');
         const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
         if (userData && userData.token) {
+            setLoading(true);
             router.push('blogapi/');
         }
     
