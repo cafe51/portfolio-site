@@ -171,9 +171,9 @@ export default function SignUp() {
                     <div className="w-full">
                         <label className='flex gap-4' htmlFor="password">
                             <input
+                                className="w-full text-xl text-center"
                                 name='password'
                                 type='password'
-                                className="w-full text-xl text-center"
                                 placeholder="senha"
                                 minLength={ 6 }
                                 maxLength={ 16 }
@@ -218,8 +218,8 @@ export default function SignUp() {
                         </label>
                     </div>
                     <button
-                        type="submit"
                         className={ `${ isDisable() ? 'bg-gray-300 ' : 'bg-blue-600 hover:bg-blue-800 ' } w-full p-3 text-white rounded` }
+                        type="submit"
                         disabled={ isDisable() }
                     >
                         Pronto

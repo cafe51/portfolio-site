@@ -45,6 +45,6 @@ export default function DataFormat({ dataISO }: DataFormatProps) {
     }; 
 
   
-    return <p>{ formatarData(dataISO, agora) }</p>;
+    return formatarData(dataISO, agora);
 }
   

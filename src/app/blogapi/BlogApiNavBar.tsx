@@ -33,7 +33,7 @@ export function BlogApiNavBar({ userData }: BlogApiNavBarProps) {
                 </button>
             </div>
             <div className=''>
-                <form onSubmit={ handleSearch } className="flex items-center justify-center"> 
+                <form onSubmit={ handleSearch } className="flex items-center justify-center gap-2"> 
                     <input
                         className='text-center md:text-2xl'
                         type='text'

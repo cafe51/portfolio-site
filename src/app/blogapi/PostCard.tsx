@@ -25,15 +25,16 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
 
     return(
         <div className='container flex flex-col justify-center gap-6 p-4 bg-gray-200 rounded shadow-lg'>
-            { postData.user_id === userData.user.id && <div className='flex justify-between'>
+            { postData.user_id === userData.user.id &&
+            <div className='flex justify-between'>
                 <button
-                    className='self-end w-1/3 p-1 text-white bg-red-500 rounded shadow-sm hover:bg-red-700'
+                    className='self-end p-2 px-4 text-white bg-red-500 rounded shadow-sm hover:bg-red-700'
                     onClick={ handleDeletePost }
                 >
                     Excluir
                 </button>
                 <button
-                    className='self-end w-1/3 p-1 text-white bg-blue-500 rounded shadow-sm hover:bg-blue-700'
+                    className='self-end p-2 px-4 text-white bg-blue-500 rounded shadow-sm hover:bg-blue-700'
                     onClick={ () => setEditMode(true) }
                 >
                     Editar
@@ -52,10 +53,10 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                 </div>
 
             </div>
-            <div className='flex flex-col items-center gap-4'>
-                <div className='text-center'>
+            <div className='flex flex-col items-center w-full gap-4'>
+                <div className='text-center '>
                     <h1>{ postData.title }</h1>
-                    <p className=''>{ <DataFormat dataISO={ postData.published ? postData.published : '' } /> }</p>
+                    <p className='text-xs'>{ <DataFormat dataISO={ postData.published ? postData.published : '' } /> }</p>
                 </div>
                 
                 <div className=''>
@@ -67,14 +68,14 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                             <Link
                                 href={ `blogapi/tag/${category.id}` }
                                 key={ category.id }
-                                className="px-2 py-1 mb-2 mr-2 text-sm text-white bg-blue-900 rounded"
+                                className="px-2 py-1 mb-2 mr-2 text-xs text-white bg-blue-900 rounded"
                             >
                                 { category.name }
                             </Link>
                         ))
                     }
                 </div>
-                <p className='text-center'>Última atualização: { <DataFormat dataISO={ postData.updated ? postData.updated : '' } /> }</p>
+                <p className='w-full text-xs text-center'>Última atualização: { <DataFormat dataISO={ postData.updated ? postData.updated : '' } /> }</p>
             </div>
         </div>
     );
