@@ -9,7 +9,7 @@ import { ImSpinner9 } from 'react-icons/im';
 
 export default function Login() {
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
+    const [loadingButton, setLoadingButton] = useState(true);
     const [loadingComponent, setLoadingComponent] = useState(true);
     const [loginErrorMessage, setLoginErrorMessage] = useState(false);
     const [registerValues, setRegisterValues] = useState({
@@ -18,7 +18,7 @@ export default function Login() {
     });
 
     useEffect(() => {
-        setLoading(false);
+        setLoadingButton(false);
         setLoadingComponent(false);
         
     }, []);
@@ -27,7 +27,7 @@ export default function Login() {
         const userFromLocalStorage = localStorage.getItem('userData');
         const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
         if (userData && userData.token) {
-            setLoading(true);
+            setLoadingButton(true);
             router.push('blogapi/');
         }
     
@@ -48,7 +48,7 @@ export default function Login() {
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
-            setLoading(true);
+            setLoadingButton(true);
             const { token } = await loginRequestApi(registerValues);
             const allUsers = await getUsersApi(token);
             const user = allUsers.find((myUser: UserType) => myUser.email === registerValues.email);
@@ -63,14 +63,14 @@ export default function Login() {
 
             setLoginErrorMessage(true);
         } finally {
-            setLoading(false);
+            setLoadingButton(false);
         }
         
 
     };
     
     return(
-        <div className='flex flex-col w-full h-full'>
+        <div className='flex flex-col items-center w-full h-full'>
             <BlogApiMainHeader />
             <section className='flex flex-col items-center self-center justify-center w-full h-full bg-gray-200 rounded shadow md:w-2/5'>
                 <h1>Entre na sua conta</h1>
@@ -135,11 +135,11 @@ export default function Login() {
                         </p>
                     ) }
                     <button
-                        className={ `${ isDisable() || loading ? 'bg-gray-300 ' : 'bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
+                        className={ `${ isDisable() || loadingButton ? 'bg-gray-300 ' : 'bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
                         type="submit"
                         disabled={ isDisable() }
                     >
-                        { loading ? (
+                        { loadingButton ? (
                             < ImSpinner9 className="text-gray-500 animate-spin"/>
                         ) : (
                             'Login'

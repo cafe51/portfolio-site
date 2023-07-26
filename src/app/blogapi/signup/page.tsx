@@ -15,7 +15,7 @@ import { ImSpinner9 } from 'react-icons/im';
 export default function SignUp() {
     const actualRoute = usePathname();
     const dispatch: Dispatch = useDispatch();
-    const [loading, setLoading] = useState(true);
+    const [loadingButton, setLoadingButton] = useState(true);
     const [loadingComponent, setLoadingComponent] = useState(true);
 
 
@@ -51,26 +51,10 @@ export default function SignUp() {
     };
 
     useEffect(() => {
-        setLoading(false);
+        setLoadingButton(false);
         setLoadingComponent(false);
         
     }, []);
-
-    // useEffect(() => {
-    //     console.log('MOUNTED', actualRoute);
-    //     setLoading(true);
-
-        
-    // }, []);
-
-    // useEffect(() => {
-    //     return() => {
-    //         console.log('UNMOUNT', actualRoute);
-    //         setLoading(true);
-    //     };
-        
-    // }, []);
-
 
     useEffect(() => {
         try {
@@ -78,7 +62,7 @@ export default function SignUp() {
             const userFromLocalStorage = localStorage.getItem('userData');
             const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
             if (userData && userData.token) {
-                setLoading(true);
+                setLoadingButton(true);
                 router.push('blogapi/');
             }
         } catch(error) {
@@ -89,7 +73,7 @@ export default function SignUp() {
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
-            setLoading(true);
+            setLoadingButton(true);
             console.log('inicio', actualRoute);
             const newUserData = {
                 displayName: registerValues.name,
@@ -116,16 +100,16 @@ export default function SignUp() {
         } catch(error) {
             console.log('erro no login: ', error);
         } finally {
-            setLoading(false);
+            setLoadingButton(false);
             
         }
 
     };
 
     return(
-        <div className='flex flex-col w-full h-full '>
+        <div className='container flex flex-col items-center justify-between w-full h-full p-2 m-auto'>
             <BlogApiMainHeader />
-            <section className='flex flex-col items-center self-center justify-center h-full p-6 bg-gray-200 rounded shadow md:w-2/5'>
+            <section className='container flex flex-col items-center self-center justify-center p-6 bg-gray-200 rounded shadow md:w-2/5'>
                 <h1>Crie sua conta</h1>
                 <div className='flex flex-col items-center w-full gap-2 p-6 text-sm'>
                     <ProfileImage
@@ -158,7 +142,7 @@ export default function SignUp() {
 
                             :
                             <button
-                                className={ `${ isDisable() || loading ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
+                                className={ `${ isDisable() || loadingButton ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
                                 onClick={ () => { setEditImageMode(true); } }
                             >
                                 { loadingComponent ? (
@@ -280,12 +264,12 @@ export default function SignUp() {
                         </label>
                     </div>
                     <button
-                        className={ `${ isDisable() || loading ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' } p-3 text-white flex justify-center text-center rounded w-full` }
+                        className={ `${ isDisable() || loadingButton ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' } p-3 text-white flex justify-center text-center rounded w-full` }
 
                         type="submit"
                         disabled={ isDisable() }
                     >
-                        { loading || loadingComponent ? (
+                        { loadingButton || loadingComponent ? (
                             < ImSpinner9 className="text-gray-500 animate-spin"/>
                         ) : (
                             'Próximo'
