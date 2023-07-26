@@ -10,7 +10,7 @@ interface PostProps {
 export default function Posts({ userData, posts }: PostProps) {
     return(
         <section className='flex flex-col items-center w-full gap-2 rounded shadow'>
-            { posts ? posts.map((post) => (<RenderPostCard key={ post.id } postData={ post } userData={ userData }/>)) : 'loading...' }
+            { posts ? [...posts].reverse().map((post) => (<RenderPostCard key={ post.id } postData={ post } userData={ userData }/>)) : 'loading...' }
         </section>
     );
 }

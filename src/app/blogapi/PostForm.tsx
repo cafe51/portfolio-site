@@ -134,7 +134,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             type="text"
                             name="title"
                             placeholder="Título"
-                            minLength={ 6 }
+                            minLength={ 1 }
                             maxLength={ 18 }
                             onInvalid={ event => {
                                 const target = event.target as HTMLInputElement;

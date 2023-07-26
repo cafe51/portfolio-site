@@ -24,19 +24,19 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
     };
 
     return(
-        <div className='container flex flex-col justify-center gap-6 p-4 bg-gray-200 rounded shadow'>
+        <div className='container flex flex-col justify-center gap-6 p-4 bg-gray-200 rounded shadow-lg'>
             { postData.user_id === userData.user.id && <div className='flex justify-between'>
                 <button
                     className='self-end w-1/3 p-1 text-white bg-red-500 rounded shadow-sm hover:bg-red-700'
                     onClick={ handleDeletePost }
                 >
-                    delete
+                    Excluir
                 </button>
                 <button
                     className='self-end w-1/3 p-1 text-white bg-blue-500 rounded shadow-sm hover:bg-blue-700'
                     onClick={ () => setEditMode(true) }
                 >
-                    Edit
+                    Editar
                 </button>
             </div> }
 
@@ -74,7 +74,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                         ))
                     }
                 </div>
-                <p>Atualizado pela última vez: { <DataFormat dataISO={ postData.updated ? postData.updated : '' } /> }</p>
+                <p className='text-center'>Última atualização: { <DataFormat dataISO={ postData.updated ? postData.updated : '' } /> }</p>
             </div>
         </div>
     );
