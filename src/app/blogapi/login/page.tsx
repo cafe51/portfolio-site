@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 import { UserType } from '../types';
 import { getUsersApi, loginRequestApi } from '../api';
 import BlogApiMainHeader from '../BlogApiMainHeader';
+import { ImSpinner9 } from 'react-icons/im';
 
 export default function Login() {
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
     const [loginErrorMessage, setLoginErrorMessage] = useState(false);
     const [registerValues, setRegisterValues] = useState({
         email: '',
@@ -38,6 +40,7 @@ export default function Login() {
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         try {
             e.preventDefault();
+            setLoading(true);
             const { token } = await loginRequestApi(registerValues);
             const allUsers = await getUsersApi(token);
             const user = allUsers.find((myUser: UserType) => myUser.email === registerValues.email);
@@ -51,7 +54,10 @@ export default function Login() {
             console.log('erro no login: ', error);
 
             setLoginErrorMessage(true);
+        } finally {
+            setLoading(false);
         }
+        
 
     };
     
@@ -119,11 +125,15 @@ export default function Login() {
                         </p>
                     ) }
                     <button
-                        className={ `${ isDisable() ? 'bg-gray-300 ' : 'bg-green-700 ' }p-3 text-white rounded w-full` }
+                        className={ `${ isDisable() || loading ? 'bg-gray-300 ' : 'bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
                         type="submit"
                         disabled={ isDisable() }
                     >
-                        Login
+                        { loading ? (
+                            < ImSpinner9 className="text-gray-500 animate-spin"/>
+                        ) : (
+                            'Login'
+                        ) }
                     </button>
                 </form>
                 <div>
