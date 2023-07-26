@@ -20,7 +20,9 @@ export default function SignUp() {
 
 
     const router = useRouter();
-    const [errorMessage, setErrorMessage] = useState('');
+    const [emailErrorMessage, setEmailErroMessage] = useState('');
+    const [passwordErrorMessage, setPasswordErroMessage] = useState('');
+
     const [registerValues, setRegisterValues] = useState({
         name: '',
         email: '',
@@ -33,6 +35,7 @@ export default function SignUp() {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setRegisterValues({ ...registerValues, [name]: value });
+        
     };
 
     const validateEmail = (email: string) => {
@@ -57,8 +60,15 @@ export default function SignUp() {
     }, []);
 
     useEffect(() => {
+        if (registerValues.password !== registerValues.passwordAgain) {
+            setPasswordErroMessage('A senhas devem ser as mesmas');
+        } else {
+            setPasswordErroMessage('');
+        }
+    }, [registerValues]);
+
+    useEffect(() => {
         try {
-            // setLoadingComponent(true);
             const userFromLocalStorage = localStorage.getItem('userData');
             const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
             if (userData && userData.token) {
@@ -82,8 +92,8 @@ export default function SignUp() {
                 image: registerValues.image,
             };
             const response = await dispatch(addNewUserFromApiStateThunkAction(newUserData));
-            if(response === 409) { setErrorMessage('Email já cadastro');}
-            if(response === 400) { setErrorMessage('Insira um email válido');}
+            if(response === 409) { setEmailErroMessage('Email já cadastro');}
+            if(response === 400) { setEmailErroMessage('Insira um email válido');}
 
             if(response.token) {
                 const allUsers = await getUsersApi(response.token);
@@ -210,7 +220,7 @@ export default function SignUp() {
                                 onChange={ handleChange }
                             />
                         </label>
-                        <p className='text-center text-red-600'>{ errorMessage }</p>
+                        <p className='text-center text-red-600'>{ emailErrorMessage }</p>
                     </div>
                     <div className="w-full">
                         <label className={ `flex gap-4 ${loadingComponent ? 'animate-pulse' : ''}` } htmlFor="password">
@@ -262,6 +272,7 @@ export default function SignUp() {
                                 onChange={ handleChange }
                             />
                         </label>
+                        <p className='text-center text-red-600'>{ passwordErrorMessage }</p>
                     </div>
                     <button
                         className={ `${ isDisable() || loadingButton ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' } p-3 text-white flex justify-center text-center rounded w-full` }
