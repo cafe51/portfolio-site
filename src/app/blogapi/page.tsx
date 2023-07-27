@@ -58,10 +58,12 @@ export default function Home() {
     return (
         userData ?
             <main className="container flex flex-col items-center self-center justify-between gap-2 p-2 m-auto justify-self-center">
-                <BlogApiMainHeader />
-                <BlogApiNavBar userData={ userData }/>
+                <header className="container fixed z-50 flex flex-col items-center w-full">
+                    <BlogApiMainHeader />
+                    <BlogApiNavBar userData={ userData }/>
+                </header>
 
-                <div className='container flex flex-col items-center w-full gap-4'>
+                <div className='container flex flex-col items-center w-full gap-4 py-32'>
                     <ProfilePresentation userData={ userData.user }/>
                     <PostForm userData={ userData }/>
                     <Posts userData={ userData } posts={ postsFromApi }/>
