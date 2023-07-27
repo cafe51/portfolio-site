@@ -24,7 +24,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
     };
 
     return(
-        <div className='container flex flex-col justify-center gap-6 p-4 bg-gray-200 rounded shadow-lg'>
+        <div className='container flex flex-col justify-center w-full gap-6 p-4 bg-gray-200 rounded shadow-lg'>
             { postData.user_id === userData.user.id &&
             <div className='flex justify-between'>
                 <button
@@ -58,7 +58,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                     <h1>{ postData.title }</h1>
                     <p className='text-xs'>{ <DataFormat dataISO={ postData.published ? postData.published : '' } /> }</p>
                 </div>
-                <p className='break-all'>{ postData.content }</p>
+                <p className='break-all whitespace-pre-line'>{ postData.content }</p>
                 <div className='flex'>
                     {
                         postData.categories.map((category) => (

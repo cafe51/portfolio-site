@@ -63,7 +63,7 @@ export default function Home() {
                 <BlogApiMainHeader />
                 <BlogApiNavBar userData={ userData }/>
 
-                <div className='container flex flex-col items-center gap-4'>
+                <div className='container flex flex-col items-center w-full gap-4'>
                     <ProfilePresentation userData={ userData.user }/>
                     <PostForm userData={ userData }/>
                     <Posts userData={ userData } posts={ postsFromApi }/>
