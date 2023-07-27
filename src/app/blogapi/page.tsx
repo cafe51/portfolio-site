@@ -51,12 +51,9 @@ export default function Home() {
             <main className="container flex flex-col items-center self-center justify-between gap-2 p-2 m-auto justify-self-center">
                 <BlogApiMainHeader />
                 <BlogApiNavBar userData={ userData }/>
-            
-            
 
                 <div className='container flex flex-col items-center gap-4'>
                     <ProfilePresentation userData={ userData.user }/>
-                    <LoadingProfilePresentation />
                     <PostForm userData={ userData }/>
                     <Posts userData={ userData } posts={ postsFromApi }/>
                 </div>

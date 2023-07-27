@@ -10,6 +10,9 @@ import { updatePostsStateFromApiStateThunkAction } from '../../redux/actions';
 import { BlogApiNavBar } from '../../BlogApiNavBar';
 import BlogApiMainHeader from '../../BlogApiMainHeader';
 import { ProfilePresentation } from '../../ProfilePresentation';
+import { LoadingBlogApiNavBar } from '../../loadingComponents/LoadingBlogApiNavBar';
+import { LoadingProfilePresentation } from '../../loadingComponents/LoadingProfilePresentation';
+import LoadingPostCard from '../../loadingComponents/LoadingPostCard';
 
 export default function UserPosts({ params }: { params: { id: string } }) {
     const dispatch: Dispatch = useDispatch();
@@ -44,10 +47,9 @@ export default function UserPosts({ params }: { params: { id: string } }) {
     return (
         <div className="flex flex-col items-center justify-between gap-2 p-2">
             <BlogApiMainHeader />
-            { userData ? <BlogApiNavBar userData={ userData }/> : 'Loading...' }
-            { posts[0] &&  <ProfilePresentation userData={posts[0].users} />}
-            { userData ? <Posts userData={ userData } posts={ posts }/> : 'Loading...' }
+            { userData ? <BlogApiNavBar userData={ userData }/> : <LoadingBlogApiNavBar /> }
+            { posts[0] && userData ? <ProfilePresentation userData={posts[0].users} /> : <LoadingProfilePresentation />}
+            { userData ? <Posts userData={ userData } posts={ posts }/> : <LoadingPostCard /> }
         </div>
-
     );
 }

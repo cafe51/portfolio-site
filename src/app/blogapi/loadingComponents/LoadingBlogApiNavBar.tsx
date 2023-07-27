@@ -6,7 +6,7 @@ export function LoadingBlogApiNavBar() {
         <nav className='container flex items-center justify-between w-full p-2 bg-gray-200 md:justify-evenly'>
             <div className=''>
                 <button
-                    className='p-2 text-white bg-blue-400 rounded shadow-md hover:bg-blue-600'
+                    className='p-2 text-white bg-gray-300 rounded shadow-md hover:bg-blue-600'
                 >
                     < ImSpinner9 className="text-gray-500 animate-spin" size={ 20 }/>
                 </button>
@@ -24,7 +24,11 @@ export function LoadingBlogApiNavBar() {
                     </button>
                 </form>
             </div>
-            < ImSpinner9 className="text-gray-500 animate-spin" size={ 20 }/>
+            <button
+                className='p-2 text-white bg-gray-300 rounded shadow-md hover:bg-blue-600'
+            >
+                < ImSpinner9 className="text-gray-500 animate-spin" size={ 20 }/>
+            </button>
         </nav>
     );
 }
