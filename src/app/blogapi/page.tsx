@@ -23,12 +23,10 @@ export default function Home() {
     const router = useRouter();
     const [ userData, setUserData ] = useState<{user: UserType, token: string} | undefined>(undefined);
 
-
  
     useEffect(() => {
         const userFromLocalStorage = localStorage.getItem('userData');
         const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
-        // const usersFromApi = await getUsersApi(token)
         if (!userData || !userData.token) {
             router.push('blogapi/login');
         } else {

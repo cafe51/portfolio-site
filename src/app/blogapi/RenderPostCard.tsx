@@ -3,7 +3,7 @@ import PostCard from './PostCard';
 import PostForm from './PostForm';
 import { PostType, UserType } from './types';
 
-type RenderPostCardProps = {
+interface RenderPostCardProps {
     postData: PostType;
     userData: {user: UserType, token: string};
 }
