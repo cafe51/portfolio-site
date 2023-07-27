@@ -53,15 +53,12 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                 </div>
 
             </div>
-            <div className='flex flex-col items-center w-full gap-4'>
+            <div className='flex flex-col items-center w-full gap-4 overflow-hidden'>
                 <div className='text-center '>
                     <h1>{ postData.title }</h1>
                     <p className='text-xs'>{ <DataFormat dataISO={ postData.published ? postData.published : '' } /> }</p>
                 </div>
-                
-                <div className=''>
-                    <p>{ postData.content }</p>
-                </div>
+                <p className='break-all'>{ postData.content }</p>
                 <div className='flex'>
                     {
                         postData.categories.map((category) => (

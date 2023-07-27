@@ -177,7 +177,7 @@ export default function SignUp() {
                                 disabled={ loadingComponent }
                                 onInvalid={ event => {
                                     const target = event.target as HTMLInputElement;
-                                    target.setCustomValidity('O nome deve ter entre 2 e 16 caracteres.');
+                                    target.setCustomValidity('O nome deve ter entre 8 e 16 caracteres.');
                                 } }
                                 onInput={ event => {
                                     const target = event.target as HTMLInputElement;
