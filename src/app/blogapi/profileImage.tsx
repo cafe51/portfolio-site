@@ -32,7 +32,7 @@ export function ProfileImage({ imageUrl, signUp, width, height, isLoading }: Pro
     return (
         <div className='flex flex-col items-center'>
             { isLoading
-                ? <div className={ `${width} ${height} bg-white rounded-full animate-pulse` }></div>
+                ? <div className={ `${width} ${height} rounded-full animate-pulse ${!signUp ? 'bg-gray-200' : 'bg-white'}` }></div>
                 : <img
                     className={ `block object-cover object-center ${width} ${height} rounded-full` }
                     src={ displayUrl }
