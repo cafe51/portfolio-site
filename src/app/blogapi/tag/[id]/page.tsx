@@ -9,6 +9,8 @@ import { useRouter } from 'next/navigation';
 import { updateCategoriesStateFromApiStateThunkAction, updatePostsStateFromApiStateThunkAction } from '../../redux/actions';
 import { BlogApiNavBar } from '../../BlogApiNavBar';
 import BlogApiMainHeader from '../../BlogApiMainHeader';
+import { LoadingBlogApiNavBar } from '../../loadingComponents/LoadingBlogApiNavBar';
+import LoadingPostCard from '../../loadingComponents/LoadingPostCard';
 
 export default function UserPosts({ params }: { params: { id: string } }) {
     const dispatch: Dispatch = useDispatch();
@@ -50,10 +52,10 @@ export default function UserPosts({ params }: { params: { id: string } }) {
     return (
         <div className="flex flex-col items-center justify-between gap-2 p-2">
             <BlogApiMainHeader />
-            { userData ? <BlogApiNavBar userData={ userData }/> : 'Loading...' }
-            { userData ? <h1>{ categories[0].name }</h1> : 'Loading...' }
-            {/* { posts[0] &&  <ProfilePresentation userData={posts[0].users} />} */}
-            { userData ? <Posts userData={ userData } posts={ posts }/> : 'Loading...' }
+            { userData ? <BlogApiNavBar userData={ userData }/> : <LoadingBlogApiNavBar /> }
+            { userData ? <h1>{ categories[0].name }</h1> : <div className='w-1/4 p-2 bg-gray-200 animate-pulse'>.</div> }
+            {posts &&  posts.length >= 0 && <h2>{`${posts.length} ${ posts.length > 1 ? 'postagens' : 'postagem' }`}</h2>}
+            { userData ? <Posts userData={ userData } posts={ posts }/> : <LoadingPostCard /> }
         </div>
 
     );
