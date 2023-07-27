@@ -153,7 +153,7 @@ export default function PostForm({ postData, userData, editMode, setEditMode }: 
                             className='w-full p-2'
                             name="content"
                             minLength={ 1 }
-                            maxLength={ 300 }
+                            maxLength={ 240 }
                             rows={ 5 }
                             onInvalid={ event => {
                                 const target = event.target as HTMLInputElement;
