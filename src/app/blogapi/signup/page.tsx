@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { addNewUserFromApiStateThunkAction } from '../redux/actions';
 import { Dispatch, UserType } from '../types';
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,6 @@ import { ImSpinner9 } from 'react-icons/im';
 
 
 export default function SignUp() {
-    const actualRoute = usePathname();
     const dispatch: Dispatch = useDispatch();
     const [loadingButton, setLoadingButton] = useState(true);
     const [loadingComponent, setLoadingComponent] = useState(true);
@@ -84,7 +83,6 @@ export default function SignUp() {
         try {
             e.preventDefault();
             setLoadingButton(true);
-            console.log('inicio', actualRoute);
             const newUserData = {
                 displayName: registerValues.name,
                 email: registerValues.email,
@@ -103,9 +101,6 @@ export default function SignUp() {
                 localStorage.setItem('userData', JSON.stringify(userData));
     
                 router.push('/blogapi');
-                console.log('fim', actualRoute);
-
-
             }
         } catch(error) {
             console.log('erro no login: ', error);
@@ -152,7 +147,7 @@ export default function SignUp() {
 
                             :
                             <button
-                                className={ `${ isDisable() || loadingButton ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
+                                className={ `${ loadingButton ? 'bg-gray-300 ' : 'bg-green-600 hover:bg-green-700 ' }p-3 text-white flex justify-center text-center rounded w-full` }
                                 onClick={ () => { setEditImageMode(true); } }
                             >
                                 { loadingComponent ? (
@@ -162,9 +157,7 @@ export default function SignUp() {
                                 ) }
                         
                             </button>
-                            
                     }
-                    
                 </div>
                 <form
                     className='flex flex-col items-center justify-center w-full gap-10 p-6'
