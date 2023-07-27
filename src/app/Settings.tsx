@@ -52,7 +52,7 @@ export default function Settings({ userData }: SettingsProps) {
         <div className='flex flex-col items-center'>
             {
                 deleteWarning && 
-                <div ref={ menuRef } className='w-full md:w-auto container fixed flex flex-col items-center gap-2 p-8 text-center bg-gray-200 rounded shadow-lg right-0.5 z-50'>
+                <div ref={ menuRef } className='w-full md:w-auto container fixed flex flex-col items-center gap-2 p-8 text-center bg-gray-200 rounded shadow-lg right-0.5 z-50 md:right-auto mt-1'>
                     <h1>Tem certeza?</h1>
                     <p>Todos as suas postagens serão excluídas</p>
                     <div className='flex gap-2'>
@@ -79,10 +79,10 @@ export default function Settings({ userData }: SettingsProps) {
             </button>
             {
                 isMenuOpen &&
-            <div ref={ menuRef } className='container md:w-auto fixed flex flex-col items-center justify-between w-full gap-2 p-8 bg-gray-200 rounded shadow-lg right-0.5 z-50'>
+            <div ref={ menuRef } className='container md:w-auto fixed flex flex-col items-center justify-between w-full gap-2 p-8 bg-gray-200 rounded shadow-lg right-0.5 z-50 md:right-auto '>
                 <ProfileImage height='h-[50px]' width='w-[50px]' imageUrl={ user.image } />
                 <button
-                    className='w-full p-2 text-white bg-red-400 rounded shadow-md hover:bg-red-600'
+                    className='w-full p-2 text-white bg-red-400 rounded shadow-md hover:bg-red-600 '
                     onClick={ handleLogOut }
                 >
                     Sair
