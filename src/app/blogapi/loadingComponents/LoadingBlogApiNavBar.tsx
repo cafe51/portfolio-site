@@ -1,7 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { ImSpinner9 } from 'react-icons/im';
 
-export function LoginBlogApiNavBar() {
+export function LoadingBlogApiNavBar() {
     return(
         <nav className='container flex items-center justify-between w-full p-2 bg-gray-200 md:justify-evenly'>
             <div className=''>

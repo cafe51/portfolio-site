@@ -28,12 +28,8 @@ export default function LoadingForm() {
                             disabled
                         />
                     </label>
-                    <div className='self-center w-4/5 text-white bg-white animate-pulse'>
-                        .
-                    </div>
-                    <div className='w-full p-1 text-white bg-white animate-pulse'>
-                        .
-                    </div>
+                    <div className='self-center w-4/5 text-xs text-white bg-white animate-pulse'>.</div>
+                    <div className='w-full p-1 text-white bg-white animate-pulse'>.</div>
                     
                 </div>
 

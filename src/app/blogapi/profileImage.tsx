@@ -8,9 +8,10 @@ interface ProfileImageProps {
     width: string;
     height: string;
     isLoading?: boolean;
+    bgGray?: boolean;
 }
 
-export function ProfileImage({ imageUrl, signUp, width, height, isLoading }: ProfileImageProps) {
+export function ProfileImage({ imageUrl, signUp, width, height, isLoading, bgGray }: ProfileImageProps) {
     const defaultPhoto = 'https://media.istockphoto.com/id/587805156/pt/vetorial/profile-picture-vector-illustration.jpg?s=1024x1024&w=is&k=20&c=9LD7Wx4KupKWbEddmEAI-HqJT8orG6l_1qPKUE9FvMg=';
     const [displayUrl, setDisplayUrl] = useState(imageUrl || defaultPhoto);
     const [imageError, setImageError] = useState(false);
@@ -32,7 +33,7 @@ export function ProfileImage({ imageUrl, signUp, width, height, isLoading }: Pro
     return (
         <div className='flex flex-col items-center'>
             { isLoading
-                ? <div className={ `${width} ${height} rounded-full animate-pulse ${!signUp ? 'bg-gray-200' : 'bg-white'}` }></div>
+                ? <div className={ `${width} ${height} rounded-full animate-pulse ${bgGray ? 'bg-gray-200' : 'bg-white'}` }></div>
                 : <img
                     className={ `block object-cover object-center ${width} ${height} rounded-full` }
                     src={ displayUrl }

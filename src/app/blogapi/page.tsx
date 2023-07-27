@@ -12,7 +12,7 @@ import BlogApiMainHeader from './BlogApiMainHeader';
 import { ProfilePresentation } from './ProfilePresentation';
 import { LoadingProfilePresentation } from './loadingComponents/LoadingProfilePresentation';
 import { BlogApiNavBar } from './BlogApiNavBar';
-import { LoginBlogApiNavBar } from './loadingComponents/LoginBlogApiNavBar';
+import { LoadingBlogApiNavBar } from './loadingComponents/LoadingBlogApiNavBar';
 import LoadingForm from './loadingComponents/LoadingForm';
 import LoadingPostCard from './loadingComponents/LoadingPostCard';
 
@@ -56,8 +56,8 @@ export default function Home() {
 
                 <div className='container flex flex-col items-center gap-4'>
                     <ProfilePresentation userData={ userData.user }/>
+                    <LoadingProfilePresentation />
                     <PostForm userData={ userData }/>
-                    <LoadingForm />
                     <Posts userData={ userData } posts={ postsFromApi }/>
                 </div>
 
@@ -65,7 +65,7 @@ export default function Home() {
             :
             <main className="container flex flex-col items-center self-center justify-between gap-2 p-2 m-auto justify-self-center">
                 <BlogApiMainHeader />
-                <LoginBlogApiNavBar />
+                <LoadingBlogApiNavBar />
         
                 <div className='container flex flex-col items-center gap-4'>
                     <LoadingProfilePresentation />
