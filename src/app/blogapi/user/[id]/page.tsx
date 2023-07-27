@@ -45,10 +45,11 @@ export default function UserPosts({ params }: { params: { id: string } }) {
 
 
     return (
-        <div className="flex flex-col items-center justify-between gap-2 p-2">
+        <div className="flex flex-col items-center justify-between gap-4 p-2">
             <BlogApiMainHeader />
             { userData ? <BlogApiNavBar userData={ userData }/> : <LoadingBlogApiNavBar /> }
-            { posts[0] && userData ? <ProfilePresentation userData={posts[0].users} /> : <LoadingProfilePresentation />}
+            { posts[0] && userData ?<ProfilePresentation userData={posts[0].users} /> : <LoadingProfilePresentation />}
+            {posts &&  posts.length >= 0 && <h2>{`${posts.length} ${ posts.length > 1 ? 'postagens' : 'postagem' }`}</h2>}
             { userData ? <Posts userData={ userData } posts={ posts }/> : <LoadingPostCard /> }
         </div>
     );
