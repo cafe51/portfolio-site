@@ -15,6 +15,7 @@ import { BlogApiNavBar } from './BlogApiNavBar';
 import { LoadingBlogApiNavBar } from './loadingComponents/LoadingBlogApiNavBar';
 import LoadingForm from './loadingComponents/LoadingForm';
 import LoadingPostCard from './loadingComponents/LoadingPostCard';
+import { getUsersApi } from './api';
 
 export default function Home() {
     const dispatch: Dispatch = useDispatch();
@@ -27,11 +28,21 @@ export default function Home() {
     useEffect(() => {
         const userFromLocalStorage = localStorage.getItem('userData');
         const userData = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
+        // const usersFromApi = await getUsersApi(token)
         if (!userData || !userData.token) {
             router.push('blogapi/login');
         } else {
-            setUserData(userData);
-            // setUserData(undefined);
+            const verifyUsers = async() => {
+                const usersFromApi: UserType[] = await getUsersApi(userData.token);
+                const userVerified = usersFromApi.some((userFromApi) => userFromApi.email === userData.user.email);
+                if(userVerified) {
+                    setUserData(userData);
+                } else {
+                    router.push('blogapi/login');
+                    localStorage.removeItem('userData');
+                }
+            };
+            verifyUsers();
         }
     
     }, [router]);

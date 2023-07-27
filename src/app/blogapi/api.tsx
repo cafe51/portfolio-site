@@ -69,13 +69,9 @@ export const createPostApi = async(token:string, body: NewPostType) => {
         const { data } = await axiosInstance.post('/post', body, {
             headers: { Authorization: token },
         });
-        console.log('token da req: ', token);
-        console.log('body da req: ', body);
         return data;
         
     } catch(error: any) {
-        console.log('token da req: ', token);
-        console.log('body da req: ', body);
         console.log('ERRRO', error);
         return error.response;
     }
