@@ -14,13 +14,11 @@ export default function Posts({ userData, posts }: PostProps) {
 
     const loadingRef = useRef<HTMLDivElement>(null);
 
-    const loadMorePosts = () => {
-        setDisplayPosts(prevPosts => [...prevPosts, ...[...posts].reverse().slice(prevPosts.length, next)]);
-    };
-  
     useEffect(() => {
-        loadMorePosts();
-    }, [posts]);
+        if (posts) {
+            setDisplayPosts([...[...posts].reverse().slice(0, next)]);
+        }
+    }, [posts, next]);
   
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -40,9 +38,7 @@ export default function Posts({ userData, posts }: PostProps) {
         };
     }, []);
 
-    useEffect(() => {
-        loadMorePosts();
-    }, [next]);
+
   
     return(
         userData ?
