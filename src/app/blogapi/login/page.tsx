@@ -79,8 +79,8 @@ export default function Login() {
                     Abaixo os links para a API e para o repositório com o código fonte</p>
                 </div>
                 <div className='flex flex-col self-start w-full gap-2 px-4 pb-4 bg-gray-200 text-start'>
-                    <p><strong>API:</strong> <a className='text-blue-600 underline' href='https://car-shop-japhe.up.railway.app/'>https://blog-api-japhe.up.railway.app/</a></p>
-                    <p><strong>Repositório:</strong> <a className='text-blue-600 underline' href='https://github.com/cafe51/car-shop'>https://github.com/cafe51/blog-api</a></p>
+                    <p><strong>API:</strong> <a className='text-blue-600 underline' href='https://blog-api-japhe.up.railway.app/'>https://blog-api-japhe.up.railway.app/</a></p>
+                    <p><strong>Repositório:</strong> <a className='text-blue-600 underline' href='https://github.com/cafe51/blog-api'>https://github.com/cafe51/blog-api</a></p>
                 </div>
             </section>
             <section className='flex flex-col items-center self-center justify-center w-full h-full p-4 bg-gray-200 rounded shadow md:w-2/5'>
