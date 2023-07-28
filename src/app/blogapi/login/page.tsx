@@ -69,9 +69,21 @@ export default function Login() {
     };
     
     return(
-        <div className='flex flex-col items-center w-full h-full'>
+        <div className='flex flex-col items-center w-full h-full gap-2'>
             <BlogApiMainHeader />
-            <section className='flex flex-col items-center self-center justify-center w-full h-full bg-gray-200 rounded shadow md:w-2/5'>
+            <section className='flex flex-col items-center p-4 bg-gray-200 md:w-2/5 '>
+                <div className='flex flex-col items-center justify-center text-center '>
+                    <h1>Bem vindo ao Blog!</h1>
+                    <p>Essa é uma interface feita para interagir com a API que eu desenvolvi.
+                    Você pode fazer um cadastro, login e explorar a aplicação. É possível criar, editar e deletar posts.
+                    Abaixo os links para a API e para o repositório com o código fonte</p>
+                </div>
+                <div className='flex flex-col items-center self-start w-full gap-2 px-4 pb-4 bg-gray-200 text-start'>
+                    <p><strong>API:</strong> <a className='text-blue-600 underline' href='https://car-shop-japhe.up.railway.app/'>https://blog-api-japhe.up.railway.app/</a></p>
+                    <p><strong>Repositório:</strong> <a className='text-blue-600 underline' href='https://github.com/cafe51/car-shop'>https://github.com/cafe51/blog-api</a></p>
+                </div>
+            </section>
+            <section className='flex flex-col items-center self-center justify-center w-full h-full p-4 bg-gray-200 rounded shadow md:w-2/5'>
                 <h1>Entre na sua conta</h1>
                 <form 
                     className='flex flex-col items-center justify-center gap-10 p-6'
@@ -149,6 +161,13 @@ export default function Login() {
                     <p>Não tem uma conta? <a className='text-blue-500' href="/blogapi/signup">Cadastre-se</a></p>
                 </div>
             </section>
+            <div className='flex flex-col items-center justify-center gap-2 p-4 text-center bg-gray-200 md:w-2/5'>
+                <p>cadastre-se ou logue com a conta de visitante:</p>
+                <div className='text-start'>
+                    <p><strong>email: </strong>visitante@email.com</p>
+                    <p><strong>senha: </strong>123456</p>
+                </div>
+            </div>
         </div>
         
     );
