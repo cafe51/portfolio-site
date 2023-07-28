@@ -16,6 +16,7 @@ export default function Settings({ userData }: SettingsProps) {
     const router = useRouter();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [deleteWarning, setDeleteWarning] = useState(false);
+    const [cantDeleteMessage, setCantDeleteMessage] = useState(false);
 
     const handleLogOut = () => {
         localStorage.removeItem('userData');
@@ -23,9 +24,14 @@ export default function Settings({ userData }: SettingsProps) {
     };
 
     const handleDeleteAccount = async() => {
-        await deleteAccountApi(token);
-        localStorage.removeItem('userData');
-        router.push('blogapi/login');
+        if(userData.user.email !== 'visitante@email.com') {
+            await deleteAccountApi(token);
+            localStorage.removeItem('userData');
+            router.push('blogapi/login');
+        } else {
+            setCantDeleteMessage(true);
+        }
+
         
     };
 
@@ -58,7 +64,10 @@ export default function Settings({ userData }: SettingsProps) {
                     <div className='flex gap-2'>
                         <button
                             className='w-full p-2 text-white bg-green-400 rounded shadow-md hover:bg-green-600'
-                            onClick={ () => setDeleteWarning(false) }
+                            onClick={ () => {
+                                setDeleteWarning(false);
+                                setCantDeleteMessage(false);
+                            } }
                         >
                             Não
                         </button>
@@ -69,6 +78,7 @@ export default function Settings({ userData }: SettingsProps) {
                             Sim
                         </button>
                     </div>
+                    { cantDeleteMessage && <p className='text-red-500'>Você não pode excluir a conta de visitante!</p> }
                 </div>
             }
             <button
