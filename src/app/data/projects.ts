@@ -19,7 +19,7 @@ export const projects = [
       'Sistema de back-end completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens.',
         skills: ['Node.js', 'JavaScript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
         github: 'https://github.com/cafe51/blog-api.git',
-        link: 'https://blog-api-japhe.up.railway.app/',
+        link: '/blogapi',
     },
     {
         id: 3,
