@@ -24,7 +24,7 @@ export default function DataFormat({ dataISO }: DataFormatProps) {
         const diferencaEmMinutos = Math.floor(diferencaEmMs / (1000 * 60));
         const diferencaEmHoras = Math.floor(diferencaEmMs / (1000 * 60 * 60));
     
-        if (diferencaEmMinutos === 0) {
+        if (diferencaEmMinutos <= 0) {
             return 'Agora';
         } else if (diferencaEmMinutos < 60) {
             return `${diferencaEmMinutos} minutos atrás`;
