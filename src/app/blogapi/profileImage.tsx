@@ -12,7 +12,7 @@ interface ProfileImageProps {
 }
 
 export function ProfileImage({ imageUrl, signUp, width, height, isLoading, bgGray }: ProfileImageProps) {
-    const defaultPhoto = 'https://media.istockphoto.com/id/587805156/pt/vetorial/profile-picture-vector-illustration.jpg?s=1024x1024&w=is&k=20&c=9LD7Wx4KupKWbEddmEAI-HqJT8orG6l_1qPKUE9FvMg=';
+    const defaultPhoto = 'https://img.freepik.com/free-icon/user_318-563642.jpg?w=360';
     const [displayUrl, setDisplayUrl] = useState(imageUrl || defaultPhoto);
     const [imageError, setImageError] = useState(false);
 
