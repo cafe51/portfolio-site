@@ -6,6 +6,22 @@ import { ProfileImage } from './profileImage';
 import Link from 'next/link';
 import DataFormat from './DataFormat';
 
+const handleLongWords = (text: string, max_length:number) => {
+    return text.split(' ').map(word => {
+        if(word.length > max_length){
+            let newWord = '';
+            while(word.length > max_length){
+                const chunk = word.slice(0, max_length);
+                word = word.slice(max_length);
+                newWord = newWord + chunk + '\n';
+            }
+            return newWord + word;
+        } else {
+            return word;
+        }
+    }).join(' ');
+};
+
 interface PostCardProps {
     postData: PostType;
     setEditMode: (mode: boolean) => void;
@@ -58,7 +74,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
                     <h1>{ postData.title }</h1>
                     <p className='text-xs'>{ <DataFormat dataISO={ postData.published ? postData.published : '' } /> }</p>
                 </div>
-                <p className='break-all whitespace-pre-line'>{ postData.content }</p>
+                <p className='break-words whitespace-pre-line'>{ handleLongWords(postData.content, 30)  }</p>
                 <div className='flex'>
                     {
                         postData.categories.map((category) => (

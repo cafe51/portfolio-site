@@ -2,11 +2,9 @@ import axios from 'axios';
 import { CategoryType, NewPostType, NewUserType } from './types';
 
 const axiosInstance = axios.create({
-    // baseURL: 'http://localhost:3001/',
-    baseURL: 'https://blog-api-japhe.up.railway.app/',
+    baseURL: 'http://localhost:3001/',
+    // baseURL: 'https://blog-api-japhe.up.railway.app/',
 });
-
-
 
 export const loginRequestApi = async(body: {email: string, password: string}) => {
     const { data } = await axiosInstance.post('/login', body);
