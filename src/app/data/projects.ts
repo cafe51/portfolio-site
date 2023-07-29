@@ -13,11 +13,11 @@ export const projects = [
     {
         id: 2,
         title: 'Api para Blog',
-        image: '/images/projects/blog-api.png',
+        image: '/images/projects/blog-api3.png',
         imageAlt: '/images/projects/project_1.png',
         description:
-      'Sistema de back-end completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens.',
-        skills: ['Node.js', 'JavaScript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
+      'Sistema completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens.',
+        skills: ['Node.js', 'JavaScript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker', 'Next.js', 'Tailwind', 'Redux'],
         github: 'https://github.com/cafe51/blog-api.git',
         link: '/blogapi',
     },
