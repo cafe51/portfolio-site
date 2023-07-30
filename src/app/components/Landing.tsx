@@ -6,12 +6,12 @@ import { FaGithub } from 'react-icons/fa';
 
 const Landing: NextPage = () => {
     return (
-        <section id="landing" className="bg-gray-200 p-4 md:p-12 md:pt-4 md:mb-10 relative rounded-md md:h-full">
+        <section id="landing" className="relative p-4 bg-gray-200 rounded-md md:p-12 md:pt-4 md:mb-10 md:h-full">
             <div className="bg-white flex justify-center items-center md:items-center lg:items-start mx-auto sm:p-4 rounded-xl md:h-[80vh]">
                 { /* Seção visível apenas em telas pequenas */ }
-                <div className="md:hidden flex flex-col items-center justify-center ">
+                <div className="flex flex-col items-center justify-center md:hidden ">
                     <div className='flex flex-col items-center pt-3'>
-                        <div className='w-full flex flex-col justify-center text-center px-2'>
+                        <div className='flex flex-col justify-center w-full px-2 text-center'>
                             <h1 className=' text-[28px] font-bold'>Desenvolvedor Web Full Stack</h1>
                             
                         </div>
@@ -28,8 +28,8 @@ const Landing: NextPage = () => {
                             h-[450px]
                             ` }>
                     </div>
-                    <div className='-mt-12 w-2/4 mb-12 flex flex-col justify-center items-center text-center text-base '>
-                        <div className='flex flex-row gap-4 z-50'>
+                    <div className='flex flex-col items-center justify-center w-2/4 mb-12 -mt-12 text-base text-center '>
+                        <div className='z-50 flex flex-row gap-4'>
                             <a href={ 'https://github.com/cafe51/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                 <FaGithub size={ 36 }/>
                             </a>
@@ -45,14 +45,14 @@ const Landing: NextPage = () => {
                     </div>
                 </div>
                 { /* Seção visível apenas em telas medias */ }
-                <div className="hidden lg:hidden md:flex flex-col items-center ">
-                    <div className='pt-4 absolute w-fit flex flex-col items-center '>
+                <div className="flex-col items-center hidden lg:hidden md:flex ">
+                    <div className='absolute flex flex-col items-center pt-4 w-fit '>
                         <div className='text-end'>
                             <h1 className=' text-[48px] font-bold'>Desenvolvedor Web</h1>
                             <h1 className=' text-[48px] font-bold'>Full Stack</h1>
                         </div>
                     </div>
-                    <div className="w-full flex flex-row items-start justify-center gap-4 pt-20">
+                    <div className="flex flex-row items-start justify-center w-full gap-4 pt-20">
                         <div
                             className={ `
                             bg-[url('/images/ProfileImageSite2.png')]
@@ -64,13 +64,13 @@ const Landing: NextPage = () => {
                     
                             ` }>
                         </div>
-                        <div className='pt-24 flex flex-col justify-center items-start w-2/6 text-xl  '>
+                        <div className='flex flex-col items-start justify-center w-2/6 pt-24 text-xl '>
                             <p>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor Web Full Stack e amo muito o que faço.</p>
-                            <div className='flex flex-row gap-4 pt-4 z-50'>
+                            <div className='z-50 flex flex-row gap-4 pt-4'>
                                 <a href={ 'https://github.com/cafe51/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                     <FaGithub size={ 36 }/>
                                 </a>
-                                <a href={ 'https://www.linkedin.com/in/japh%C3%A9-nogueira-67aa7b1a8/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                                <a href={ 'https://www.linkedin.com/in/japhe-full-stack/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                     <BsLinkedin size={ 36 }/>
                                 </a>
 
@@ -82,14 +82,14 @@ const Landing: NextPage = () => {
                     </div>
                 </div>
                 { /* Seção visível apenas em telas grandes */ }
-                <div className="hidden lg:flex flex-col items-center ">
-                    <div className='pt-8 absolute w-fit flex flex-col items-center '>
+                <div className="flex-col items-center hidden lg:flex ">
+                    <div className='absolute flex flex-col items-center pt-8 w-fit '>
                         <div className='text-end'>
                             <h1 className=' text-[60px] font-bold'>Desenvolvedor Web</h1>
                             <h1 className=' text-[60px] font-bold'>Full Stack</h1>
                         </div>
                     </div>
-                    <div className="w-fit flex items-start justify-center pt-28 ">
+                    <div className="flex items-start justify-center w-fit pt-28 ">
                         <div
                             className={ `
                             bg-[url('/images/ProfileImageSite2.png')]
@@ -101,13 +101,13 @@ const Landing: NextPage = () => {
                            
                             ` }>
                         </div>
-                        <div className='pt-36 pl-16 flex flex-col justify-center items-start w-2/6 text-2xl  '>
+                        <div className='flex flex-col items-start justify-center w-2/6 pl-16 text-2xl pt-36 '>
                             <p>Olá, meu nome é Japhé Nogueira. Sou um Desenvolvedor web Full Stack e amo muito o que faço.</p>
                             <div className='flex flex-row gap-10 pt-6'>
                                 <a href={ 'https://github.com/cafe51/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                     <FaGithub size={ 40 }/>
                                 </a>
-                                <a href={ 'https://www.linkedin.com/in/japh%C3%A9-nogueira-67aa7b1a8/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
+                                <a href={ 'https://www.linkedin.com/in/japhe-full-stack/' } target="_blank" rel="noopener noreferrer" className='hover:scale-110'>
                                     <BsLinkedin size={ 40 }/>
                                 </a>
 
