@@ -5,8 +5,8 @@ export const projects = [
         image: '/images/projects/trype-tunes.png',
         imageAlt: '/images/projects/trype-tunes.png',
         description:
-      'Projeto front-end Trybe-Tunes feito durante o período de curso da Trybe refeito em typescript. Um site para pesquisar albums de música, permite ouvir amostras das músicas do album e favoritar. Possui um cadastro simples de usuário e salva as informações no local storage do navegador. Consome a api o iTunes para funcionar. As imagens usadas foram geradas por mim usando o model de geração de imagens por inteligência artificial Midjourney.',
-        skills: ['React', 'Typescript', 'Styled-Components'],
+      'Projeto front-end Trybe-Tunes feito durante o período de curso da Trybe refeito em TypeScript. Um site para pesquisar albums de música, permite ouvir amostras das músicas do album e favoritar. Possui um cadastro simples de usuário e salva as informações no local storage do navegador. Consome a api o iTunes para funcionar. As imagens usadas foram geradas por mim usando o model de geração de imagens por inteligência artificial Midjourney.',
+        skills: ['React', 'TypeScript', 'Styled-Components'],
         github: 'https://github.com/cafe51/Type-Tunes',
         link: 'https://typetunes.vercel.app/',
     },
@@ -17,7 +17,7 @@ export const projects = [
         imageAlt: '/images/projects/project_1.png',
         description:
       'Sistema completo, robusto e eficiente desenvolvido para gerenciar todas as operações essenciais de um blog, incluindo o registro de usuários, autenticação, criação e gerenciamento de postagens.',
-        skills: ['Node.js', 'JavaScript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker', 'Next.js', 'Tailwind', 'Redux'],
+        skills: ['Node.js', 'React', 'JavaScript', 'TypeScript', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker', 'Next.js', 'Tailwind', 'Redux'],
         github: 'https://github.com/cafe51/blog-api.git',
         link: '/blogapi',
     },
@@ -28,7 +28,7 @@ export const projects = [
         imageAlt: '/images/projects/project_1.png',
         description:
       'Api com CRUD completo para cadastro de times de futebol que alimenta uma interface front-end. Inclui cadastro de usuários no banco de dados e login com autenticação.',
-        skills: ['React', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
+        skills: ['Node.js', 'Express', 'MySql', 'Sequelize', 'Chai', 'Docker'],
         github: 'https://github.com/cafe51/trybe-futebol-clube',
         link: 'https://trybe-futebol-clube-japhe.netlify.app/',
     },
@@ -39,7 +39,7 @@ export const projects = [
         imageAlt: '/images/projects/project_2.png',
         description:
       'Api com CRUD completo para cadastro de carros e motos em um banco de dados não relacional. Inclui cadastro de usuário e login com autenticação. Nesse projeto pratiquei injeção de dependência e as práticas SOLID',
-        skills: ['Typescript', 'Express', 'MongoDB', 'Mongoose', 'Docker'],
+        skills: ['Node.js', 'TypeScript', 'Express', 'MongoDB', 'Mongoose', 'Docker'],
         github: 'https://github.com/cafe51/car-shop',
         link: '/carShop',
     },
@@ -49,7 +49,7 @@ export const projects = [
         image: '/images/projects/site-portfolio1.png',
         imageAlt: '/images/projects/site-portfolio1.png',
         description: 'Site feito para divulgação de portfolio de projetos e habilidades de programação que serve como meu cartão de visitas',
-        skills: ['React', 'Next.js', 'Typescript', 'Tailwind'],
+        skills: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
         github: 'https://github.com/cafe51/portfolio-site.git',
         link: '/',
     },
