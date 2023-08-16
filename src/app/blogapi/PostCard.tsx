@@ -40,7 +40,7 @@ export default function PostCard({ postData, setEditMode, userData }: PostCardPr
     };
 
     return(
-        <div className='container flex flex-col justify-center w-full gap-6 p-4 bg-white rounded shadow-lg'>
+        <div className='container flex flex-col justify-center w-full gap-6 p-4 rounded shadow-lg'>
             { postData.user_id === userData.user.id &&
             <div className='flex justify-between'>
                 <button
