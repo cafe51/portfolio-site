@@ -57,7 +57,7 @@ export default function Home() {
 
     return (
         userData ?
-            <main className="container flex flex-col items-center self-center justify-between gap-2 p-2 m-auto justify-self-center bg-gray-200">
+            <main className="container flex flex-col items-center self-center justify-between gap-2 p-2 m-auto justify-self-center">
                 <header className="container fixed z-50 flex flex-col items-center w-full">
                     <BlogApiMainHeader />
                     <BlogApiNavBar userData={ userData }/>
